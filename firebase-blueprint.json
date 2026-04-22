@@ -1,0 +1,300 @@
+{
+  "entities": {
+    "Solution": {
+      "title": "Solution",
+      "description": "A business solution offered by Unified Platforms.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "problem": { "type": "string" },
+        "audience": { "type": "string" },
+        "approach": { "type": "string" },
+        "services": { "type": "array", "items": { "type": "string" } },
+        "case_studies": { "type": "array", "items": { "type": "string" } },
+        "faqs": { "type": "array", "items": { "type": "object" } },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "seo": { "type": "object" }
+      },
+      "required": ["title", "slug"]
+    },
+    "Service": {
+      "title": "Service",
+      "description": "A specific service provided.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "category": { "type": "string" },
+        "description": { "type": "string" },
+        "hero_title": { "type": "string" },
+        "hero_subtitle": { "type": "string" },
+        "hero_image_url": { "type": "string" },
+        "value_prop_title": { "type": "string" },
+        "value_prop_description": { "type": "string" },
+        "value_prop_image_url": { "type": "string" },
+        "service_grid": { "type": "array", "items": { "type": "object" } },
+        "process_steps": { "type": "array", "items": { "type": "object" } },
+        "engagement_models": { "type": "array", "items": { "type": "object" } },
+        "stats": { "type": "array", "items": { "type": "object" } },
+        "faqs": { "type": "array", "items": { "type": "object" } },
+        "seo": { "type": "object" }
+      },
+      "required": ["title", "slug"]
+    },
+    "CaseStudy": {
+      "title": "Case Study",
+      "description": "A success story from a client.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "client": { "type": "string" },
+        "industry": { "type": "string" },
+        "problem": { "type": "string" },
+        "strategy": { "type": "string" },
+        "execution": { "type": "string" },
+        "results_json": { "type": "string" },
+        "services": { "type": "array", "items": { "type": "string" } },
+        "platforms": { "type": "array", "items": { "type": "string" } },
+        "testimonial": { "type": "object" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "seo": { "type": "object" }
+      },
+      "required": ["title", "slug"]
+    },
+    "Lead": {
+      "title": "Lead",
+      "description": "A lead captured via forms.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "source": { "type": "string" },
+        "page": { "type": "string" },
+        "campaign": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email"]
+    },
+    "User": {
+      "title": "User",
+      "description": "Application user with roles.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "marketer", "content", "seo"] },
+        "displayName": { "type": "string" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "Navigation": {
+      "title": "Navigation",
+      "description": "CMS controlled navigation menu.",
+      "type": "object",
+      "properties": {
+        "label": { "type": "string" },
+        "type": { "type": "string", "enum": ["mega_menu", "dropdown", "link"] },
+        "visible_to": { "type": "array", "items": { "type": "string" } },
+        "columns": { "type": "array", "items": { "type": "object" } },
+        "links": { "type": "array", "items": { "type": "string" } },
+        "order": { "type": "integer" }
+      },
+      "required": ["label", "type"]
+    },
+    "Insight": {
+      "title": "Insight",
+      "description": "Blog posts, reports, and guides.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "type": { "type": "string", "enum": ["blog", "report", "guide", "video", "news"] },
+        "content": { "type": "string" },
+        "author": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "seo": { "type": "object" },
+        "publish_date": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "slug", "type"]
+    },
+    "Blog": {
+      "title": "Blog",
+      "description": "Standard blog posts.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "content": { "type": "string" },
+        "author": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "seo": { "type": "object" },
+        "publish_date": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "slug"]
+    },
+    "Settings": {
+      "title": "Settings",
+      "description": "Site-wide configuration.",
+      "type": "object",
+      "properties": {
+        "siteName": { "type": "string" },
+        "description": { "type": "string" },
+        "logoUrl": { "type": "string" },
+        "faviconUrl": { "type": "string" },
+        "primaryColor": { "type": "string" },
+        "secondaryColor": { "type": "string" },
+        "contactEmail": { "type": "string" },
+        "contactPhone": { "type": "string" },
+        "address": { "type": "string" },
+        "socialLinks": { "type": "object" }
+      }
+    },
+    "LandingPage": {
+      "title": "Landing Page",
+      "description": "Custom landing pages built with the builder.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "status": { "type": "string", "enum": ["draft", "published"] },
+        "sections": { "type": "array", "items": { "type": "object" } },
+        "seo": { "type": "object" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "slug"]
+    },
+    "Page": {
+      "title": "Page",
+      "description": "Static pages like Home, About, etc.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "sections": { "type": "array", "items": { "type": "object" } },
+        "seo": { "type": "object" }
+      },
+      "required": ["title", "slug"]
+    },
+    "GTMPage": {
+      "title": "GTM Service Page",
+      "description": "A high-end service page following the GTM-OS architecture.",
+      "type": "object",
+      "properties": {
+        "page_config": {
+          "type": "object",
+          "properties": {
+            "layout_pattern": { "type": "string", "enum": ["ARCHITECT", "ACCELERATOR", "ENGINEER", "CONNECTOR"] },
+            "theme": { "type": "string", "enum": ["LIGHT", "DARK"] },
+            "url_slug": { "type": "string" }
+          }
+        },
+        "seo": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "meta_description": { "type": "string" },
+            "schema_type": { "type": "string" }
+          }
+        },
+        "hero": {
+          "type": "object",
+          "properties": {
+            "h1": { "type": "string" },
+            "intro_text": { "type": "string" }
+          }
+        },
+        "value_grid": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": { "type": "string" },
+              "description": { "type": "string" },
+              "icon": { "type": "string" }
+            }
+          }
+        },
+        "main_framework": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "steps": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "number": { "type": "integer" },
+                  "label": { "type": "string" },
+                  "detail": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "comparison_module": {
+          "type": "object",
+          "properties": {
+            "left_side_title": { "type": "string" },
+            "left_side_points": { "type": "array", "items": { "type": "string" } },
+            "right_side_title": { "type": "string" },
+            "right_side_points": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "growth_entities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": { "type": "string" },
+              "description": { "type": "string" },
+              "context": { "type": "string" }
+            }
+          }
+        },
+        "faq": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question": { "type": "string" },
+              "answer": { "type": "string" }
+            }
+          }
+        }
+      },
+      "required": ["page_config", "seo", "hero"]
+    },
+    "CalendarConfig": {
+      "title": "Calendar Configuration",
+      "description": "Configuration for Google Calendar integration.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "calendarId": { "type": "string" },
+        "accessToken": { "type": "string" },
+        "refreshToken": { "type": "string" },
+        "expiresAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email", "calendarId"]
+    }
+  },
+  "firestore": {
+    "/solutions": { "schema": "Solution", "description": "Collection of solutions" },
+    "/services": { "schema": "Service", "description": "Collection of services" },
+    "/case_studies": { "schema": "CaseStudy", "description": "Collection of case studies" },
+    "/leads": { "schema": "Lead", "description": "Collection of captured leads" },
+    "/users": { "schema": "User", "description": "Collection of application users" },
+    "/navigation": { "schema": "Navigation", "description": "CMS controlled navigation" },
+    "/insights": { "schema": "Insight", "description": "Collection of insights" },
+    "/blog": { "schema": "Blog", "description": "Collection of blog posts" },
+    "/settings": { "schema": "Settings", "description": "Site-wide settings" },
+    "/landing_pages": { "schema": "LandingPage", "description": "Collection of landing pages" },
+    "/pages": { "schema": "Page", "description": "Collection of static pages" },
+    "/gtm_pages": { "schema": "GTMPage", "description": "High-end GTM service pages" },
+    "/calendar_configs": { "schema": "CalendarConfig", "description": "Collection of calendar configurations" }
+  }
+}

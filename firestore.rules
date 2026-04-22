@@ -1,0 +1,85 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+  
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.email == "shree@unifiedplatforms.com" ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+      );
+    }
+
+    function isEditorOrAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.email == "shree@unifiedplatforms.com" ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'marketer', 'editor'])
+      );
+    }
+
+    // ----------------------------------------------------
+    // Public Readable Content Collections (For Next.js / Astro)
+    // ----------------------------------------------------
+    match /solutions/{doc}        { allow read: if true; allow write: if isEditorOrAdmin(); }
+    match /services/{doc}         { allow read: if true; allow write: if isEditorOrAdmin(); }
+    match /case-studies/{doc}     { allow read: if true; allow write: if isEditorOrAdmin(); }
+    match /insights/{doc}         { allow read: if true; allow write: if isEditorOrAdmin(); }
+    match /pages/{doc}            { allow read: if true; allow write: if isEditorOrAdmin(); }
+    match /landing-pages/{doc}    { allow read: if true; allow write: if isEditorOrAdmin(); }
+    match /gtm_pages/{doc}       { allow read: if true; allow write: if isEditorOrAdmin(); }
+    
+    // ----------------------------------------------------
+    // New Advanced SEO / EEAT Collections
+    // ----------------------------------------------------
+    match /geo_taxonomy/{doc}     { allow read: if true; allow write: if isEditorOrAdmin(); }
+    match /pseo_pages/{doc}       { allow read: if true; allow write: if isEditorOrAdmin(); }
+    match /trust_signals/{doc}    { allow read: if true; allow write: if isEditorOrAdmin(); }
+    match /authors/{doc}          { allow read: if true; allow write: if isEditorOrAdmin(); }
+    
+    // Internal pipeline collections (Not public)
+    match /pseo_templates/{doc}   { allow read, write: if isEditorOrAdmin(); }
+    match /pseo_jobs/{doc}        { allow read, write: if isEditorOrAdmin(); }
+    match /link_graph/{doc}       { allow read, write: if isEditorOrAdmin(); }
+
+    // ----------------------------------------------------
+    // Site config
+    // ----------------------------------------------------
+    match /navigation/{doc}       { allow read: if true; allow write: if isAdmin(); }
+    match /settings/{doc}         { allow read: if true; allow write: if isAdmin(); }
+
+    // ----------------------------------------------------
+    // Marketing & Operations
+    // ----------------------------------------------------
+    match /leads/{doc} {
+      allow create: if true; // Public can submit
+      allow read, update, delete: if isEditorOrAdmin();
+    }
+    
+    match /campaigns/{doc} {
+      allow read, write: if isEditorOrAdmin();
+    }
+
+    // ----------------------------------------------------
+    // Users Collection (Strict RBAC)
+    // ----------------------------------------------------
+    match /users/{userId} {
+      allow read: if request.auth.uid == userId || isAdmin();
+      allow create: if isAuthenticated() && request.auth.uid == userId; 
+      // User can update their own doc ONLY IF they don't elevate their own role
+      allow update: if isAdmin() || (request.auth.uid == userId && request.resource.data.role == resource.data.role);
+      allow delete: if isAdmin();
+    }
+
+    // ----------------------------------------------------
+    // Fallback Lock
+    // ----------------------------------------------------
+    match /{document=**} {
+      allow read, write: if isAdmin();
+    }
+  }
+}
