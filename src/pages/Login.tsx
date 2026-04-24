@@ -51,8 +51,8 @@ export default function Login() {
         <div className="absolute top-0 left-0 w-full h-1.5 bg-brand-primary"></div>
         
         <div className="text-center mb-10">
-          <div className="w-16 h-16 bg-brand-dark rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg rotate-3 group-hover:rotate-0 transition-transform">
-            <span className="text-brand-white font-bold text-3xl">U</span>
+          <div className="flex items-center justify-center mx-auto mb-6">
+            <img src="/logo.png" alt="Logo" className="h-16 w-auto object-contain" />
           </div>
           <h2 className="text-3xl font-bold text-brand-dark tracking-tight">Lead GTM Portal</h2>
           <p className="text-brand-gray mt-2 font-medium">Secure Administrative Access</p>

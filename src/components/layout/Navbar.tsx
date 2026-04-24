@@ -133,17 +133,12 @@ export default function Navbar({ user }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex justify-between h-20 items-center">
           <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-2 group">
+            <Link to="/" className="flex items-center group">
               {settings?.logoUrl ? (
-                <img src={settings.logoUrl} alt="Logo" className="h-10 w-auto object-contain" />
+                <img src={settings.logoUrl} alt={settings?.siteName || 'Logo'} className="h-12 w-auto object-contain" />
               ) : (
-                <div className="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center group-hover:rotate-6 transition-transform">
-                  <span className="text-brand-white font-bold text-2xl">U</span>
-                </div>
+                <img src="/logo.png" alt={settings?.siteName || 'Logo'} className="h-12 w-auto object-contain" />
               )}
-              <div className="flex flex-col">
-                <span className="font-bold text-lg tracking-tight text-brand-dark leading-none">{settings?.siteName || 'Unified Platforms'}</span>
-              </div>
             </Link>
           </div>
 
