@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { auth, googleProvider } from '../lib/firebase';
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 export default function Login() {
   const [email, setEmail] = useState('');
