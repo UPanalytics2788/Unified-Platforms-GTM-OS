@@ -72,18 +72,19 @@ export default function Navbar({ user }: NavbarProps) {
   useEffect(() => {
     if (user) {
       const fetchRole = async () => {
+        const adminEmails = ['shree@unifiedplatforms.com', 'analytics@unifiedplatforms.com'];
+        const isHardcodedAdmin = adminEmails.some(email => email.toLowerCase() === (user.email || '').toLowerCase());
+        
+        if (isHardcodedAdmin) {
+          setUserRole('admin');
+          // No need to fetch from DB if we've already confirmed they are a hardcoded admin
+          return;
+        }
+
         try {
-          const adminEmails = ['shree@unifiedplatforms.com', 'analytics@unifiedplatforms.com'];
-          const isAdmin = adminEmails.some(email => email.toLowerCase() === (user.email || '').toLowerCase());
-          
-          if (isAdmin) {
-            setUserRole('admin');
-          }
-          
           const userDoc = await getDoc(doc(db, 'users', user.uid));
           if (userDoc.exists()) {
             const role = userDoc.data().role;
-            // Only update if not already set by email check or if it's different
             if (role) setUserRole(role);
           }
         } catch (error) {
