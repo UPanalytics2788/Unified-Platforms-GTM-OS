@@ -91,7 +91,8 @@ export default function App() {
           
           let userRole = 'user';
           if (!userSnap.exists()) {
-            userRole = firebaseUser.email === 'shree@unifiedplatforms.com' ? 'admin' : 'user';
+            const adminEmails = ['shree@unifiedplatforms.com', 'analytics@unifiedplatforms.com'];
+            userRole = adminEmails.includes(firebaseUser.email || '') ? 'admin' : 'user';
             await setDoc(userRef, {
               uid: firebaseUser.uid,
               email: firebaseUser.email,
@@ -133,7 +134,8 @@ export default function App() {
         } catch (error) {
           // Fallback to basic email-based role identification if Firestore is unreachable
           setUser(firebaseUser);
-          const fallbackRole = firebaseUser.email === 'shree@unifiedplatforms.com' ? 'admin' : 'user';
+          const adminEmails = ['shree@unifiedplatforms.com', 'analytics@unifiedplatforms.com'];
+          const fallbackRole = adminEmails.includes(firebaseUser.email || '') ? 'admin' : 'user';
           setRole(fallbackRole);
           console.warn("Firestore unreachable for role check, using email-based fallback.");
         }
