@@ -69,6 +69,19 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Temporary logic to ensure logo is updated
+    const updateLogo = async () => {
+      try {
+        const { doc, updateDoc } = await import('firebase/firestore');
+        const brandRef = doc(db, 'settings', 'brand');
+        await updateDoc(brandRef, { logoUrl: '/logo.png' });
+        console.log('Logo path synced to /logo.png');
+      } catch (err) {
+        // Silently fail if connection issues
+      }
+    };
+    updateLogo();
+
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
         try {

@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="flex items-center space-x-2 mb-4">
               {settings?.logoUrl ? (
-                <img src={settings.logoUrl} alt="Logo" className="w-8 h-8 object-contain" />
+                <img src={settings.logoUrl} alt="Logo" className="h-8 w-auto object-contain" />
               ) : (
                 <div className="w-8 h-8 bg-brand-primary rounded-lg flex items-center justify-center">
                   <span className="text-brand-white font-bold text-xl">U</span>

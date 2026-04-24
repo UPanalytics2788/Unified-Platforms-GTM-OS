@@ -135,7 +135,7 @@ export default function Navbar({ user }: NavbarProps) {
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2 group">
               {settings?.logoUrl ? (
-                <img src={settings.logoUrl} alt="Logo" className="w-10 h-10 object-contain" />
+                <img src={settings.logoUrl} alt="Logo" className="h-10 w-auto object-contain" />
               ) : (
                 <div className="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center group-hover:rotate-6 transition-transform">
                   <span className="text-brand-white font-bold text-2xl">U</span>

@@ -595,7 +595,7 @@ export async function runCMSInitialization(force: boolean = false) {
     await setDoc(doc(db, 'settings', 'brand'), {
       siteName: 'Unified Platforms',
       description: 'Revenue-focused marketing and growth partner helping brands scale through SEO, performance marketing, and content.',
-      logoUrl: 'https://unifiedplatforms.com/logo.png',
+      logoUrl: '/logo.png',
       faviconUrl: '/favicon.ico',
       primaryColor: '#5dcaeb',
       secondaryColor: '#eb735d',

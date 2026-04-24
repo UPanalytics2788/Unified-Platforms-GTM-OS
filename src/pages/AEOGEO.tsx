@@ -16,19 +16,21 @@ import {
 import { useCMSDocument } from '../hooks/useCMSDocument';
 import LeadForm from '../components/ui/LeadForm';
 import SchemaMarkup from '../components/ui/SchemaMarkup';
+import { SERVICES_CONTENT } from '../data/seedContent';
 
 export default function AEOGEO() {
   const { data: pageData, loading } = useCMSDocument('services', 'aeo-geo');
 
-  if (loading) {
+  const localFallback = SERVICES_CONTENT.find(s => s.slug === 'aeo-geo');
+  const service = pageData || localFallback;
+
+  if (loading && !service) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-brand-dark">
         <Loader2 className="animate-spin text-brand-primary" size={48} />
       </div>
     );
   }
-
-  const service = pageData;
 
   if (!service && !loading) {
     return (
@@ -53,7 +55,7 @@ export default function AEOGEO() {
       {service && (
         <>
           <SchemaMarkup type="Service" data={service} />
-          <SchemaMarkup type="FAQPage" data={service.faqs} />
+          <SchemaMarkup type="FAQPage" data={service} />
         </>
       )}
 
