@@ -57,8 +57,8 @@ export default function AEOGEO() {
   return (
     <div className="bg-white min-h-screen font-sans selection:bg-brand-primary/30">
       <SEO 
-        title={service?.meta_title || 'AEO & GEO Optimization | Answer Engine Authority | Unified Platforms'} 
-        description={service?.meta_description || 'Secure your brand citations in AI search results. Unified Platforms delivers technical AEO/GEO for the next era of search.'} 
+        title={service?.meta_title || 'AEO & GEO Optimization | AI Answer Dominance | Unified Platforms'} 
+        description={service?.meta_description || 'Secure your brand citations in AI search results (ChatGPT, Perplexity, Gemini). Unified Platforms delivers technical AEO/GEO for the generative search era.'} 
       />
 
       <SchemaMarkup type="Service" data={service} />

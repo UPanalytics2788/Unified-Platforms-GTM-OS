@@ -12,8 +12,8 @@ export default function Contact() {
   return (
     <div className="bg-brand-white min-h-screen py-20">
       <SEO 
-        title="Contact Us"
-        description="Get in touch with our growth experts to scale your business."
+        title="Contact Our Growth Experts | Unified Platforms"
+        description="Get in touch with our revenue-focused growth experts. Book a free consultation or request a technical audit for your digital presence."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">

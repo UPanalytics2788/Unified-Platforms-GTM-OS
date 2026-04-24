@@ -86,8 +86,8 @@ export default function PaidSocial() {
   return (
     <div className="bg-white min-h-screen">
       <SEO 
-        title={pageData?.meta_title || "Paid Social Advertising Services | Meta, LinkedIn, Instagram Ads | Unified Platforms"}
-        description={pageData?.meta_description || "Run paid social campaigns that reach the right audience and drive real business outcomes. Unified Platforms manages Meta, LinkedIn, Instagram, and social advertising across all major platforms."}
+        title={pageData?.meta_title || "Paid Social Advertising | Performance Media | Unified Platforms"}
+        description={pageData?.meta_description || "Scale your brand with precision-targeted Paid Social campaigns. Expert management of Meta, LinkedIn, and TikTok ads designed for maximum conversion."}
       />
       
       {/* Hero Section */}

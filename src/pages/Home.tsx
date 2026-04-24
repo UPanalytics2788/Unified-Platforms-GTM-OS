@@ -36,6 +36,10 @@ export default function Home() {
   const defaultData = {
     slug: 'home',
     title: 'Home',
+    seo: {
+      title: 'Unified Platforms | Revenue-Focused Marketing & Growth Partner',
+      description: 'Scale your brand with Unified Platforms. Specialized in SEO strategy, performance marketing, content creation, and technical development built for revenue growth.'
+    },
     sections: [
       {
         type: 'hero',

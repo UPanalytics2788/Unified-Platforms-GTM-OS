@@ -72,8 +72,8 @@ export default function PaidSearch() {
   return (
     <div className="bg-white min-h-screen">
       <SEO 
-        title={pageData?.meta_title || "Paid Search Management Services | Google Ads Agency | Unified Platforms"}
-        description={pageData?.meta_description || "Stop wasting ad spend on clicks that do not convert. Unified Platforms manages Google Ads and paid search campaigns that drive qualified leads and measurable revenue."}
+        title={pageData?.meta_title || "Paid Search Management | ROI-Focused PPC | Unified Platforms"}
+        description={pageData?.meta_description || "Maximize your ROAS with expert Paid Search management. From Google Ads to Bing, we build high-converting search campaigns that drive sales velocity."}
       />
       
       {/* Hero Section */}

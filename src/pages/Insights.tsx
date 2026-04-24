@@ -24,8 +24,8 @@ export default function Insights() {
   return (
     <div className="py-20 bg-brand-white min-h-screen">
       <SEO 
-        title="Insights & Playbooks"
-        description="Expert perspectives on growth, technology, and the future of GTM operations."
+        title="Growth Insights & Industry Playbooks | Unified Platforms"
+        description="Expert perspectives on growth engineering, marketing technology, and the future of GTM operations. Access our free strategy playbooks and guides."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">

@@ -11,9 +11,9 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="flex items-center mb-4">
               {settings?.logoUrl ? (
-                <img src={settings.logoUrl} alt={settings?.siteName || 'Logo'} className="h-10 w-auto object-contain" />
+                <img src={settings.logoUrl} alt={settings?.siteName || 'Logo'} className="h-[50px] w-auto object-contain" />
               ) : (
-                <img src="/logo.png" alt={settings?.siteName || 'Logo'} className="h-10 w-auto object-contain" />
+                <img src="/logo.png" alt={settings?.siteName || 'Logo'} className="h-[50px] w-auto object-contain" />
               )}
             </Link>
             <p className="text-sm max-w-xs mb-6">

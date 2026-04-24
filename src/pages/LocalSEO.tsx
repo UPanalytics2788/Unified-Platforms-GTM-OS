@@ -92,8 +92,8 @@ export default function LocalSEO() {
   return (
     <div className="bg-white min-h-screen">
       <SEO 
-        title={pageData?.meta_title || "Local SEO Services | Rank Higher in Your City | Unified Platforms"}
-        description={pageData?.meta_description || "Dominate local search results and Google Maps with Unified Platforms. We help businesses rank for high-intent local searches that bring customers through the door."}
+        title={pageData?.meta_title || "Local SEO Services | Local Search & Map Pack Dominance | Unified Platforms"}
+        description={pageData?.meta_description || "Dominate local search and Google Maps with Unified Platforms. We optimize your local presence to drive high-intent traffic and customers to your physical and service area locations."}
       />
       <SchemaMarkup type="Service" data={{
         title: pageData?.title || "Local SEO Services",

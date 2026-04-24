@@ -92,8 +92,8 @@ export default function ContentSEO() {
   return (
     <div className="bg-white min-h-screen">
       <SEO 
-        title={pageData?.meta_title || "Content SEO Services | Unified Platforms"}
-        description={pageData?.meta_description || "Drive organic growth with data-driven Content SEO. Unified Platforms creates high-ranking, engaging content that builds topical authority and converts."}
+        title={pageData?.meta_title || "Content SEO Services | Topical Authority Experts | Unified Platforms"}
+        description={pageData?.meta_description || "Drive predictable organic growth with data-driven Content SEO. We engineer topical clusters and expert content that captures intent and converts visitors into leads."}
       />
       <SchemaMarkup type="Service" data={{
         title: pageData?.title || "Content SEO Services",

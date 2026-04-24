@@ -22,8 +22,8 @@ export default function Services() {
   return (
     <div className="py-20 bg-brand-white min-h-screen">
       <SEO 
-        title="Our Services"
-        description="Specialized services to execute your growth strategy with precision and scale."
+        title="Specialized GTM Services"
+        description="Comprehensive services to execute your growth strategy with precision. SEO, performance marketing, web development, and talent acquisition all under one roof."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">

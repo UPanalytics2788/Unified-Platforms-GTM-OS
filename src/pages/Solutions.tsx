@@ -22,8 +22,8 @@ export default function Solutions() {
   return (
     <div className="py-20 bg-brand-white min-h-screen">
       <SEO 
-        title="Our Solutions"
-        description="Tailored growth strategies and technology stacks for every stage of your business."
+        title="Strategic GTM Solutions"
+        description="Tailored growth strategies and end-to-end technology stacks for every stage of your business. From early-stage growth to enterprise-level market expansion."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">

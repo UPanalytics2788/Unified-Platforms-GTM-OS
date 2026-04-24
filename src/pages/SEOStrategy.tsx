@@ -64,8 +64,8 @@ export default function SEOStrategy() {
   return (
     <div className="bg-white min-h-screen">
       <SEO 
-        title={pageData?.meta_title || "SEO Strategy Services | Unified Platforms"}
-        description={pageData?.meta_description || "Unified Platforms builds custom SEO strategies that drive organic growth, improve rankings, and generate qualified leads. Get a free audit today."}
+        title={pageData?.meta_title || "SEO Strategy Services | Growth Frameworks | Unified Platforms"}
+        description={pageData?.meta_description || "Unified Platforms builds custom SEO strategies that drive measurable organic growth. Our revenue-first framework connects every SEO action to your business objectives."}
       />
       <SchemaMarkup type="Service" data={{
         title: pageData?.title || "SEO Strategy Services",

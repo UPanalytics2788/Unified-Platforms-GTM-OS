@@ -100,8 +100,8 @@ export default function CRO() {
   return (
     <div className="bg-white min-h-screen">
       <SEO 
-        title={pageData?.meta_title || "Conversion Rate Optimization (CRO) Services | Unified Platforms"}
-        description={pageData?.meta_description || "Get more leads and sales from the traffic you already have. Unified Platforms delivers data-driven CRO that identifies conversion barriers and systematically removes them."}
+        title={pageData?.meta_title || "Conversion Rate Optimization (CRO) | ROI Multiplier | Unified Platforms"}
+        description={pageData?.meta_description || "Turn more visitors into customers with data-driven CRO. Unified Platforms identifies conversion barriers and implements high-impact A/B tests to maximize your revenue."}
       />
       <SchemaMarkup type="Service" data={{
         title: pageData?.title || "Conversion Rate Optimization (CRO) Services",

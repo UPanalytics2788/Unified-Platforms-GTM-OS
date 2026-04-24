@@ -5,10 +5,11 @@ export default function WebsiteDevelopment() {
   const { data: pageData } = useCMSDocument('services', 'website-development');
   
   const fallbackData = {
-    title: 'Website Development',
+    title: 'High-Performance Website Development | Unified Platforms',
     hero_title: 'Website Development That Drives Growth',
     hero_subtitle: 'We build high-performance, conversion-optimized websites that serve as your 24/7 sales engine.',
-    description: 'Your website is your most important sales tool. Our web development services focus on building high-performance, conversion-optimized digital experiences that drive measurable business growth. From custom architectures to seamless integrations, we build the foundation for your digital success.',
+    meta_description: 'Custom website development optimized for speed, SEO, and lead generation. We build scalable, high-performance web presences that serve as growth engines.',
+    description: 'Your website is your most important sales tool. Our web development services focus on building high-performance, conversion-optimized digital experiences that drive measurable business growth.',
     primary_cta_text: 'Build Your Site',
     category: 'Development',
     stats: [

@@ -92,8 +92,8 @@ export default function TechnicalSEO() {
   return (
     <div className="bg-white min-h-screen">
       <SEO 
-        title={pageData?.meta_title || "Technical SEO Services | Unified Platforms"}
-        description={pageData?.meta_description || "Fix the technical foundations holding your website back. Unified Platforms delivers comprehensive technical SEO audits and implementation for better rankings and crawlability."}
+        title={pageData?.meta_title || "Technical SEO Audits & Implementation | Unified Platforms"}
+        description={pageData?.meta_description || "Fix the technical foundations holding your website back. Unified Platforms delivers enterprise-grade technical SEO audits, site speed optimization, and schema engineering."}
       />
       <SchemaMarkup type="Service" data={{
         title: pageData?.title || "Technical SEO Services",
