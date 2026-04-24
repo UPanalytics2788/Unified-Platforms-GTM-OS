@@ -68,6 +68,8 @@ export default function App() {
   const [role, setRole] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const adminEmails = ['shree@unifiedplatforms.com', 'analytics@unifiedplatforms.com'];
+
   useEffect(() => {
     // Temporary logic to ensure logo is updated
     const updateLogo = async () => {
@@ -90,9 +92,10 @@ export default function App() {
           const userSnap = await getDoc(userRef);
           
           let userRole = 'user';
+          const isAdminEmail = adminEmails.includes(firebaseUser.email || '');
+
           if (!userSnap.exists()) {
-            const adminEmails = ['shree@unifiedplatforms.com', 'analytics@unifiedplatforms.com'];
-            userRole = adminEmails.includes(firebaseUser.email || '') ? 'admin' : 'user';
+            userRole = isAdminEmail ? 'admin' : 'user';
             await setDoc(userRef, {
               uid: firebaseUser.uid,
               email: firebaseUser.email,
@@ -109,7 +112,14 @@ export default function App() {
               setLoading(false);
               return;
             }
-            userRole = data.role;
+            // Force admin role if email matches, even if DB says otherwise
+            userRole = isAdminEmail ? 'admin' : data.role;
+            
+            // Sync DB if it's an admin but not marked as such
+            if (isAdminEmail && data.role !== 'admin') {
+              const { updateDoc } = await import('firebase/firestore');
+              await updateDoc(userRef, { role: 'admin' });
+            }
           }
           setUser(firebaseUser);
           setRole(userRole);

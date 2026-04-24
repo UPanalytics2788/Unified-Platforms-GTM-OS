@@ -73,9 +73,16 @@ export default function Navbar({ user }: NavbarProps) {
     if (user) {
       const fetchRole = async () => {
         try {
+          const adminEmails = ['shree@unifiedplatforms.com', 'analytics@unifiedplatforms.com'];
+          if (adminEmails.includes(user.email || '')) {
+            setUserRole('admin');
+          }
+          
           const userDoc = await getDoc(doc(db, 'users', user.uid));
           if (userDoc.exists()) {
-            setUserRole(userDoc.data().role);
+            const role = userDoc.data().role;
+            // Only update if not already set by email check or if it's different
+            if (role) setUserRole(role);
           }
         } catch (error) {
           console.error("Error fetching user role:", error);

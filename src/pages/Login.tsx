@@ -8,16 +8,20 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleEmailLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate('/admin');
+      // Wait a bit for App.tsx onAuthStateChanged to pick up the role
+      setTimeout(() => navigate('/admin'), 500);
     } catch (err: any) {
       console.error('Email Login Error:', err);
+      setLoading(false);
       if (err.code === 'auth/invalid-credential') {
         setError('Invalid email or password. If you are a team member, please use Google Sign-In.');
       } else {
@@ -28,15 +32,16 @@ export default function Login() {
 
   const handleGoogleLogin = async () => {
     setError('');
+    setLoading(true);
     try {
       if (!auth.app.options.apiKey) {
         throw new Error('Firebase configuration missing. Please check your setup.');
       }
-      const result = await signInWithPopup(auth, googleProvider);
-      console.log('Google Login Success:', result.user.email);
-      navigate('/admin');
+      await signInWithPopup(auth, googleProvider);
+      setTimeout(() => navigate('/admin'), 500);
     } catch (err: any) {
       console.error('Google Login Error:', err);
+      setLoading(false);
       setError(`Google Sign-In failed: ${err.message}. Please ensure you are using your @unifiedplatforms.com account and that this domain is authorized in Firebase Console.`);
     }
   };
@@ -90,9 +95,10 @@ export default function Login() {
           </div>
           <button
             type="submit"
-            className="w-full px-6 py-4 bg-brand-dark text-brand-white font-bold rounded-2xl hover:bg-brand-primary transition-all shadow-xl shadow-brand-dark/10 flex items-center justify-center gap-2 group"
+            disabled={loading}
+            className="w-full px-6 py-4 bg-brand-dark text-brand-white font-bold rounded-2xl hover:bg-brand-primary transition-all shadow-xl shadow-brand-dark/10 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Authenticate Session
+            {loading ? 'Authenticating Session...' : 'Authenticate Session'}
           </button>
         </form>
 
