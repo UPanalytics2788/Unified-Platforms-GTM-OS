@@ -74,7 +74,9 @@ export default function Navbar({ user }: NavbarProps) {
       const fetchRole = async () => {
         try {
           const adminEmails = ['shree@unifiedplatforms.com', 'analytics@unifiedplatforms.com'];
-          if (adminEmails.includes(user.email || '')) {
+          const isAdmin = adminEmails.some(email => email.toLowerCase() === (user.email || '').toLowerCase());
+          
+          if (isAdmin) {
             setUserRole('admin');
           }
           

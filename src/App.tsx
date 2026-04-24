@@ -69,6 +69,10 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   const adminEmails = ['shree@unifiedplatforms.com', 'analytics@unifiedplatforms.com'];
+  const isAdmin = (email: string | null | undefined) => {
+    if (!email) return false;
+    return adminEmails.some(adminEmail => adminEmail.toLowerCase() === email.toLowerCase());
+  };
 
   useEffect(() => {
     // Temporary logic to ensure logo is updated
@@ -92,7 +96,7 @@ export default function App() {
           const userSnap = await getDoc(userRef);
           
           let userRole = 'user';
-          const isAdminEmail = adminEmails.includes(firebaseUser.email || '');
+          const isAdminEmail = isAdmin(firebaseUser.email);
 
           if (!userSnap.exists()) {
             userRole = isAdminEmail ? 'admin' : 'user';
@@ -123,6 +127,7 @@ export default function App() {
           }
           setUser(firebaseUser);
           setRole(userRole);
+          console.log(`Auth state updated: user=${firebaseUser.email}, role=${userRole}`);
 
           // Auto-initialize CMS if missing and user is admin
           if (userRole === 'admin') {
@@ -144,8 +149,7 @@ export default function App() {
         } catch (error) {
           // Fallback to basic email-based role identification if Firestore is unreachable
           setUser(firebaseUser);
-          const adminEmails = ['shree@unifiedplatforms.com', 'analytics@unifiedplatforms.com'];
-          const fallbackRole = adminEmails.includes(firebaseUser.email || '') ? 'admin' : 'user';
+          const fallbackRole = isAdmin(firebaseUser.email) ? 'admin' : 'user';
           setRole(fallbackRole);
           console.warn("Firestore unreachable for role check, using email-based fallback.");
         }
