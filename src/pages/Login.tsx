@@ -17,109 +17,90 @@ export default function Login() {
       await signInWithEmailAndPassword(auth, email, password);
       navigate('/admin');
     } catch (err: any) {
-      setError(err.message);
+      console.error('Email Login Error:', err);
+      if (err.code === 'auth/invalid-credential') {
+        setError('Invalid email or password. If you are a team member, please use Google Sign-In.');
+      } else {
+        setError(err.message);
+      }
     }
   };
 
   const handleGoogleLogin = async () => {
     setError('');
     try {
-      await signInWithPopup(auth, googleProvider);
+      if (!auth.app.options.apiKey) {
+        throw new Error('Firebase configuration missing. Please check your setup.');
+      }
+      const result = await signInWithPopup(auth, googleProvider);
+      console.log('Google Login Success:', result.user.email);
       navigate('/admin');
     } catch (err: any) {
-      setError(err.message);
+      console.error('Google Login Error:', err);
+      setError(`Google Sign-In failed: ${err.message}. Please ensure you are using your @unifiedplatforms.com account and that this domain is authorized in Firebase Console.`);
     }
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 bg-brand-white">
+    <div className="min-h-screen flex items-center justify-center px-4 bg-brand-white bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-brand-primary/5 via-transparent to-transparent">
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="max-w-md w-full bg-brand-white p-8 rounded-2xl border border-brand-dark/10 shadow-xl"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="max-w-md w-full bg-brand-white p-10 rounded-[32px] border border-brand-dark/5 shadow-2xl relative overflow-hidden"
       >
-        <div className="text-center mb-8">
-          <div className="w-12 h-12 bg-brand-primary rounded-xl flex items-center justify-center mx-auto mb-4">
-            <span className="text-brand-white font-bold text-2xl">U</span>
+        <div className="absolute top-0 left-0 w-full h-1.5 bg-brand-primary"></div>
+        
+        <div className="text-center mb-10">
+          <div className="w-16 h-16 bg-brand-dark rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg rotate-3 group-hover:rotate-0 transition-transform">
+            <span className="text-brand-white font-bold text-3xl">U</span>
           </div>
-          <h2 className="text-2xl font-bold text-brand-dark">Welcome Back</h2>
-          <p className="text-brand-gray mt-2">Sign in to manage your growth platform</p>
+          <h2 className="text-3xl font-bold text-brand-dark tracking-tight">Lead GTM Portal</h2>
+          <p className="text-brand-gray mt-2 font-medium">Secure Administrative Access</p>
         </div>
 
         {error && (
-          <div className="mb-4 p-3 bg-red-50 text-red-600 text-sm rounded-lg border border-red-100">
-            {error}
+          <div className="mb-8 p-4 bg-red-50 text-red-600 text-sm rounded-xl border border-red-100 flex items-start gap-3">
+            <div className="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">!</div>
+            <span>{error}</span>
           </div>
         )}
 
-        <form onSubmit={handleEmailLogin} className="space-y-4">
+        <form onSubmit={handleEmailLogin} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-brand-dark mb-1">Email</label>
+            <label className="block text-sm font-bold text-brand-dark mb-2 ml-1">Internal Identity</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 border border-brand-dark/10 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none transition-all bg-brand-white text-brand-dark"
+              placeholder="name@unifiedplatforms.com"
+              className="w-full px-5 py-4 border border-brand-dark/10 rounded-2xl focus:ring-4 focus:ring-brand-primary/10 focus:border-brand-primary outline-none transition-all bg-brand-white text-brand-dark font-medium placeholder:text-brand-gray/40"
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-brand-dark mb-1">Password</label>
+            <label className="block text-sm font-bold text-brand-dark mb-2 ml-1">Access Token</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-brand-dark/10 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none transition-all bg-brand-white text-brand-dark"
+              placeholder="••••••••"
+              className="w-full px-5 py-4 border border-brand-dark/10 rounded-2xl focus:ring-4 focus:ring-brand-primary/10 focus:border-brand-primary outline-none transition-all bg-brand-white text-brand-dark font-medium placeholder:text-brand-gray/40"
               required
             />
           </div>
           <button
             type="submit"
-            className="w-full px-4 py-3 bg-brand-primary text-brand-white font-medium rounded-xl hover:bg-brand-primary/90 transition-colors"
+            className="w-full px-6 py-4 bg-brand-dark text-brand-white font-bold rounded-2xl hover:bg-brand-primary transition-all shadow-xl shadow-brand-dark/10 flex items-center justify-center gap-2 group"
           >
-            Sign In
+            Authenticate Session
           </button>
         </form>
 
-        <div className="mt-6">
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-brand-dark/10"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-brand-white text-brand-gray">Or continue with</span>
-            </div>
-          </div>
-
-          <button
-            onClick={handleGoogleLogin}
-            className="mt-4 w-full px-4 py-3 bg-brand-white text-brand-dark font-medium rounded-xl border border-brand-dark/10 hover:bg-brand-dark/5 transition-colors flex items-center justify-center gap-2"
-          >
-            <svg className="w-5 h-5" viewBox="0 0 24 24">
-              <path
-                fill="currentColor"
-                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-              />
-              <path
-                fill="currentColor"
-                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-              />
-              <path
-                fill="currentColor"
-                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"
-              />
-              <path
-                fill="currentColor"
-                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-              />
-            </svg>
-            Sign in with Google
-          </button>
+        <div className="mt-10 pt-8 border-t border-brand-dark/5 text-center">
+          <p className="text-[10px] text-brand-gray/50 uppercase tracking-widest font-bold">
+            Authorized Personnel Only
+          </p>
         </div>
-
-        <p className="mt-8 text-center text-xs text-brand-gray">
-          By continuing, you agree to our Terms of Service and Privacy Policy.
-        </p>
       </motion.div>
     </div>
   );
