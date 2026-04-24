@@ -40,7 +40,7 @@ export const SEED_NAV = [
           { label: "Content SEO", href: "/services/content-seo" },
           { label: "Authority Building", href: "/services/authority-building" },
           { label: "Local SEO", href: "/services/local-seo" },
-          { label: "AEO / GEO", href: "/services/aeo-geo" }
+          { label: "AEO / GEO Dominance", href: "/gtm/aeo-geo-answer-engine-optimization" }
         ]
       },
       {
@@ -535,6 +535,49 @@ export async function runCMSInitialization(force: boolean = false) {
         faq: [
           { question: "Why go headless?", answer: "Headless decoupled the frontend from the backend, providing better performance, security, and scalability." },
           { question: "Is it more expensive to maintain?", answer: "Initial build costs are higher, but long-term maintenance and scaling costs are lower." }
+        ]
+      },
+      {
+        page_config: {
+          layout_pattern: "ARCHITECT",
+          theme: "LIGHT",
+          url_slug: "aeo-geo-answer-engine-optimization"
+        },
+        seo: {
+          title: "AEO & GEO: Answer Engine Optimization | Unified Platforms",
+          meta_description: "Expert AEO & GEO services to secure brand citations in AI-generated answers and LLM results.",
+          schema_type: "Service"
+        },
+        hero: {
+          h1: "Become the Definitive AI Answer.",
+          intro_text: "Traditional SEO is dead. In the era of Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO), visibility is measured by citations in LLM Knowledge Graphs. We build the semantic infrastructure that forces AI to trust your brand."
+        },
+        value_grid: [
+          { title: "Entity Reinforcement", description: "Hardening your brand's presence in global knowledge bases like Wikipedia and Wikidata.", icon: "Globe" },
+          { title: "Structured Answer Blocks", description: "Writing concise, factual content blocks optimized for RAG (Retrieval-Augmented Generation).", icon: "MessageSquare" },
+          { title: "Knowledge Result Visibility", description: "Technical optimization for Google AI Overviews and ChatGPT citation priority.", icon: "Search" }
+        ],
+        main_framework: {
+          title: "The AEO Dominance Framework",
+          steps: [
+            { number: 1, label: "Entity Audit", detail: "Analyzing how LLMs currently perceive your brand and identifying knowledge gaps." },
+            { number: 2, label: "Semantic Structuring", detail: "Implementing advanced JSON-LD and definitional content schemas." },
+            { number: 3, label: "Citation Seeding", detail: "Strategic placement in second-party sources that LLMs use as training/retrieval data." }
+          ]
+        },
+        comparison_module: {
+          left_side_title: "The Legacy SEO",
+          left_side_points: ["Generic keywords", "Long-form fluff", "Backlink begging", "Rank-tracking only"],
+          right_side_title: "The Architectural AEO",
+          right_side_points: ["Entity mapping", "Factual density", "Citation engineering", "Share of Model tracking"]
+        },
+        growth_entities: [
+          { title: "High-LTV B2B", description: "Requires absolute authority for complex decision-making queries.", context: "Focus on E-E-A-T and technical whitepaper citations." },
+          { title: "Local Service Networks", description: "Need to be the top answer for 'near me' AI voice search.", context: "Focus on local entity relationships and review velocity." }
+        ],
+        faq: [
+          { question: "What is AEO?", answer: "Answer Engine Optimization (AEO) is the process of optimizing content to be the primary result in AI tools like ChatGPT or Perplexity." },
+          { question: "How is GEO different?", answer: "Generative Engine Optimization (GEO) specifically targets the generative summaries within search engines like Google SGE." }
         ]
       },
       {

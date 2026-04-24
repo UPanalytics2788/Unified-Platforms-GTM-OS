@@ -11,22 +11,29 @@ import {
   Mic, 
   BarChart3, 
   ChevronRight,
-  Loader2
+  Loader2,
+  Settings,
+  Network,
+  TrendingDown,
+  ShieldCheck
 } from 'lucide-react';
 import { useCMSDocument } from '../hooks/useCMSDocument';
 import LeadForm from '../components/ui/LeadForm';
 import SchemaMarkup from '../components/ui/SchemaMarkup';
 import { SERVICES_CONTENT } from '../data/seedContent';
+import { motion } from 'motion/react';
 
 export default function AEOGEO() {
   const { data: pageData, loading } = useCMSDocument('services', 'aeo-geo');
+  // Also try to check GTM pages for the high-end version if this is missing
+  const { data: gtmData } = useCMSDocument('gtm_pages', 'aeo-geo-answer-engine-optimization');
 
   const localFallback = SERVICES_CONTENT.find(s => s.slug === 'aeo-geo');
-  const service = pageData || localFallback;
+  const service = pageData || gtmData || localFallback;
 
   if (loading && !service) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-brand-dark">
+      <div className="min-h-screen flex items-center justify-center bg-brand-white">
         <Loader2 className="animate-spin text-brand-primary" size={48} />
       </div>
     );
@@ -34,287 +41,255 @@ export default function AEOGEO() {
 
   if (!service && !loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-brand-dark text-white">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Service Not Found</h1>
-          <Link to="/services" className="text-brand-primary hover:underline flex items-center justify-center gap-2">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-brand-white text-brand-dark p-4">
+          <h1 className="text-4xl font-bold mb-4">AEO Service Not Found</h1>
+          <p className="text-brand-gray mb-8">The requested service configuration could not be loaded.</p>
+          <Link to="/services" className="px-6 py-3 bg-brand-primary text-white rounded-xl font-bold hover:bg-brand-primary/90 transition-all flex items-center gap-2">
             <ArrowLeft size={20} /> Back to Services
           </Link>
-        </div>
       </div>
     );
   }
 
+  // If we have GTM data, we should ideally use the GTM Template, 
+  // but for now let's enhance this component to look like the ARCHITECT pattern.
+  
   return (
-    <div className="bg-brand-white min-h-screen">
+    <div className="bg-white min-h-screen font-sans selection:bg-brand-primary/30">
       <SEO 
-        title={service?.meta_title || service?.metaTitle || 'AEO and GEO Services | Answer Engine and Generative Engine Optimization | Unified Platforms'} 
-        description={service?.meta_description || service?.metaDescription || 'Get your brand cited in AI-generated answers and featured in voice and zero-click search. Unified Platforms delivers AEO and GEO strategies for the next era of search.'} 
+        title={service?.meta_title || 'AEO & GEO Optimization | Answer Engine Authority | Unified Platforms'} 
+        description={service?.meta_description || 'Secure your brand citations in AI search results. Unified Platforms delivers technical AEO/GEO for the next era of search.'} 
       />
 
-      {service && (
-        <>
-          <SchemaMarkup type="Service" data={service} />
-          <SchemaMarkup type="FAQPage" data={service} />
-        </>
-      )}
+      <SchemaMarkup type="Service" data={service} />
 
       {/* Navigation Breadcrumb */}
-      <div className="bg-brand-dark border-b border-white/10 pt-24 pb-4">
-        <div className="max-w-7xl mx-auto px-4">
-          <Link to="/services" className="inline-flex items-center text-gray-400 hover:text-brand-primary transition-colors gap-2 text-sm font-medium group">
+      <nav className="fixed top-20 left-0 right-0 z-40 bg-white/80 backdrop-blur-md border-b border-brand-gray/10 py-3">
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
+          <Link to="/services" className="inline-flex items-center text-brand-gray hover:text-brand-primary transition-colors gap-2 text-sm font-medium group">
             <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
-            Back to Services
+            Services / AEO Dominance
           </Link>
+          <div className="hidden md:flex items-center gap-6">
+            <a href="#framework" className="text-sm font-semibold text-brand-gray hover:text-brand-dark">Framework</a>
+            <a href="#comparison" className="text-sm font-semibold text-brand-gray hover:text-brand-dark">Comparison</a>
+            <a href="#contact" className="px-4 py-1.5 bg-brand-dark text-white rounded-full text-sm font-bold hover:bg-brand-primary transition-colors">Get Audit</a>
+          </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Hero Section */}
-      <section className="bg-brand-dark py-20 lg:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-brand-primary rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-primary rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
-        </div>
-        
+      {/* Hero Section - ARCHITECT Pattern (Light Theme, Clean, Professional) */}
+      <section className="pt-40 pb-24 bg-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-primary/5 -skew-x-12 transform translate-x-1/2"></div>
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-brand-primary/20 text-brand-primary text-sm font-medium border border-brand-primary/30 mb-8">
-              Next-Gen Search Optimization
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold uppercase tracking-wider border border-brand-primary/20 mb-6">
+              <Zap size={14} /> GTM-OS PROMETHEUS ARCHITECTURE
             </div>
-            <h1 className="text-4xl lg:text-7xl font-bold text-white mb-8 tracking-tight leading-[1.1]">
-              {service?.title || 'AEO and GEO Services: Optimizing for AI-Driven Search'}
+            <h1 className="text-5xl lg:text-7xl font-bold text-brand-dark mb-8 tracking-tight leading-[1.05]">
+               become the <span className="text-brand-primary italic">definitive</span> AI answer.
             </h1>
-            <p className="text-xl text-gray-300 leading-relaxed mb-10 max-w-2xl">
-              {service?.description || 'Search is changing. AI-powered answer engines like Google AI Overviews, ChatGPT, and Perplexity are answering questions directly. We help your brand get cited in the answers.'}
+            <p className="text-xl text-brand-gray leading-relaxed mb-10 max-w-2xl border-l-4 border-brand-primary pl-8 italic">
+              "Traditional search was about ranking in the top 10. AEO and GEO are about becoming the single answer that AI engines trust and cite."
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href="#contact" className="px-8 py-4 bg-brand-primary text-white font-bold rounded-xl hover:bg-brand-primary/90 transition-all shadow-lg shadow-brand-primary/20 flex items-center gap-2 group">
-                Get Your AEO Strategy <ChevronRight size={20} className="transition-transform group-hover:translate-x-1" />
+              <a href="#contact" className="px-8 py-5 bg-brand-primary text-white font-bold rounded-full hover:bg-brand-dark transition-all shadow-xl shadow-brand-primary/20 flex items-center gap-2 group">
+                Scale Your AI Presence <ChevronRight size={20} className="transition-transform group-hover:translate-x-1" />
               </a>
+              <button className="px-8 py-5 bg-white border-2 border-brand-dark text-brand-dark font-bold rounded-full hover:bg-brand-dark hover:text-white transition-all flex items-center gap-2">
+                Download AEO Roadmap
+              </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Problem Section */}
-      <section className="py-24 bg-white">
+      {/* Value Grid Section */}
+      <section className="py-24 bg-brand-gray/5 border-y border-brand-gray/10">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-brand-dark mb-8 leading-tight">
-                The Shift from Links to Answers
-              </h2>
-              <div className="space-y-6 text-lg text-brand-gray leading-relaxed">
-                <p>
-                  Search is changing in the most significant way it has changed in two decades. AI-powered answer engines like Google AI Overviews, ChatGPT, Perplexity, and Bing Copilot are increasingly answering questions directly rather than returning a list of links.
-                </p>
-                <p>
-                  Voice assistants are reading out single answers rather than ranking ten results. Zero-click searches now account for a large share of queries where users get what they need without clicking through to any website.
-                </p>
-                <p>
-                  For businesses that rely on organic search for visibility and lead generation, this shift demands a new layer of optimization strategy: Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO).
-                </p>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="aspect-square bg-brand-gray/5 rounded-3xl overflow-hidden border border-brand-gray/10">
-                <img 
-                  src="https://picsum.photos/seed/aeo-problem/800/800" 
-                  alt="AI Search Evolution" 
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-6 bg-brand-primary p-8 rounded-2xl shadow-xl hidden lg:block">
-                <div className="text-4xl font-bold text-white mb-1">65%</div>
-                <div className="text-sm text-white/80 font-bold uppercase tracking-wider">Zero-Click Searches</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Use Cases / Features */}
-      <section className="py-24 bg-brand-gray/5">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-brand-dark mb-6">Our AEO & GEO Framework</h2>
-            <p className="text-lg text-brand-gray">We optimize your digital presence to be the authoritative source that AI models trust and cite.</p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-8">
             {[
               {
-                title: "LLM Visibility Analysis",
-                desc: "We audit how major LLMs (GPT-4, Claude, Gemini) currently perceive and cite your brand across their knowledge bases.",
-                icon: Cpu
+                title: "Entity Reinforcement",
+                desc: "We harden your brand's presence in global knowledge bases like Wikipedia and Wikidata to build model-level trust.",
+                icon: Globe,
+                accent: "cyan"
               },
               {
-                title: "Structured Data Mastery",
-                desc: "Advanced Schema.org implementation that provides the explicit context AI engines need to understand your entities.",
-                icon: Globe
+                title: "Structured Answer Blocks",
+                desc: "We engineer factual, high-density content blocks designed for rapid extraction by RAG (Retrieval-Augmented Generation).",
+                icon: MessageSquare,
+                accent: "dark"
               },
               {
-                title: "Voice Search Optimization",
-                desc: "Optimizing for natural language patterns and conversational queries used in voice-activated search environments.",
-                icon: Mic
-              },
-              {
-                title: "Citation Building",
-                desc: "Strategic placement of brand mentions in high-authority sources that AI models use for their retrieval-augmented generation (RAG).",
-                icon: Search
-              },
-              {
-                title: "Answer-First Content",
-                desc: "Restructuring content to provide clear, concise answers that are easily extracted by generative AI summaries.",
-                icon: MessageSquare
-              },
-              {
-                title: "Performance Tracking",
-                desc: "Monitoring brand citations and 'share of voice' within AI-generated answers and zero-click environments.",
-                icon: BarChart3
+                title: "Knowledge Graph Mapping",
+                desc: "Connecting your brand to the core entities and topics LLMs prioritize for authoritative search results.",
+                icon: Network,
+                accent: "primary"
               }
             ].map((feature, i) => (
-              <div key={i} className="p-8 bg-white rounded-2xl border border-brand-gray/10 shadow-sm hover:shadow-xl transition-all duration-300 group">
-                <div className="w-14 h-14 rounded-xl bg-brand-primary/10 flex items-center justify-center mb-6 group-hover:bg-brand-primary group-hover:text-white transition-colors duration-300">
-                  <feature.icon size={28} className="text-brand-primary group-hover:text-white" />
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-10 bg-white rounded-3xl border border-brand-gray/10 shadow-sm hover:shadow-2xl transition-all duration-500 group"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-brand-primary/10 flex items-center justify-center mb-8 group-hover:bg-brand-primary transition-colors duration-500">
+                  <feature.icon size={32} className="text-brand-primary group-hover:text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-brand-dark mb-4">{feature.title}</h3>
-                <p className="text-brand-gray leading-relaxed">{feature.desc}</p>
-              </div>
+                <h3 className="text-2xl font-bold text-brand-dark mb-4">{feature.title}</h3>
+                <p className="text-brand-gray text-lg leading-relaxed">{feature.desc}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Long Content Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="prose prose-lg prose-brand max-w-none">
-            <h2 className="text-3xl font-bold text-brand-dark mb-8">Why AEO and GEO are Critical for Future Growth</h2>
-            <p className="text-brand-gray leading-relaxed mb-6">
-              Traditional SEO was about ranking in the top 10 blue links. AEO and GEO are about becoming the single answer or the primary citation in an AI-generated response. If your brand isn't being cited by ChatGPT or Google AI Overviews, you're effectively invisible to a growing segment of users.
-            </p>
-            <p className="text-brand-gray leading-relaxed mb-6">
-              Our approach focuses on three core pillars:
-            </p>
-            <ul className="space-y-4 mb-8">
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="text-brand-primary mt-1 flex-shrink-0" size={20} />
-                <span><strong>Authority:</strong> Building the signals that prove to AI models that your brand is a trusted expert in its field.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="text-brand-primary mt-1 flex-shrink-0" size={20} />
-                <span><strong>Clarity:</strong> Structuring information so it is unambiguous and easily processed by large language models.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="text-brand-primary mt-1 flex-shrink-0" size={20} />
-                <span><strong>Connectivity:</strong> Ensuring your brand is mentioned in the specific datasets and sources that AI models prioritize.</span>
-              </li>
-            </ul>
-            <p className="text-brand-gray leading-relaxed italic border-l-4 border-brand-primary pl-6 py-2 bg-brand-gray/5 rounded-r-lg">
-              "The future of search isn't just about being found; it's about being cited as the definitive answer."
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Social Proof & Lead Form */}
-      <section id="contact" className="py-24 bg-brand-dark relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-primary rounded-full blur-[120px]"></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+      {/* Framework Section */}
+      <section id="framework" className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
-              <h2 className="text-3xl lg:text-5xl font-bold text-white mb-8 leading-tight">
-                Ready to Optimize for the <span className="text-brand-primary">AI Era?</span>
+              <h2 className="text-4xl lg:text-5xl font-bold text-brand-dark mb-8 leading-[1.1]">
+                The Architectural <span className="text-brand-primary">AEO Dominance</span> Framework.
               </h2>
-              <p className="text-xl text-gray-400 mb-12 leading-relaxed">
-                Don't wait for your organic traffic to disappear. Start building your AEO and GEO strategy today to secure your brand's future in AI-driven search.
-              </p>
-              
-              <div className="space-y-6">
+              <div className="space-y-12">
                 {[
-                  "Detailed LLM visibility audit",
-                  "Strategic citation roadmap",
-                  "Advanced Schema implementation",
-                  "AI-first content strategy"
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-4 text-white/80">
-                    <div className="w-6 h-6 rounded-full bg-brand-primary/20 flex items-center justify-center border border-brand-primary/30">
-                      <Zap size={12} className="text-brand-primary" />
+                  { n: 1, label: "Entity Audit", detail: "Exhaustive analysis of how LLMs currently perceive your brand and identifying knowledge gaps in the training data." },
+                  { n: 2, label: "Semantic Structuring", detail: "Implementing advanced JSON-LD and definitional content schemas that force AI to cite your brand." },
+                  { n: 3, label: "Citation Seeding", detail: "Strategic placement of factual assets across second-party sources that LLMs use as primary retrieval nodes." }
+                ].map((step, i) => (
+                  <div key={i} className="flex gap-6 group">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-brand-dark text-white flex items-center justify-center font-bold text-xl group-hover:bg-brand-primary transition-colors">
+                      {step.n}
                     </div>
-                    <span className="font-medium">{item}</span>
+                    <div>
+                      <h3 className="text-2xl font-bold text-brand-dark mb-2">{step.label}</h3>
+                      <p className="text-brand-gray text-lg leading-relaxed">{step.detail}</p>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
-            
-            <div className="bg-white p-8 lg:p-10 rounded-3xl shadow-2xl">
-              <h3 className="text-2xl font-bold text-brand-dark mb-2">Get Your AEO Audit</h3>
-              <p className="text-brand-gray mb-8">Fill out the form below and our AI search specialists will reach out.</p>
-              <LeadForm />
+            <div className="relative">
+                <div className="aspect-[4/5] bg-brand-dark rounded-[40px] overflow-hidden relative">
+                    <img 
+                        src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000" 
+                        alt="AI Architecture" 
+                        className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700"
+                        referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent"></div>
+                    <div className="absolute bottom-10 left-10 right-10">
+                        <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl">
+                            <div className="flex items-center gap-4 mb-4">
+                                <ShieldCheck className="text-brand-primary" size={32} />
+                                <div className="text-white font-bold">E-E-A-T Verified Architecture</div>
+                            </div>
+                            <p className="text-white/70 text-sm">Our framework is designed to align with Google's Quality Rater Guidelines while optimizing for RAG systems.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Comparison Module */}
+      <section id="comparison" className="py-24 bg-brand-dark">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-0 rounded-[40px] overflow-hidden border border-white/10 shadow-2xl">
+            <div className="p-16 bg-white/5 backdrop-blur-sm">
+                <h3 className="text-2xl font-bold text-gray-400 mb-8 flex items-center gap-3">
+                    <TrendingDown className="text-red-400" /> The Legacy SEO
+                </h3>
+                <ul className="space-y-6">
+                    {["Keyword-optimized fluff", "Manual backlink begging", "Rank-tracking vanity metrics", "Focus on 'ten blue links'"].map((p, i) => (
+                        <li key={i} className="text-xl text-gray-300 flex items-center gap-4">
+                            <div className="w-2 h-2 rounded-full bg-red-400"></div> {p}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <div className="p-16 bg-brand-primary/10 border-l border-white/10 relative">
+                <div className="absolute top-8 right-8">
+                    <Zap className="text-brand-primary animate-pulse" size={48} />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+                    <Zap className="text-brand-primary" /> The Architectural AEO
+                </h3>
+                <ul className="space-y-6">
+                    {["Entity-relationship mapping", "Factual density per word", "LLM Share of Model tracking", "Citation engineering for RAG"].map((p, i) => (
+                        <li key={i} className="text-xl text-white font-medium flex items-center gap-4">
+                            <CheckCircle2 className="text-brand-primary" /> {p}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="bg-brand-gray/5 rounded-[60px] p-12 lg:p-20 border border-brand-gray/10">
+            <div className="grid lg:grid-cols-2 gap-20 items-center">
+              <div>
+                <h2 className="text-4xl lg:text-5xl font-bold text-brand-dark mb-8 leading-tight">
+                  Stop being ranked. <br />Start being <span className="text-brand-primary">cited.</span>
+                </h2>
+                <p className="text-xl text-brand-gray mb-12 leading-relaxed">
+                  The search landscape has shifted. If your brand isn't being cited by ChatGPT, Perplexity, or Google AI Overviews, you're effectively invisible. Secure your future share of model today.
+                </p>
+                <div className="grid grid-cols-2 gap-6">
+                    <div>
+                        <div className="text-4xl font-bold text-brand-dark mb-1">85%</div>
+                        <div className="text-sm font-bold text-brand-gray uppercase tracking-widest">Model Recognition</div>
+                    </div>
+                    <div>
+                        <div className="text-4xl font-bold text-brand-dark mb-1">12:1</div>
+                        <div className="text-sm font-bold text-brand-gray uppercase tracking-widest">ROI Momentum</div>
+                    </div>
+                </div>
+              </div>
+              <div className="bg-white p-10 rounded-[40px] shadow-2xl border border-brand-gray/10">
+                <h3 className="text-2xl font-bold text-brand-dark mb-2">Request AEO Audit</h3>
+                <p className="text-brand-gray mb-8">Professional entity mapping for enterprise search.</p>
+                <LeadForm />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white border-t border-brand-gray/10">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl lg:text-4xl font-bold text-brand-dark text-center mb-16">AEO & GEO FAQs</h2>
-          <div className="space-y-6">
+          <h2 className="text-3xl font-bold text-brand-dark text-center mb-16 uppercase tracking-widest">Technical FAQ</h2>
+          <div className="space-y-0 divide-y divide-brand-gray/10">
             {(service?.faqs || [
               {
-                question: "What is the difference between AEO and GEO?",
-                answer: "AEO (Answer Engine Optimization) focuses on optimizing for direct answers in engines like ChatGPT or Perplexity. GEO (Generative Engine Optimization) specifically targets generative features within traditional search engines, like Google's AI Overviews."
-              },
-              {
-                question: "How long does it take to see results in AI answers?",
-                answer: "AI models have different update cycles. While Google AI Overviews can update relatively quickly, LLMs like ChatGPT may take longer to incorporate new data unless they are using real-time search tools."
-              },
-              {
-                question: "Will AEO hurt my traditional SEO rankings?",
-                answer: "No. In fact, the two strategies are highly complementary. The authority and clarity required for AEO typically improve traditional organic rankings as well."
+                question: "What is AEO?",
+                answer: "Answer Engine Optimization is the technical process of structuring data and authority signals so that AI models like ChatGPT prioritize your brand as a citation."
               }
             ]).map((faq: any, i: number) => (
-              <div key={i} className="p-8 bg-brand-gray/5 rounded-2xl border border-brand-gray/10 hover:border-brand-primary/30 transition-all group">
-                <h3 className="text-xl font-bold text-brand-dark mb-4 flex items-start gap-3">
-                  <MessageSquare className="text-brand-primary mt-1 flex-shrink-0" size={20} />
-                  {faq.question}
-                </h3>
-                <p className="text-brand-gray leading-relaxed pl-8">
-                  {faq.answer}
-                </p>
+              <div key={i} className="py-10 first:pt-0">
+                <h3 className="text-2xl font-bold text-brand-dark mb-4">{faq.question}</h3>
+                <p className="text-brand-gray text-lg leading-relaxed">{faq.answer}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
-
-      {/* Final CTA */}
-      <section className="py-24 bg-brand-primary relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/20 via-transparent to-transparent opacity-30"></div>
-        </div>
-        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <h2 className="text-3xl lg:text-5xl font-bold text-white mb-8">
-            Future-Proof Your Search Visibility
-          </h2>
-          <p className="text-xl text-white/90 mb-10 leading-relaxed">
-            The era of the ten blue links is ending. Join the brands that are winning the era of AI answers.
-          </p>
-          <Link 
-            to="/contact" 
-            className="inline-flex items-center gap-2 px-10 py-5 bg-brand-dark text-white font-bold rounded-xl hover:bg-brand-dark/90 transition-all shadow-2xl text-lg group"
-          >
-            Start Your AEO Journey
-            <ChevronRight size={20} className="transition-transform group-hover:translate-x-1" />
-          </Link>
-        </div>
-      </section>
     </div>
   );
 }
+

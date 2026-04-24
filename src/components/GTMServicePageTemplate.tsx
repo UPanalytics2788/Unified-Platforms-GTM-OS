@@ -1,6 +1,6 @@
 import React from 'react';
 import * as LucideIcons from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import SEO from './SEO';
 import SchemaMarkup from './ui/SchemaMarkup';
 

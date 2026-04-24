@@ -707,36 +707,37 @@ export const SERVICES_CONTENT = [
   },
   {
     id: "aeo-geo",
-    title: "AEO & GEO",
+    title: "AEO & GEO Optimization",
     slug: "aeo-geo",
     category: "Search & Organic",
-    primary_keyword: "B2B AEO & GEO",
-    meta_title: "AEO & GEO Services | Unified Platforms",
-    meta_description: "Expert aeo & geo services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
-    description: "Expert aeo & geo services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
-    primary_cta_text: "Get a Strategy Assessment",
-    secondary_cta_text: "View Our Methodology",
+    primary_keyword: "Enterprise AEO & GEO Solutions",
+    meta_title: "AEO & GEO Services | Answer Engine Optimization | Unified Platforms",
+    meta_description: "Expert AEO & GEO services to secure your brand's presence in AI search results. We optimize for LLM citations and generative engine visibility.",
+    description: "Engineering brand visibility for the next era of search. We optimize your technical architecture and semantic network to ensure citation priority in AI-driven answer engines.",
+    primary_cta_text: "Engine Your AI Presence",
+    secondary_cta_text: "View GTM Framework",
     use_cases: [
-      "Scaling architecture for enterprise systems",
-      "Optimizing performance and stability",
-      "Driving highly qualified B2B leads"
+      "Securing brand citations in ChatGPT & Perplexity",
+      "Optimizing for Google SGE & AI Overviews",
+      "Semantic entity reinforcement for LLMs"
     ],
     faqs: [
-      { question: "How do you measure success for aeo & geo?", answer: "We focus exclusively on metrics that impact your pipeline and revenue, moving beyond vanity metrics to real business outcomes." },
-      { question: "What makes your approach to aeo & geo different?", answer: "We bring an engineering mindset to every discipline, ensuring robust architecture, data-driven decisions, and sustainable long-term scale." },
-      { question: "How long does a typical engagement last?", answer: "Most engagements begin with a strategic foundation mapping phase followed by continuous execution and optimization over 6 to 12 months." },
-      { question: "Do you offer tailored solutions?", answer: "Yes, every strategy is highly tailored to your specific industry environment, competitive landscape, and ICP requirements." }
+      { 
+        question: "What is the difference between AEO and GEO?", 
+        answer: "AEO (Answer Engine Optimization) focuses on providing direct, structured answers for engines like ChatGPT. GEO (Generative Engine Optimization) targets the generative features within core search engines like Google and Bing." 
+      },
+      { 
+        question: "How do you measure AEO success?", 
+        answer: "We track 'Share of Model' and 'Knowledge Result' visibility, measuring how often your brand is cited as the primary authority for key topical queries." 
+      }
     ],
     content: `
-      <h2>Comprehensive AEO & GEO for B2B Enterprises</h2>
-      <p>Modern businesses require structural engineering in their marketing and operations. Our aeo & geo services are built to address complex challenges that off-the-shelf solutions cannot touch. We prioritize scalability, precision, and alignment with your overarching revenue goals.</p>
-      <p>We approach every engagement by first mapping your existing architecture, identifying constraints, and developing a strategic roadmap for optimization. By doing so, we ensure that every action we take compounds over time, building a moat around your competitive advantage.</p>
-      <h3>The Architecture of Success</h3>
-      <p>Success requires more than just execution; it requires a highly tuned framework. Our experts deploy industry-leading methodologies to reconstruct your processes from the ground up. This means eliminating bottlenecks, accelerating velocity, and implementing strict quality controls at every touchpoint.</p>
-      <p>We operate as an extension of your team, bringing deep technical expertise and strategic foresight to the table. Our focus remains resolutely fixed on generating tangible business value and moving the needle on the metrics that matter most to your board and leadership.</p>
-      <h3>Continuous Iteration and Growth</h3>
-      <p>The landscape is constantly evolving, and so must your strategy. We institute rapid feedback loops, robust measurement systems, and continuous iteration protocols. This agile methodology ensures that your aeo & geo remains resilient and highly adaptive, capable of capitalizing on new opportunities while mitigating emerging risks.</p>
-      <p>Through our rigorous approach, we transform your operations into a predictable, scalable engine of growth, driving long-term enterprise value and securing your position as a market leader.</p>
+      <h2>Architectural AEO & GEO for the Enterprise</h2>
+      <p>Search is no longer just about ranking; it's about becoming the definitive answer. As search engines transition into Answer Engines, brands must adapt their technical and content architecture to be digestible by Large Language Models (LLMs).</p>
+      <p>We provide the engineering layer that bridges traditional SEO with modern Generative Engine Optimization (GEO). This involves absolute precision in structured data, entity-relationship mapping, and topical velocity.</p>
+      <h3>The GTM-OS Approach to AI Search</h3>
+      <p>Traditional SEO is insufficient for RAG (Retrieval-Augmented Generation) systems. Our framework ensures your brand's core data is prioritized during the retrieval phase of generative answers. We focus on factual density and definitional clarity that LLMs require for authoritative citation.</p>
+      <p>By implementing high-density schema and pruning technical debt that confuses scrapers, we build a resilient presence that withstands the volatility of AI model updates.</p>
     `
   },
   {

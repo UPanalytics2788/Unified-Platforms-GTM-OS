@@ -10,11 +10,10 @@ export default function SchemaMarkup({ type, data }: SchemaMarkupProps) {
   let schema: any = {};
 
   if (type === 'FAQPage') {
-    const faqs = data?.faqs || [];
     schema = {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      "mainEntity": faqs.map((faq: any) => ({
+      "mainEntity": data.faqs.map((faq: any) => ({
         "@type": "Question",
         "name": faq.question,
         "acceptedAnswer": {
