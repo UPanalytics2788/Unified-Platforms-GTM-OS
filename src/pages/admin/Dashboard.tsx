@@ -28,8 +28,10 @@ import {
   BookOpen,
   Navigation,
   Image,
-  Settings2
+  Settings2,
+  RefreshCw
 } from 'lucide-react';
+import { runCMSInitialization } from '../../lib/cms-init';
 import ContentList from './ContentList';
 import ContentEditor from './ContentEditor';
 import BrandsSettings from './BrandSettings';
@@ -55,12 +57,27 @@ interface AdminDashboardProps {
 export default function AdminDashboard({ user, role }: AdminDashboardProps) {
   const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSyncing, setIsSyncing] = useState(false);
   const [stats, setStats] = useState<any>({
     pages: 0,
     leads: 0,
     users: 0,
     insights: 0
   });
+
+  const handleSystemSync = async () => {
+    if (!window.confirm('This will sync core content (Case Studies, Geo Taxonomy) from local data to Firestore. Existing data will be merged. Continue?')) return;
+    setIsSyncing(true);
+    try {
+      await runCMSInitialization(true);
+      alert('System sync complete! All case studies and taxonomy are up to date.');
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+      alert('Sync failed. Check console for details.');
+    }
+    setIsSyncing(false);
+  };
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -147,10 +164,18 @@ export default function AdminDashboard({ user, role }: AdminDashboardProps) {
           ))}
         </nav>
 
-        <div className="p-4 border-t border-white/10">
+        <div className="p-4 border-t border-white/10 space-y-2">
+          <button 
+            onClick={handleSystemSync}
+            disabled={isSyncing}
+            className="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-colors w-full text-left disabled:opacity-50"
+          >
+            {isSyncing ? <Loader2 size={20} className="animate-spin text-brand-primary" /> : <RefreshCw size={20} />}
+            {isSidebarOpen && <span className="font-medium text-sm">System Sync</span>}
+          </button>
           <button className="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-colors w-full text-left">
             <LogOut size={20} />
-            {isSidebarOpen && <span className="font-medium">Logout</span>}
+            {isSidebarOpen && <span className="font-medium text-sm">Logout</span>}
           </button>
         </div>
       </aside>

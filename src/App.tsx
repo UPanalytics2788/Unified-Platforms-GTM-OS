@@ -6,6 +6,7 @@ import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { HelmetProvider } from 'react-helmet-async';
 import { runCMSInitialization } from './lib/cms-init';
 
+import { ADMIN_EMAILS, isAdmin } from './constants';
 import { SEOProvider } from './components/SEOProvider';
 import GlobalBanner from './components/layout/GlobalBanner';
 
@@ -67,12 +68,6 @@ export default function App() {
   const [user, setUser] = useState<User | null>(null);
   const [role, setRole] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-
-  const adminEmails = ['shree@unifiedplatforms.com', 'analytics@unifiedplatforms.com'];
-  const isAdmin = (email: string | null | undefined) => {
-    if (!email) return false;
-    return adminEmails.some(adminEmail => adminEmail.toLowerCase() === email.toLowerCase());
-  };
 
   useEffect(() => {
     // Temporary logic to ensure logo is updated

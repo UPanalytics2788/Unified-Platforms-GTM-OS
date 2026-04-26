@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
-import { Link, Anchor, GitMerge, AlertTriangle, Loader2, Check, X, Trash2, Search, ExternalLink } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Link, Anchor, GitMerge, AlertTriangle, Loader2, Check, X, Trash2, Search, ExternalLink, Maximize2, Minimize2 } from 'lucide-react';
 import { collection, query, getDocs, where, deleteDoc, doc, updateDoc, writeBatch } from 'firebase/firestore';
 import { db } from '../../lib/firebase';
 import { runLinkDiscovery } from '../../lib/linkDiscovery';
+import * as d3 from 'd3';
 
 export default function LinkGraph() {
   const [links, setLinks] = useState<any[]>([]);
@@ -10,10 +11,106 @@ export default function LinkGraph() {
   const [loading, setLoading] = useState(true);
   const [scanning, setScanning] = useState(false);
   const [filter, setFilter] = useState<'all' | 'suggested' | 'active' | 'rejected'>('all');
+  const [showVisual, setShowVisual] = useState(false);
+  const [status, setStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
     fetchLinks();
   }, []);
+
+  useEffect(() => {
+    if (showVisual && links.length > 0 && svgRef.current) {
+      renderGraph();
+    }
+  }, [showVisual, links]);
+
+  const renderGraph = () => {
+    if (!svgRef.current) return;
+    const svg = d3.select(svgRef.current);
+    svg.selectAll("*").remove();
+
+    const width = 800;
+    const height = 600;
+
+    const activeLinks = links.filter(l => l.status === 'active');
+    
+    // Extract unique nodes
+    const nodesMap = new Map();
+    activeLinks.forEach(l => {
+      if (!nodesMap.has(l.sourceId)) nodesMap.set(l.sourceId, { id: l.sourceId, label: l.sourceTitle, type: l.sourceType });
+      if (!nodesMap.has(l.targetId)) nodesMap.set(l.targetId, { id: l.targetId, label: l.targetTitle, type: l.targetType });
+    });
+
+    const nodes = Array.from(nodesMap.values());
+    const edges = activeLinks.map(l => ({
+      source: l.sourceId,
+      target: l.targetId,
+      value: 1
+    }));
+
+    const simulation = d3.forceSimulation(nodes as any)
+      .force("link", d3.forceLink(edges).id((d: any) => d.id).distance(100))
+      .force("charge", d3.forceManyBody().strength(-300))
+      .force("center", d3.forceCenter(width / 2, height / 2));
+
+    const link = svg.append("g")
+      .attr("stroke", "#94a3b8")
+      .attr("stroke-opacity", 0.6)
+      .selectAll("line")
+      .data(edges)
+      .join("line")
+      .attr("stroke-width", 2);
+
+    const node = svg.append("g")
+      .selectAll("g")
+      .data(nodes)
+      .join("g")
+      .call(d3.drag<any, any>()
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended));
+
+    node.append("circle")
+      .attr("r", 8)
+      .attr("fill", (d: any) => d.type === 'services' ? '#06b6d4' : '#6366f1');
+
+    node.append("text")
+      .text((d: any) => d.label)
+      .attr("x", 12)
+      .attr("y", 4)
+      .style("font-size", "10px")
+      .style("font-weight", "bold")
+      .style("fill", "#1e293b");
+
+    simulation.on("tick", () => {
+      link
+        .attr("x1", (d: any) => d.source.x)
+        .attr("y1", (d: any) => d.source.y)
+        .attr("x2", (d: any) => d.target.x)
+        .attr("y2", (d: any) => d.target.y);
+
+      node
+        .attr("transform", (d: any) => `translate(${d.x},${d.y})`);
+    });
+
+    function dragstarted(event: any) {
+      if (!event.active) simulation.alphaTarget(0.3).restart();
+      event.subject.fx = event.subject.x;
+      event.subject.fy = event.subject.y;
+    }
+
+    function dragged(event: any) {
+      event.subject.fx = event.x;
+      event.subject.fy = event.y;
+    }
+
+    function dragended(event: any) {
+      if (!event.active) simulation.alphaTarget(0);
+      event.subject.fx = null;
+      event.subject.fy = null;
+    }
+  };
 
   const fetchLinks = async () => {
     setLoading(true);
@@ -65,15 +162,32 @@ export default function LinkGraph() {
   const runFullScan = async () => {
     setScanning(true);
     try {
-      const insights = await getDocs(query(collection(db, 'insights'), where('status', '==', 'published')));
-      for (const d of insights.docs) {
-        const data = d.data();
-        await runLinkDiscovery(d.id, 'insights', data.title, data.content || '');
+      const [insights, services, pseo] = await Promise.all([
+        getDocs(query(collection(db, 'insights'), where('status', '==', 'published'))),
+        getDocs(query(collection(db, 'services'), where('status', '==', 'published'))),
+        getDocs(query(collection(db, 'pseo_pages'), where('status', '==', 'published')))
+      ]);
+
+      const allDocs = [
+        ...insights.docs.map(d => ({ id: d.id, coll: 'insights', data: d.data() })),
+        ...services.docs.map(d => ({ id: d.id, coll: 'services', data: d.data() })),
+        ...pseo.docs.map(d => ({ id: d.id, coll: 'pseo_pages', data: d.data() }))
+      ];
+
+      for (const item of allDocs) {
+        let contentText = item.data.content || '';
+        if (typeof contentText === 'object') {
+          // Flatten PSEO structured content for scanning
+          contentText = JSON.stringify(contentText);
+        }
+        await runLinkDiscovery(item.id, item.coll, item.data.title || item.data.name, contentText);
       }
+
       await fetchLinks();
-      alert('Scanning complete!');
+      alert('Scanning complete! Discovered links across Insights, Services, and PSEO pages.');
     } catch (e) {
       console.error(e);
+      alert('Scan failed. See console.');
     }
     setScanning(false);
   };
@@ -89,15 +203,45 @@ export default function LinkGraph() {
           </h1>
           <p className="text-brand-gray text-sm">Managing semantic connections across GTM-OS.</p>
         </div>
-        <button 
-          onClick={runFullScan}
-          disabled={scanning}
-          className="px-4 py-2 bg-brand-primary text-white rounded-lg text-sm font-bold flex items-center gap-2 disabled:opacity-50"
-        >
-          {scanning ? <Loader2 className="animate-spin" size={16} /> : <Search size={16} />}
-          Scan All Published Pages
-        </button>
+        <div className="flex items-center gap-4">
+          {status && (
+            <div className={`px-4 py-2 rounded-lg text-sm font-medium animate-in fade-in slide-in-from-right-2 ${
+              status.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+            }`}>
+              {status.message}
+            </div>
+          )}
+          <button 
+            onClick={() => setShowVisual(!showVisual)}
+            className={`px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-all ${
+              showVisual ? 'bg-brand-dark text-white' : 'bg-white border border-brand-dark/10 text-brand-dark'
+            }`}
+          >
+            {showVisual ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
+            {showVisual ? 'Hide Visual Graph' : 'Show Visual Graph'}
+          </button>
+          <button 
+            onClick={runFullScan}
+            disabled={scanning}
+            className="px-4 py-2 bg-brand-primary text-white rounded-lg text-sm font-bold flex items-center gap-2 disabled:opacity-50"
+          >
+            {scanning ? <Loader2 className="animate-spin" size={16} /> : <Search size={16} />}
+            Scan All Published Pages
+          </button>
+        </div>
       </div>
+
+      {showVisual && (
+        <div className="bg-white p-6 rounded-2xl border border-brand-dark/10 shadow-sm overflow-hidden flex justify-center">
+          <svg 
+            ref={svgRef} 
+            width={800} 
+            height={600} 
+            className="max-w-full"
+            style={{ cursor: 'grab' }}
+          />
+        </div>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-white p-6 rounded-2xl border border-brand-dark/10 shadow-sm">

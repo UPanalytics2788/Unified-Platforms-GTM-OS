@@ -397,6 +397,29 @@ export async function runCMSInitialization(force: boolean = false) {
       await batch2.commit();
     }
 
+    // 7.1 Migrate Geo Taxonomy (NEW)
+    const geoSnap = await getDocs(collection(db, 'geo_taxonomy'));
+    if (geoSnap.empty) {
+      const GEO_SEED = [
+        { name: 'Bangalore', slug: 'bangalore', type: 'city', state: 'Karnataka', population: 12000000, region: 'South' },
+        { name: 'Mumbai', slug: 'mumbai', type: 'city', state: 'Maharashtra', population: 20000000, region: 'West' },
+        { name: 'Delhi', slug: 'delhi', type: 'city', state: 'Delhi', population: 19000000, region: 'North' },
+        { name: 'Hyderabad', slug: 'hyderabad', type: 'city', state: 'Telangana', population: 10000000, region: 'South' },
+        { name: 'Chennai', slug: 'chennai', type: 'city', state: 'Tamil Nadu', population: 11000000, region: 'South' },
+        { name: 'San Francisco', slug: 'san-francisco', type: 'city', state: 'CA', population: 800000, region: 'West' },
+        { name: 'New York', slug: 'new-york', type: 'city', state: 'NY', population: 8500000, region: 'East' },
+        { name: 'London', slug: 'london', type: 'city', state: 'Greater London', population: 9000000, region: 'UK' },
+        { name: 'Dubai', slug: 'dubai', type: 'city', state: 'Dubai', population: 3300000, region: 'UAE' },
+        { name: 'Singapore', slug: 'singapore', type: 'city', state: 'Singapore', population: 5700000, region: 'APAC' }
+      ];
+      const geoBatch = writeBatch(db);
+      GEO_SEED.forEach(node => {
+        const ref = doc(collection(db, 'geo_taxonomy'));
+        geoBatch.set(ref, { ...node, createdAt: new Date().toISOString() });
+      });
+      await geoBatch.commit();
+    }
+
     // 8. Migrate Case Studies
     for (const study of CASE_STUDIES) {
       await setDoc(doc(db, 'case_studies', study.slug), {

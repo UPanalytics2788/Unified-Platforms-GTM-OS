@@ -647,6 +647,131 @@ export default function ContentEditor() {
                   </div>
                 </>
               )}
+
+              {collectionName === 'pseo_pages' && (
+                <div className="space-y-8">
+                   <div className="pt-4 border-b border-brand-dark/10 pb-6">
+                     <h3 className="text-lg font-bold text-brand-dark">Hero Section (AI Generated)</h3>
+                     <div className="grid grid-cols-1 gap-4 mt-4">
+                       <div>
+                         <label className="block text-xs font-bold text-brand-gray uppercase mb-1">H1 Heading</label>
+                         <input
+                           type="text"
+                           value={formData.content?.hero?.h1 || ''}
+                           onChange={(e) => setFormData({...formData, content: {...formData.content, hero: {...formData.content?.hero, h1: e.target.value}}})}
+                           className="w-full px-4 py-2 border border-brand-dark/10 rounded-lg focus:ring-2 focus:ring-brand-primary outline-none bg-brand-white text-brand-dark"
+                         />
+                       </div>
+                       <div>
+                         <label className="block text-xs font-bold text-brand-gray uppercase mb-1">Intro Text</label>
+                         <textarea
+                           value={formData.content?.hero?.intro_text || ''}
+                           onChange={(e) => setFormData({...formData, content: {...formData.content, hero: {...formData.content?.hero, intro_text: e.target.value}}})}
+                           className="w-full px-4 py-2 border border-brand-dark/10 rounded-lg focus:ring-2 focus:ring-brand-primary outline-none h-24 bg-brand-white text-brand-dark"
+                         />
+                       </div>
+                     </div>
+                   </div>
+
+                   <div className="pt-4 border-b border-brand-dark/10 pb-6">
+                     <h3 className="text-lg font-bold text-brand-dark mb-4">Value Grid</h3>
+                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                       {(formData.content?.value_grid || []).map((item: any, idx: number) => (
+                         <div key={idx} className="p-4 bg-gray-50 border border-brand-dark/5 rounded-xl">
+                           <input
+                             type="text"
+                             placeholder="Title"
+                             value={item.title || ''}
+                             onChange={(e) => {
+                               const newGrid = [...formData.content.value_grid];
+                               newGrid[idx] = { ...newGrid[idx], title: e.target.value };
+                               setFormData({...formData, content: {...formData.content, value_grid: newGrid}});
+                             }}
+                             className="w-full px-2 py-1 mb-2 border border-brand-dark/10 rounded font-bold text-sm bg-white text-brand-dark"
+                           />
+                           <textarea
+                             placeholder="Description"
+                             value={item.description || ''}
+                             onChange={(e) => {
+                               const newGrid = [...formData.content.value_grid];
+                               newGrid[idx] = { ...newGrid[idx], description: e.target.value };
+                               setFormData({...formData, content: {...formData.content, value_grid: newGrid}});
+                             }}
+                             className="w-full px-2 py-1 text-xs border border-brand-dark/10 rounded h-20 bg-white text-brand-dark"
+                           />
+                         </div>
+                       ))}
+                     </div>
+                   </div>
+
+                   <div className="pt-4 border-b border-brand-dark/10 pb-6">
+                     <h3 className="text-lg font-bold text-brand-dark mb-4">Comparison Table</h3>
+                     <div className="grid grid-cols-2 gap-8">
+                       <div className="p-4 bg-red-50/50 rounded-xl border border-red-100">
+                          <input
+                            type="text"
+                            value={formData.content?.comparison_module?.left_side_title || ''}
+                            onChange={(e) => setFormData({...formData, content: {...formData.content, comparison_module: {...formData.content.comparison_module, left_side_title: e.target.value}}})}
+                            className="w-full bg-transparent font-bold text-red-700 mb-2 border-b border-red-200 outline-none"
+                          />
+                          <textarea
+                            value={(formData.content?.comparison_module?.left_side_points || []).join('\n')}
+                            onChange={(e) => {
+                              const points = e.target.value.split('\n');
+                              setFormData({...formData, content: {...formData.content, comparison_module: {...formData.content.comparison_module, left_side_points: points}}})
+                            }}
+                            className="w-full bg-transparent text-sm min-h-[150px] outline-none text-red-900"
+                          />
+                       </div>
+                       <div className="p-4 bg-green-50/50 rounded-xl border border-green-100">
+                          <input
+                            type="text"
+                            value={formData.content?.comparison_module?.right_side_title || ''}
+                            onChange={(e) => setFormData({...formData, content: {...formData.content, comparison_module: {...formData.content.comparison_module, right_side_title: e.target.value}}})}
+                            className="w-full bg-transparent font-bold text-green-700 mb-2 border-b border-green-200 outline-none"
+                          />
+                          <textarea
+                            value={(formData.content?.comparison_module?.right_side_points || []).join('\n')}
+                            onChange={(e) => {
+                              const points = e.target.value.split('\n');
+                              setFormData({...formData, content: {...formData.content, comparison_module: {...formData.content.comparison_module, right_side_points: points}}})
+                            }}
+                            className="w-full bg-transparent text-sm min-h-[150px] outline-none text-green-900"
+                          />
+                       </div>
+                     </div>
+                   </div>
+
+                   <div className="pt-4 pb-4">
+                     <h3 className="text-lg font-bold text-brand-dark mb-4">FAQs</h3>
+                     <div className="space-y-4">
+                       {(formData.content?.faq || []).map((item: any, idx: number) => (
+                         <div key={idx} className="p-4 border border-brand-dark/10 rounded-xl bg-white">
+                           <input
+                             type="text"
+                             value={item.question || ''}
+                             onChange={(e) => {
+                               const newFaqs = [...formData.content.faq];
+                               newFaqs[idx] = { ...newFaqs[idx], question: e.target.value };
+                               setFormData({...formData, content: {...formData.content, faq: newFaqs}});
+                             }}
+                             className="w-full font-bold mb-2 p-2 border border-brand-dark/10 rounded bg-white text-brand-dark"
+                           />
+                           <textarea
+                             value={item.answer || ''}
+                             onChange={(e) => {
+                               const newFaqs = [...formData.content.faq];
+                               newFaqs[idx] = { ...newFaqs[idx], answer: e.target.value };
+                               setFormData({...formData, content: {...formData.content, faq: newFaqs}});
+                             }}
+                             className="w-full text-sm p-2 border border-brand-dark/10 rounded h-20 bg-white text-brand-dark"
+                           />
+                         </div>
+                       ))}
+                     </div>
+                   </div>
+                </div>
+              )}
             </>
           )}
 

@@ -9,14 +9,16 @@ export async function runLinkDiscovery(
   sourceContent: string
 ): Promise<{ targetId: string; targetTitle: string; targetSlug: string; anchorText: string; contextSentence: string; relevanceScore: number }[]> {
   try {
-    const [insightsSnap, servicesSnap] = await Promise.all([
+    const [insightsSnap, servicesSnap, pseoSnap] = await Promise.all([
       getDocs(query(collection(db, 'insights'), where('status', '==', 'published'))),
-      getDocs(query(collection(db, 'services'), where('status', '==', 'published')))
+      getDocs(query(collection(db, 'services'), where('status', '==', 'published'))),
+      getDocs(query(collection(db, 'pseo_pages'), where('status', '==', 'published')))
     ]);
     
     const candidates = [
       ...insightsSnap.docs.map(d => ({ id: d.id, collection: 'insights', ...d.data() as any })),
-      ...servicesSnap.docs.map(d => ({ id: d.id, collection: 'services', ...d.data() as any }))
+      ...servicesSnap.docs.map(d => ({ id: d.id, collection: 'services', ...d.data() as any })),
+      ...pseoSnap.docs.map(d => ({ id: d.id, collection: 'pseo_pages', ...d.data() as any }))
     ].filter(p => p.id !== sourceId);
 
     if (candidates.length === 0) return [];

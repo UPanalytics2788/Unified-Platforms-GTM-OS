@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { collection, onSnapshot, query, orderBy, doc, getDoc } from 'firebase/firestore';
 import { cn } from '../../lib/utils';
 import { useSettings } from '../SettingsProvider';
+import { isAdmin } from '../../constants';
 import GlobalSearch from './GlobalSearch';
 
 interface NavbarProps {
@@ -72,10 +73,7 @@ export default function Navbar({ user }: NavbarProps) {
   useEffect(() => {
     if (user) {
       const fetchRole = async () => {
-        const adminEmails = ['shree@unifiedplatforms.com', 'analytics@unifiedplatforms.com'];
-        const isHardcodedAdmin = adminEmails.some(email => email.toLowerCase() === (user.email || '').toLowerCase());
-        
-        if (isHardcodedAdmin) {
+        if (isAdmin(user.email)) {
           setUserRole('admin');
           // No need to fetch from DB if we've already confirmed they are a hardcoded admin
           return;
@@ -518,15 +516,6 @@ const INITIAL_NAV_STRUCTURE: NavItem[] = [
       {
         title: "Talent & HR",
         links: ["Recruitment", "Executive Search", "RPO", "HR Consulting"]
-      },
-      {
-        title: "GTM-OS Strategies",
-        links: [
-          { label: "Architectural SEO", href: "/gtm/architectural-seo-strategy" },
-          { label: "Sales Velocity Media", href: "/gtm/sales-velocity-performance" },
-          { label: "Headless Commerce", href: "/gtm/headless-commerce-development" },
-          { label: "Talent Engineering", href: "/gtm/rpo-talent-acquisition-engineering" }
-        ]
       }
     ]
   },

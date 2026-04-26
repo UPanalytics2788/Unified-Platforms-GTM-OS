@@ -38,13 +38,13 @@ export default function Home() {
     title: 'Home',
     seo: {
       title: 'Unified Platforms | Revenue-Focused Marketing & Growth Partner',
-      description: 'Scale your brand with Unified Platforms. Specialized in SEO strategy, performance marketing, content creation, and technical development built for revenue growth.'
+      description: 'Scale your brand with Unified Platforms. Specialized in SEO strategy, performance marketing, and technical development built for revenue growth.'
     },
     sections: [
       {
         type: 'hero',
         title: 'Revenue-Focused Marketing & Growth Partner',
-        subtitle: 'We help brands scale through SEO, performance marketing, content, web development, and hiring.',
+        subtitle: 'We engineer measurable growth through data-driven performance and technical engineering—identifying and capturing your largest opportunities.',
         cta_primary: { label: 'Book Consultation', link: '/contact?type=consultation' },
         cta_secondary: { label: 'View Case Studies', link: '/case-studies' }
       },
@@ -54,16 +54,16 @@ export default function Home() {
       {
         type: 'advantage',
         badge: 'The Unified Advantage',
-        title: 'Data-Driven Growth with Proprietary Insights',
-        description: "We don't just execute campaigns; we engineer growth. Our unique approach combines cross-channel expertise with advanced AI analytics to uncover hidden opportunities and maximize your ROI.",
+        title: 'Data-Driven Growth with Technical Precision',
+        description: "We don't just run ads or build links. We build systems. Our unique approach combines deep technical engineering with performance marketing to create scalable revenue engines.",
         items: [
-          "AI-Powered Competitor Intelligence",
-          "Cross-Channel Attribution Modeling",
-          "Proprietary SEO & Content Frameworks",
-          "Dedicated Growth Strategists"
+          "Cross-Channel Strategic Roadmap",
+          "High-Performance Marketing Funnels",
+          "Engineer-Led Technical SEO",
+          "Proprietary Growth Frameworks"
         ],
-        image_url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200',
-        stats: { value: '300%', label: 'Avg. ROI Increase' }
+        image_url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200',
+        stats: { value: '3.5x', label: 'Avg. Sales Velocity' }
       }
     ]
   };

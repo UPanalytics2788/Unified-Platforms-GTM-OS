@@ -44,7 +44,7 @@ export const executeAgentCall = async <T>(
   }
 
   try {
-    const modelName = modelOverride || import.meta.env.VITE_CHATBOT_MODEL || 'gemini-flash-latest';
+    const modelName = modelOverride || import.meta.env.VITE_CHATBOT_MODEL || 'gemini-3-flash-preview';
     
     const response = await ai.models.generateContent({
       model: modelName,
@@ -53,7 +53,6 @@ export const executeAgentCall = async <T>(
         systemInstruction: systemPrompt,
         temperature,
         responseMimeType: responseSchema ? 'application/json' : 'text/plain',
-        tools: tools ? tools : undefined
       }
     });
 
@@ -61,9 +60,11 @@ export const executeAgentCall = async <T>(
     
     if (responseSchema && text) {
       try {
-        return { success: true, data: JSON.parse(text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim()) };
-      } catch {
-        return { success: false, error: `JSON parse failed: ${text.substring(0, 200)}` };
+        const cleanText = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+        return { success: true, data: JSON.parse(cleanText) };
+      } catch (parseErr) {
+        console.error('JSON Parse Error. Raw text:', text);
+        return { success: false, error: `JSON parse failed. The AI response was not valid JSON.` };
       }
     }
     
