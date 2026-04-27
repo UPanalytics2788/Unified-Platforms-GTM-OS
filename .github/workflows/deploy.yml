@@ -2,14 +2,14 @@ name: Deploy to Hostinger VPS
 
 on:
   push:
-    branches: [ main ] # Or your primary branch name
+    branches: [ main ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Updated to v4 to avoid the Node.js warning
 
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
@@ -18,11 +18,11 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           port: 22
+          timeout: 60s
           command_timeout: 30m
-          connect_timeout: 60s
           script: |
-            cd /var/www/your-project-folder
+            cd /var/www/your-project-folder # Make sure this matches your actual folder!
             git pull origin main
             npm install
             npm run build
-            pm2 restart all # Or your specific app name
+            pm2 restart all
