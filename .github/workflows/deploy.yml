@@ -12,12 +12,14 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Deploy via SSH
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           port: 22
+          command_timeout: 30m
+          connect_timeout: 60s
           script: |
             cd /var/www/your-project-folder
             git pull origin main
