@@ -33,7 +33,7 @@ async function startServer() {
         return res.status(500).json({ success: false, error: 'GEMINI_API_KEY is not configured on the server.' });
       }
       
-      const modelName = modelOverride || process.env.VITE_CHATBOT_MODEL || 'gemini-flash-latest';
+      const modelName = modelOverride || process.env.VITE_CHATBOT_MODEL || 'gemini-3-flash-preview';
       
       const response = await ai.models.generateContent({
         model: modelName,

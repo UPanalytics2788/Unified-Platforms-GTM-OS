@@ -5,7 +5,7 @@ export default function WebsiteDevelopment() {
   const { data: pageData } = useCMSDocument('services', 'website-development');
   
   const fallbackData = {
-    title: 'High-Performance Website Development | Unified Platforms',
+    title: 'High-Performance Website Development | GTM OS',
     hero_title: 'Website Development That Drives Growth',
     hero_subtitle: 'We build high-performance, conversion-optimized websites that serve as your 24/7 sales engine.',
     meta_description: 'Custom website development optimized for speed, SEO, and lead generation. We build scalable, high-performance web presences that serve as growth engines.',

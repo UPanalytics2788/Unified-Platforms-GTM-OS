@@ -39,7 +39,7 @@ export default function ServiceLayout({
   processSteps = [],
   faqs = [],
   ctaTitle = "Ready to build your growth engine?",
-  ctaSubtitle = "Join market leaders who leverage Unified Platforms to engineer organic growth and scale performance marketing.",
+  ctaSubtitle = "Join market leaders who leverage GTM OS to engineer organic growth and scale performance marketing.",
   ctaLink = "/contact",
   ctaText = "Get Started",
   children
@@ -52,7 +52,7 @@ export default function ServiceLayout({
   return (
     <div className="bg-white min-h-screen font-sans selection:bg-brand-primary/30">
       <SEO 
-        title={metaTitle || `${title} | Unified Platforms`}
+        title={metaTitle || `${title} | GTM OS`}
         description={metaDescription || heroSubtitle}
       />
       <SchemaMarkup type="Service" data={{ title, description: heroSubtitle }} />

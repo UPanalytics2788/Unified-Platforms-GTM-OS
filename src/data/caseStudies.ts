@@ -466,7 +466,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: 'Placing Senior Leadership Roles',
     background: 'GetWidget is a SaaS platform for app developers scaling from startup to growth stage post-Series A. The company needed a VP of Sales and a Head of Marketing to lead go-to-market — roles requiring a rare combination of SaaS domain expertise, developer-audience understanding, and remote-first team experience.',
     objective: 'Place both senior leadership roles simultaneously within 45 days, sourcing from the passive talent market.',
-    approach: 'Executive search with targeted passive candidate engagement. Longlists of 40+ candidates per role built through LinkedIn research, competitor intelligence, and the Unified Platforms network. Structured competency-based assessment across three interview rounds. Full candidate management including offer structuring, reference checks, and counter-offer preparation.',
+    approach: 'Executive search with targeted passive candidate engagement. Longlists of 40+ candidates per role built through LinkedIn research, competitor intelligence, and the GTM OS network. Structured competency-based assessment across three interview rounds. Full candidate management including offer structuring, reference checks, and counter-offer preparation.',
     outcome: 'VP of Sales placed in 34 days. Head of Marketing placed in 28 days. Both candidates sourced from outside the active job market. Both in role 18 months post-placement. Cost 40% below equivalent RPO firm engagement.',
     metrics: [
       { value: '34 Days', label: 'VP Sales Time-to-Fill' },
@@ -483,7 +483,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: 'Deploying an End-to-End RPO Solution',
     background: 'Envigaurd Engineering and Survey Projects won a series of large infrastructure projects requiring a rapid scale from 45 to 120 employees across 6 cities in 8 months — across survey engineers, environmental consultants, GIS analysts, and project managers. Internal HR capacity was approximately 4 hires per month.',
     objective: 'Deploy an end-to-end RPO solution capable of delivering 75 hires across 6 cities in 7 months without SLA breaches, at cost-per-hire below industry benchmark.',
-    approach: '3 dedicated Unified Platforms recruiters embedded in the engagement. Purpose-built ATS configured for role-specific tracking. Competency frameworks developed for each role family. Parallel sourcing pipelines across LinkedIn, Naukri, and targeted campus drives. Weekly hiring dashboards delivered to senior leadership. Offer-to-join dropout management process established.',
+    approach: '3 dedicated GTM OS recruiters embedded in the engagement. Purpose-built ATS configured for role-specific tracking. Competency frameworks developed for each role family. Parallel sourcing pipelines across LinkedIn, Naukri, and targeted campus drives. Weekly hiring dashboards delivered to senior leadership. Offer-to-join dropout management process established.',
     outcome: '75 hires completed in 7 months against a committed target of 75. Zero SLA breaches on timeline commitments. Cost-per-hire 28% below industry benchmark. 6-month retention rate of RPO-placed candidates: 91%.',
     metrics: [
       { value: '75', label: 'Hires Completed' },

@@ -45,8 +45,8 @@ export default function CaseStudies() {
   return (
     <div className="py-20 bg-brand-white min-h-screen">
       <SEO 
-        title="Predictable ROI: Case Studies & Success Stories | Unified Platforms"
-        description="Explore how Unified Platforms engineers organic growth and high-performance paid media campaigns. Real results and case studies from market leaders across industries."
+        title="Predictable ROI: Case Studies & Success Stories | GTM OS"
+        description="Explore how GTM OS engineers organic growth and high-performance paid media campaigns. Real results and case studies from market leaders across industries."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center max-w-3xl mx-auto">

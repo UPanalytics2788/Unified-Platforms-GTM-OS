@@ -102,7 +102,7 @@ export default function InsightDetail() {
                 <User size={20} className="text-brand-gray" />
               </div>
               <div>
-                <p className="text-sm font-bold text-brand-dark">{insight.author || 'Unified Platforms Team'}</p>
+                <p className="text-sm font-bold text-brand-dark">{insight.author || 'GTM OS Team'}</p>
                 <p className="text-xs text-brand-gray">Growth Strategy</p>
               </div>
             </div>

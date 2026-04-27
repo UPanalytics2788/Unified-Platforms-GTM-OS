@@ -103,8 +103,8 @@ export default function EmailMarketing() {
   return (
     <div className="bg-white min-h-screen">
       <SEO 
-        title={pageData?.meta_title || "Email Marketing Services | Automation, Campaigns and Lifecycle Sequences | Unified Platforms"}
-        description={pageData?.meta_description || "Build email programs that nurture leads, retain customers, and drive revenue on autopilot. Unified Platforms delivers email strategy, copywriting, automation, and full campaign management."}
+        title={pageData?.meta_title || "Email Marketing Services | Automation, Campaigns and Lifecycle Sequences | GTM OS"}
+        description={pageData?.meta_description || "Build email programs that nurture leads, retain customers, and drive revenue on autopilot. GTM OS delivers email strategy, copywriting, automation, and full campaign management."}
       />
       <SchemaMarkup type="Service" data={{
         title: pageData?.title || "Email Marketing Services",

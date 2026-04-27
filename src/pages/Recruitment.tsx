@@ -5,10 +5,10 @@ export default function Recruitment() {
   const { data: pageData } = useCMSDocument('services', 'recruitment');
   
   const fallbackData = {
-    title: 'Recruitment Services | Strategic Talent Acquisition | Unified Platforms',
+    title: 'Recruitment Services | Strategic Talent Acquisition | GTM OS',
     hero_title: 'Recruitment Services That Find the Right People',
     hero_subtitle: 'We move fast enough to compete for the best candidates while being thorough enough to give you genuine confidence in every placement.',
-    meta_description: 'Stop wasting time on bad candidates. Unified Platforms provides strategic recruitment services that find and secure top-tier talent for your business.',
+    meta_description: 'Stop wasting time on bad candidates. GTM OS provides strategic recruitment services that find and secure top-tier talent for your business.',
     description: 'Stop wasting time on bad interviews. Our strategic recruitment framework isolates top-tier talent mapped exactly to your cultural and technical requirements.',
     primary_cta_text: 'Start Hiring Today',
     category: 'Talent & HR',

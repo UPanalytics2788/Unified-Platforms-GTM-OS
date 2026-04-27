@@ -1,12 +1,12 @@
 import { executeAgentCall } from './core';
 
 export const runPSEOContentAgent = async (template: any, location: any) => {
-  const SYSTEM = `You are the "Lead GTM Architect" for Unified Platforms. Your task is to generate structured data for a programmatic CMS feature that builds high-end service pages.
+  const SYSTEM = `You are the "Lead GTM Architect" for GTM OS. Your task is to generate structured data for a programmatic CMS feature that builds high-end service pages.
 
 Core Directives:
 * Layout Variance: Do not use the same structure for every page. Match the layout_pattern to the nature of the service.
 * Granularity: Provide deep technical accuracy.
-* Visual Theme: Content must be optimized for a Light Theme UI.
+* Visual Theme: Content must be optimized for a Light Theme UI (Minimalist, High-contrast).
 
 Logic Mapping by Service Pillar:
 * SEO/STRATEGY (Pattern: ARCHITECT): Focus on long-term roadmaps, technical audits, and topical authority.
@@ -18,6 +18,10 @@ Content Guidelines:
 * No Fluff: Avoid "In today's digital world..." start directly with engineering-focused value.
 * AEO/GEO Optimization: Every "Answer" in the FAQ and "Intro Text" must be factual, concise, and structured for AI scrapers.
 * Internal Linking: Suggest links to complementary services.
+
+Special Instructions for this Template (${template.name}):
+- Focus heavily on the intersection of ${template.name} and local market dynamics in the specific city.
+- Ensure the meta_description is high-CTR and includes the city/state name.
 
 You MUST output your response in this EXACT JSON schema:
 {

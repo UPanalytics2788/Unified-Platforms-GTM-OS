@@ -12,6 +12,7 @@ export default function LinkGraph() {
   const [scanning, setScanning] = useState(false);
   const [filter, setFilter] = useState<'all' | 'suggested' | 'active' | 'rejected'>('all');
   const [showVisual, setShowVisual] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   const [status, setStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);
 
@@ -23,23 +24,33 @@ export default function LinkGraph() {
     if (showVisual && links.length > 0 && svgRef.current) {
       renderGraph();
     }
-  }, [showVisual, links]);
+  }, [showVisual, links, searchTerm]);
 
-  const renderGraph = () => {
+    const renderGraph = () => {
     if (!svgRef.current) return;
     const svg = d3.select(svgRef.current);
     svg.selectAll("*").remove();
 
-    const width = 800;
+    const width = svgRef.current.clientWidth || 800;
     const height = 600;
 
+    // We want to visualize EVERYTHING in the graph to show the full map
+    // but color code by status
     const activeLinks = links.filter(l => l.status === 'active');
     
-    // Extract unique nodes
+    const [insights, services, pseo] = [
+      links.filter(l => l.sourceType === 'insights' || l.targetType === 'insights'),
+      links.filter(l => l.sourceType === 'services' || l.targetType === 'services'),
+      links.filter(l => l.sourceType === 'pseo_pages' || l.targetType === 'pseo_pages')
+    ];
+
+    // Extract unique nodes from ALL links and even orphans if we had them
     const nodesMap = new Map();
-    activeLinks.forEach(l => {
-      if (!nodesMap.has(l.sourceId)) nodesMap.set(l.sourceId, { id: l.sourceId, label: l.sourceTitle, type: l.sourceType });
-      if (!nodesMap.has(l.targetId)) nodesMap.set(l.targetId, { id: l.targetId, label: l.targetTitle, type: l.targetType });
+    
+    // Add all nodes from links
+    links.forEach(l => {
+      if (!nodesMap.has(l.sourceId)) nodesMap.set(l.sourceId, { id: l.sourceId, label: l.sourceTitle, type: l.sourceType, status: l.status });
+      if (!nodesMap.has(l.targetId)) nodesMap.set(l.targetId, { id: l.targetId, label: l.targetTitle, type: l.targetType, status: l.status });
     });
 
     const nodes = Array.from(nodesMap.values());
@@ -48,40 +59,93 @@ export default function LinkGraph() {
       target: l.targetId,
       value: 1
     }));
+    
+    // Filter nodes based on search
+    const filteredNodes = searchTerm 
+      ? nodes.filter(n => n.label.toLowerCase().includes(searchTerm.toLowerCase()))
+      : nodes;
+      
+    const filteredNodeIds = new Set(filteredNodes.map(n => n.id));
+    const finalEdges = edges.filter(e => filteredNodeIds.has(e.source) && filteredNodeIds.has(e.target));
 
-    const simulation = d3.forceSimulation(nodes as any)
-      .force("link", d3.forceLink(edges).id((d: any) => d.id).distance(100))
-      .force("charge", d3.forceManyBody().strength(-300))
-      .force("center", d3.forceCenter(width / 2, height / 2));
+    // Create a container group for zooming
+    const g = svg.append("g");
 
-    const link = svg.append("g")
-      .attr("stroke", "#94a3b8")
+    // Add zoom behavior
+    const zoom = d3.zoom<SVGSVGElement, unknown>()
+      .scaleExtent([0.1, 4])
+      .on("zoom", (event) => {
+        g.attr("transform", event.transform);
+      });
+
+    svg.call(zoom as any);
+
+    const simulation = d3.forceSimulation(filteredNodes as any)
+      .force("link", d3.forceLink(finalEdges).id((d: any) => d.id).distance(150))
+      .force("charge", d3.forceManyBody().strength(-400))
+      .force("center", d3.forceCenter(width / 2, height / 2))
+      .force("collision", d3.forceCollide().radius(50));
+
+    const link = g.append("g")
+      .attr("stroke", "#cbd5e1")
       .attr("stroke-opacity", 0.6)
       .selectAll("line")
-      .data(edges)
+      .data(finalEdges)
       .join("line")
-      .attr("stroke-width", 2);
+      .attr("stroke-width", 2)
+      .attr("marker-end", "url(#arrowhead)");
 
-    const node = svg.append("g")
+    // Add arrowhead marker
+    svg.append("defs").append("marker")
+      .attr("id", "arrowhead")
+      .attr("viewBox", "-0 -5 10 10")
+      .attr("refX", 20)
+      .attr("refY", 0)
+      .attr("orient", "auto")
+      .attr("markerWidth", 6)
+      .attr("markerHeight", 6)
+      .attr("xoverflow", "visible")
+      .append("svg:path")
+      .attr("d", "M 0,-5 L 10 ,0 L 0,5")
+      .attr("fill", "#94a3b8")
+      .style("stroke", "none");
+
+    const node = g.append("g")
       .selectAll("g")
-      .data(nodes)
+      .data(filteredNodes)
       .join("g")
+      .attr("class", "node-group")
+      .style("cursor", "pointer")
       .call(d3.drag<any, any>()
         .on("start", dragstarted)
         .on("drag", dragged)
         .on("end", dragended));
 
     node.append("circle")
-      .attr("r", 8)
-      .attr("fill", (d: any) => d.type === 'services' ? '#06b6d4' : '#6366f1');
+      .attr("r", 10)
+      .attr("fill", (d: any) => {
+        if (d.type === 'services') return '#06b6d4';
+        if (d.type === 'insights') return '#6366f1';
+        if (d.type === 'pseo_pages') return '#ec4899';
+        return '#94a3b8';
+      })
+      .attr("stroke", "#fff")
+      .attr("stroke-width", 2)
+      .attr("shadow", "0 4px 6px -1px rgb(0 0 0 / 0.1)");
 
     node.append("text")
       .text((d: any) => d.label)
-      .attr("x", 12)
+      .attr("x", 14)
       .attr("y", 4)
-      .style("font-size", "10px")
-      .style("font-weight", "bold")
-      .style("fill", "#1e293b");
+      .style("font-size", "12px")
+      .style("font-family", "Inter, sans-serif")
+      .style("font-weight", "600")
+      .style("fill", "#0f172a")
+      .style("paint-order", "stroke")
+      .style("stroke", "#fff")
+      .style("stroke-width", "3px")
+      .style("stroke-linecap", "round")
+      .style("stroke-linejoin", "round");
 
     simulation.on("tick", () => {
       link
@@ -232,14 +296,42 @@ export default function LinkGraph() {
       </div>
 
       {showVisual && (
-        <div className="bg-white p-6 rounded-2xl border border-brand-dark/10 shadow-sm overflow-hidden flex justify-center">
-          <svg 
-            ref={svgRef} 
-            width={800} 
-            height={600} 
-            className="max-w-full"
-            style={{ cursor: 'grab' }}
-          />
+        <div className="bg-white p-6 rounded-2xl border border-brand-dark/10 shadow-sm overflow-hidden relative">
+          <div className="absolute top-10 right-10 z-10 bg-white/90 backdrop-blur-sm p-4 rounded-xl border border-brand-dark/10 shadow-lg pointer-events-auto">
+             <h4 className="text-xs font-black text-brand-dark uppercase tracking-widest mb-3">Graph Legend</h4>
+             <div className="space-y-2">
+                <div className="flex items-center gap-2 text-xs font-bold text-brand-gray">
+                   <div className="w-3 h-3 rounded-full bg-[#06b6d4]" /> Services
+                </div>
+                <div className="flex items-center gap-2 text-xs font-bold text-brand-gray">
+                   <div className="w-3 h-3 rounded-full bg-[#6366f1]" /> Insights / Blog
+                </div>
+                <div className="flex items-center gap-2 text-xs font-bold text-brand-gray">
+                   <div className="w-3 h-3 rounded-full bg-[#ec4899]" /> PSEO Pages
+                </div>
+             </div>
+             <div className="mt-4 pt-4 border-t border-brand-dark/5">
+                <div className="relative">
+                   <Search className="absolute left-2 top-1/2 -translate-y-1/2 text-brand-gray" size={14} />
+                   <input 
+                     type="text" 
+                     placeholder="Search nodes..."
+                     value={searchTerm}
+                     onChange={(e) => setSearchTerm(e.target.value)}
+                     className="pl-8 pr-2 py-1.5 text-xs border border-brand-dark/10 rounded-lg w-full focus:outline-brand-primary"
+                   />
+                </div>
+             </div>
+          </div>
+          <div className="flex justify-center">
+            <svg 
+              ref={svgRef} 
+              width={800} 
+              height={600} 
+              className="max-w-full"
+              style={{ cursor: 'grab' }}
+            />
+          </div>
         </div>
       )}
 

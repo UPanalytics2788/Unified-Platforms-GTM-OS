@@ -10,6 +10,8 @@ service cloud.firestore {
       return isAuthenticated() && (
         request.auth.token.email == "shree@unifiedplatforms.com" ||
         request.auth.token.email == "analytics@unifiedplatforms.com" ||
+        request.auth.token.email == "shree@gtm-os.com" ||
+        request.auth.token.email == "analytics@gtm-os.com" ||
         (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
       );
@@ -19,6 +21,8 @@ service cloud.firestore {
       return isAuthenticated() && (
         request.auth.token.email == "shree@unifiedplatforms.com" ||
         request.auth.token.email == "analytics@unifiedplatforms.com" ||
+        request.auth.token.email == "shree@gtm-os.com" ||
+        request.auth.token.email == "analytics@gtm-os.com" ||
         (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'marketer', 'editor'])
       );
@@ -34,6 +38,7 @@ service cloud.firestore {
     match /pages/{doc}            { allow read: if true; allow write: if isEditorOrAdmin(); }
     match /landing-pages/{doc}    { allow read: if true; allow write: if isEditorOrAdmin(); }
     match /gtm_pages/{doc}       { allow read: if true; allow write: if isEditorOrAdmin(); }
+    match /media_library/{doc}    { allow read: if true; allow write: if isEditorOrAdmin(); }
     
     // ----------------------------------------------------
     // New Advanced SEO / EEAT Collections

@@ -143,9 +143,9 @@ export default function Navbar({ user }: NavbarProps) {
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
               {settings?.logoUrl ? (
-                <img src={settings.logoUrl} alt={settings?.siteName || 'Logo'} className="h-[58px] w-auto object-contain" />
+                <img src={settings.logoUrl} alt="Logo" className="h-[58px] w-auto object-contain" />
               ) : (
-                <img src="/logo.png" alt={settings?.siteName || 'Logo'} className="h-[58px] w-auto object-contain" />
+                <img src="/logo.png" alt="Logo" className="h-[58px] w-auto object-contain" />
               )}
             </Link>
           </div>
@@ -563,7 +563,7 @@ const INITIAL_NAV_STRUCTURE: NavItem[] = [
     visible_to: ["public"],
     order: 6,
     links: [
-      "About Unified Platforms",
+      "About Us",
       "GTM Framework",
       "Leadership",
       "Clients",

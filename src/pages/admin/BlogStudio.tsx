@@ -205,7 +205,7 @@ export default function BlogStudio() {
           "description": metaInfo.description,
           "author": {
              "@type": "Person",
-             "name": "Unified Platforms AI"
+             "name": "GTM OS AI"
           }
         },
         status: 'draft',

@@ -100,12 +100,12 @@ export default function CRO() {
   return (
     <div className="bg-white min-h-screen">
       <SEO 
-        title={pageData?.meta_title || "Conversion Rate Optimization (CRO) | ROI Multiplier | Unified Platforms"}
-        description={pageData?.meta_description || "Turn more visitors into customers with data-driven CRO. Unified Platforms identifies conversion barriers and implements high-impact A/B tests to maximize your revenue."}
+        title={pageData?.meta_title || "Conversion Rate Optimization (CRO) | ROI Multiplier | GTM OS"}
+        description={pageData?.meta_description || "Turn more visitors into customers with data-driven CRO. GTM OS identifies conversion barriers and implements high-impact A/B tests to maximize your revenue."}
       />
       <SchemaMarkup type="Service" data={{
         title: pageData?.title || "Conversion Rate Optimization (CRO) Services",
-        description: pageData?.hero_subtitle || pageData?.description || "Get more leads and sales from the traffic you already have. Unified Platforms delivers data-driven CRO that identifies conversion barriers and systematically removes them."
+        description: pageData?.hero_subtitle || pageData?.description || "Get more leads and sales from the traffic you already have. GTM OS delivers data-driven CRO that identifies conversion barriers and systematically removes them."
       }} />
       <SchemaMarkup type="FAQPage" data={{ faqs }} />
       
@@ -187,7 +187,7 @@ export default function CRO() {
                 Conversion rate optimization is the discipline of systematically identifying why visitors do not convert and removing those barriers. It is not guesswork or aesthetic preference.
               </p>
               <p className="text-lg text-brand-gray leading-relaxed">
-                It is a structured research, testing, and implementation process grounded in behavioral data, user research, and evidence-based design principles. At Unified Platforms, our CRO service is built to improve the commercial performance of your website in a way that compounds over time.
+                It is a structured research, testing, and implementation process grounded in behavioral data, user research, and evidence-based design principles. At GTM OS, our CRO service is built to improve the commercial performance of your website in a way that compounds over time.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-6">
@@ -260,7 +260,7 @@ export default function CRO() {
             <div className="space-y-8">
               <h2 className="text-4xl font-bold text-brand-dark">Get Your Free CRO Audit</h2>
               <p className="text-lg text-brand-gray leading-relaxed">
-                Want to know what is preventing your visitors from converting? Contact Unified Platforms for a free CRO audit of your key pages.
+                Want to know what is preventing your visitors from converting? Contact GTM OS for a free CRO audit of your key pages.
               </p>
               <ul className="space-y-4">
                 {[

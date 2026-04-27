@@ -42,7 +42,7 @@ export default function Login() {
     } catch (err: any) {
       console.error('Google Login Error:', err);
       setLoading(false);
-      setError(`Google Sign-In failed: ${err.message}. Please ensure you are using your @unifiedplatforms.com account and that this domain is authorized in Firebase Console.`);
+      setError(`Google Sign-In failed: ${err.message}. Please ensure you are using your @gtm-os.com account and that this domain is authorized in Firebase Console.`);
     }
   };
 
@@ -59,7 +59,7 @@ export default function Login() {
           <div className="flex items-center justify-center mx-auto mb-6">
             <img src="/logo.png" alt="Logo" className="h-16 w-auto object-contain" />
           </div>
-          <h2 className="text-3xl font-bold text-brand-dark tracking-tight">Lead GTM Portal</h2>
+          <h2 className="text-3xl font-bold text-brand-dark tracking-tight uppercase">GTM OS Portal</h2>
           <p className="text-brand-gray mt-2 font-medium">Secure Administrative Access</p>
         </div>
 
@@ -77,7 +77,7 @@ export default function Login() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="name@unifiedplatforms.com"
+              placeholder="name@gtm-os.com"
               className="w-full px-5 py-4 border border-brand-dark/10 rounded-2xl focus:ring-4 focus:ring-brand-primary/10 focus:border-brand-primary outline-none transition-all bg-brand-white text-brand-dark font-medium placeholder:text-brand-gray/40"
               required
             />
@@ -101,6 +101,26 @@ export default function Login() {
             {loading ? 'Authenticating Session...' : 'Authenticate Session'}
           </button>
         </form>
+
+        <div className="mt-6 flex flex-col gap-4">
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t border-brand-dark/5"></span>
+            </div>
+            <div className="relative flex justify-center text-xs uppercase tracking-widest font-bold">
+              <span className="bg-brand-white px-2 text-brand-gray/40">Or continue with</span>
+            </div>
+          </div>
+
+          <button
+            onClick={handleGoogleLogin}
+            disabled={loading}
+            className="w-full px-6 py-4 bg-white border border-brand-dark/10 text-brand-dark font-bold rounded-2xl hover:bg-gray-50 transition-all flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <img src="https://www.google.com/favicon.ico" alt="Google" className="w-4 h-4" />
+            Team SSO
+          </button>
+        </div>
 
         <div className="mt-10 pt-8 border-t border-brand-dark/5 text-center">
           <p className="text-[10px] text-brand-gray/50 uppercase tracking-widest font-bold">

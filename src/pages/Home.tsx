@@ -37,8 +37,8 @@ export default function Home() {
     slug: 'home',
     title: 'Home',
     seo: {
-      title: 'Unified Platforms | Revenue-Focused Marketing & Growth Partner',
-      description: 'Scale your brand with Unified Platforms. Specialized in SEO strategy, performance marketing, and technical development built for revenue growth.'
+      title: 'GTM OS | Revenue-Focused Marketing & Growth Partner',
+      description: 'Scale your brand with GTM OS. Specialized in SEO strategy, performance marketing, and technical development built for revenue growth.'
     },
     sections: [
       {
@@ -53,7 +53,7 @@ export default function Home() {
       },
       {
         type: 'advantage',
-        badge: 'The Unified Advantage',
+        badge: 'The GTM OS Advantage',
         title: 'Data-Driven Growth with Technical Precision',
         description: "We don't just run ads or build links. We build systems. Our unique approach combines deep technical engineering with performance marketing to create scalable revenue engines.",
         items: [

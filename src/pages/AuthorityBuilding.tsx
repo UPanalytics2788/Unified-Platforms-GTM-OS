@@ -92,12 +92,12 @@ export default function AuthorityBuilding() {
   return (
     <div className="bg-white min-h-screen">
       <SEO 
-        title={pageData?.meta_title || "Authority Building and Link Building Services | Unified Platforms"}
-        description={pageData?.meta_description || "Build the backlink profile and domain authority your website needs to outrank competitors. Unified Platforms delivers sustainable, white-hat authority building strategies."}
+        title={pageData?.meta_title || "Authority Building and Link Building Services | GTM OS"}
+        description={pageData?.meta_description || "Build the backlink profile and domain authority your website needs to outrank competitors. GTM OS delivers sustainable, white-hat authority building strategies."}
       />
       <SchemaMarkup type="Service" data={{
         title: pageData?.title || "Authority Building and Link Building Services",
-        description: pageData?.description || "Build the backlink profile and domain authority your website needs to outrank competitors. Unified Platforms delivers sustainable, white-hat authority building strategies."
+        description: pageData?.description || "Build the backlink profile and domain authority your website needs to outrank competitors. GTM OS delivers sustainable, white-hat authority building strategies."
       }} />
       <SchemaMarkup type="FAQPage" data={{ faqs }} />
       
@@ -174,7 +174,7 @@ export default function AuthorityBuilding() {
                 Backlinks from credible, relevant websites remain one of the most powerful ranking signals in Google search, and building that authority sustainably requires a systematic strategy, not shortcuts.
               </p>
               <p className="text-lg text-brand-gray leading-relaxed">
-                At Unified Platforms, authority building is not a list of link placements purchased from a catalog. It is a program built around earning links that reflect genuine endorsement from websites your audience and Google both respect. This approach takes more effort, but it produces lasting results that are difficult for competitors to replicate.
+                At GTM OS, authority building is not a list of link placements purchased from a catalog. It is a program built around earning links that reflect genuine endorsement from websites your audience and Google both respect. This approach takes more effort, but it produces lasting results that are difficult for competitors to replicate.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-6">

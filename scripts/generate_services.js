@@ -42,7 +42,7 @@ const generateServiceBlock = (s) => {
     slug: "${s.slug}",
     category: "${s.category}",
     primary_keyword: "B2B ${s.title}",
-    meta_title: "${s.title} Services | Unified Platforms",
+    meta_title: "${s.title} Services | GTM OS",
     meta_description: "Expert ${s.title.toLowerCase()} services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert ${s.title.toLowerCase()} services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",

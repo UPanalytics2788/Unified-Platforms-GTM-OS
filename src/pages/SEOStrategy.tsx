@@ -66,8 +66,8 @@ export default function SEOStrategy() {
   return (
     <ServiceLayout
       title="SEO Strategy"
-      metaTitle={pageData?.meta_title || "Custom SEO Strategy | Growth Frameworks | Unified Platforms"}
-      metaDescription={pageData?.meta_description || "Unified Platforms builds custom SEO strategies that drive measurable organic growth. Our revenue-first framework connects every SEO action to your business objectives."}
+      metaTitle={pageData?.meta_title || "Custom SEO Strategy | Growth Frameworks | GTM OS"}
+      metaDescription={pageData?.meta_description || "GTM OS builds custom SEO strategies that drive measurable organic growth. Our revenue-first framework connects every SEO action to your business objectives."}
       heroTitle={pageData?.h1 || "SEO Strategy That Drives Real Organic Growth"}
       heroSubtitle={pageData?.description || "Most businesses spend months publishing content without seeing results. We build the strategic framework that connects every action to your larger business objectives."}
       heroImage={pageData?.imageUrl || "https://picsum.photos/seed/seo-strategy/800/600"}
@@ -95,11 +95,11 @@ export default function SEOStrategy() {
               </p>
             </div>
             <div className="bg-gray-50 p-8 rounded-3xl border border-gray-100">
-               <h3 className="text-2xl font-bold text-brand-dark mb-6 tracking-tight">Comparison: The Unified approach</h3>
+               <h3 className="text-2xl font-bold text-brand-dark mb-6 tracking-tight">Comparison: The GTM OS approach</h3>
                <div className="space-y-4">
                  {[
                    { label: "Generic SEO", value: "Tactical keyword stuffing and backlink spam.", color: "text-red-500" },
-                   { label: "Unified Strategy", value: "Strategic topic clustering mapped to search intent and revenue.", color: "text-brand-primary" }
+                   { label: "GTM OS Strategy", value: "Strategic topic clustering mapped to search intent and revenue.", color: "text-brand-primary" }
                  ].map((item, i) => (
                    <div key={i} className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm">
                      <div className={`font-bold min-w-[120px] ${item.color}`}>{item.label}:</div>
@@ -138,7 +138,7 @@ export default function SEOStrategy() {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-8 tracking-tight">What Separates a Strong SEO Strategy From a Weak One</h2>
           <p className="text-lg text-gray-300 leading-relaxed mb-8 font-light">
-            Most SEO strategies fail because they are too generic. A strong SEO strategy is specific. It tells you exactly which 20 keywords to target first and why. It defines a content publishing cadence that matches your resources. And it connects every activity to a revenue or lead generation outcome. At Unified Platforms, we do not sell SEO strategy templates. Every strategy is built from scratch based on your data, your market, and your goals.
+            Most SEO strategies fail because they are too generic. A strong SEO strategy is specific. It tells you exactly which 20 keywords to target first and why. It defines a content publishing cadence that matches your resources. And it connects every activity to a revenue or lead generation outcome. At GTM OS, we do not sell SEO strategy templates. Every strategy is built from scratch based on your data, your market, and your goals.
           </p>
         </div>
       </section>

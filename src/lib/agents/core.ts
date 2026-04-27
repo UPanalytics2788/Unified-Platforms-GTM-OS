@@ -52,7 +52,7 @@ export const executeAgentCall = async <T>(
       config: {
         systemInstruction: systemPrompt,
         temperature,
-        responseMimeType: responseSchema ? 'application/json' : 'text/plain',
+        responseMimeType: 'application/json',
       }
     });
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Globe, MapPin, FileCode, CheckCircle2, AlertCircle, PlayCircle, Clock, Plus, Upload, Loader2, Edit3, Trash2, X, Send } from 'lucide-react';
-import { collection, getDocs, getCountFromServer, query, where, addDoc, serverTimestamp, orderBy, limit, deleteDoc, doc, updateDoc, writeBatch, getDocsFromServer, increment } from 'firebase/firestore';
+import { Globe, MapPin, FileCode, CheckCircle2, AlertCircle, PlayCircle, Clock, Plus, Upload, Loader2, Edit3, Trash2, X, Send, FileText, ExternalLink, RefreshCw } from 'lucide-react';
+import { collection, getDocs, getCountFromServer, query, where, addDoc, serverTimestamp, orderBy, limit, deleteDoc, doc, updateDoc, writeBatch, getDocsFromServer, increment, getDoc } from 'firebase/firestore';
 import { db } from '../../lib/firebase';
 import { runPSEOContentAgent } from '../../lib/agents/pseoAgent';
 
@@ -8,6 +8,7 @@ const TABS = [
   { id: 'overview', label: 'Overview', icon: Globe },
   { id: 'taxonomy', label: 'Geo Taxonomy', icon: MapPin },
   { id: 'templates', label: 'Templates', icon: FileCode },
+  { id: 'pages', label: 'Generated Pages', icon: FileText },
   { id: 'queue', label: 'Generation Queue', icon: Clock },
 ];
 
@@ -46,6 +47,8 @@ export default function PSEODashboard() {
 
   // Job Queue State
   const [jobs, setJobs] = useState<any[]>([]);
+  const [pseoPages, setPseoPages] = useState<any[]>([]);
+  const [loadingPages, setLoadingPages] = useState(false);
   const [showJobModal, setShowJobModal] = useState(false);
   const [jobForm, setJobForm] = useState({
     templateId: '',
@@ -60,7 +63,19 @@ export default function PSEODashboard() {
     fetchTaxonomy();
     fetchTemplates();
     fetchJobs();
+    if (activeTab === 'pages') fetchPseoPages();
   }, [activeTab]);
+
+  const fetchPseoPages = async () => {
+    setLoadingPages(true);
+    try {
+      const snap = await getDocs(query(collection(db, 'pseo_pages'), orderBy('createdAt', 'desc'), limit(100)));
+      setPseoPages(snap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    } catch (error) {
+      console.error(error);
+    }
+    setLoadingPages(false);
+  };
 
   const fetchStats = async () => {
     setLoading(true);
@@ -449,6 +464,68 @@ export default function PSEODashboard() {
                   <FileCode size={48} className="mx-auto mb-4 opacity-20" />
                   <p className="max-w-md mx-auto mb-6">No templates created yet.</p>
                   <button onClick={() => setShowTemplateDrawer(true)} className="px-4 py-2 bg-brand-dark text-brand-white rounded-lg font-medium text-sm">Create First Template</button>
+                </div>
+              )}
+            </div>
+          )}
+
+          {activeTab === 'pages' && (
+            <div>
+              <div className="flex justify-between items-center mb-6">
+                <div>
+                  <h3 className="text-lg font-bold text-brand-dark">Generated Pages</h3>
+                  <p className="text-sm text-brand-gray">View and manage programmatic landing pages.</p>
+                </div>
+                <div className="flex gap-2">
+                   <button onClick={fetchPseoPages} className="p-2 text-brand-gray hover:bg-gray-100 rounded-lg"><RefreshCw size={18} /></button>
+                </div>
+              </div>
+
+              {loadingPages ? (
+                <div className="py-12 flex justify-center"><Loader2 className="animate-spin text-brand-primary" size={32} /></div>
+              ) : pseoPages.length > 0 ? (
+                <div className="border border-brand-dark/10 rounded-xl overflow-hidden">
+                  <table className="w-full text-left text-sm">
+                    <thead className="bg-gray-50/50 border-b border-brand-dark/5">
+                      <tr>
+                        <th className="p-4 font-bold text-brand-gray uppercase tracking-wider text-xs">Title/Location</th>
+                        <th className="p-4 font-bold text-brand-gray uppercase tracking-wider text-xs">Slug</th>
+                        <th className="p-4 font-bold text-brand-gray uppercase tracking-wider text-xs">Status</th>
+                        <th className="p-4 font-bold text-brand-gray uppercase tracking-wider text-xs text-right">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-brand-dark/5">
+                      {pseoPages.map(page => (
+                        <tr key={page.id} className="hover:bg-brand-dark/5">
+                          <td className="p-4">
+                             <div className="font-bold text-brand-dark">{page.city}, {page.state}</div>
+                             <div className="text-[10px] text-brand-gray uppercase">{page.templateName || 'Page'}</div>
+                          </td>
+                          <td className="p-4 font-mono text-xs text-brand-gray">/local/{page.slug}</td>
+                          <td className="p-4">
+                            <span className={`px-2 py-1 rounded text-[10px] uppercase font-bold ${
+                              page.status === 'published' ? 'bg-green-100 text-green-700' : 
+                              page.status === 'error' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'
+                            }`}>
+                              {page.status}
+                            </span>
+                          </td>
+                          <td className="p-4 text-right">
+                             <div className="flex justify-end gap-2">
+                               <a href={`/local/${page.slug}`} target="_blank" rel="noreferrer" className="p-2 text-brand-gray hover:text-brand-primary"><ExternalLink size={16} /></a>
+                               <button onClick={async () => { if(window.confirm('Delete page?')) { await deleteDoc(doc(db, 'pseo_pages', page.id)); fetchPseoPages(); } }} className="p-2 text-brand-gray hover:text-red-500"><Trash2 size={16} /></button>
+                             </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <div className="py-12 text-center text-brand-gray bg-gray-50/50 rounded-xl border border-brand-dark/5">
+                  <FileText size={48} className="mx-auto mb-4 opacity-20" />
+                  <p className="max-w-md mx-auto mb-6">No generated pages found.</p>
+                  <button onClick={() => setActiveTab('queue')} className="px-4 py-2 bg-brand-dark text-brand-white rounded-lg font-medium text-sm">Launch Generation Job</button>
                 </div>
               )}
             </div>

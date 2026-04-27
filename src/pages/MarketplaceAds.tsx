@@ -109,12 +109,12 @@ export default function MarketplaceAds() {
   return (
     <div className="bg-white min-h-screen">
       <SEO 
-        title={pageData?.meta_title || "Marketplace Ads Management | Amazon & Flipkart Advertising | Unified Platforms"}
-        description={pageData?.meta_description || "Scale your sales on Amazon, Flipkart, and Meesho with expert Marketplace Ads management. Unified Platforms optimizes bids and listings to drive profitable sales velocity."}
+        title={pageData?.meta_title || "Marketplace Ads Management | Amazon & Flipkart Advertising | GTM OS"}
+        description={pageData?.meta_description || "Scale your sales on Amazon, Flipkart, and Meesho with expert Marketplace Ads management. GTM OS optimizes bids and listings to drive profitable sales velocity."}
       />
       <SchemaMarkup type="Service" data={{
         title: pageData?.title || "Marketplace Ads Management",
-        description: pageData?.hero_subtitle || pageData?.description || "Grow sales on Amazon, Flipkart, and other marketplace platforms with expert ad management. Unified Platforms runs marketplace advertising campaigns that improve visibility and drive profitable sales."
+        description: pageData?.hero_subtitle || pageData?.description || "Grow sales on Amazon, Flipkart, and other marketplace platforms with expert ad management. GTM OS runs marketplace advertising campaigns that improve visibility and drive profitable sales."
       }} />
       <SchemaMarkup type="FAQPage" data={{ faqs }} />
       

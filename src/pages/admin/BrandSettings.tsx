@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { db, storage } from '../../lib/firebase';
+import { db, storage, auth } from '../../lib/firebase';
 import { Save, Loader2, Upload, Image as ImageIcon } from 'lucide-react';
 import MediaModal from '../../components/admin/MediaModal';
 
 export default function BrandSettings() {
   const [settings, setSettings] = useState({
-    siteName: 'Unified Platforms',
+    siteName: 'GTM OS',
     description: '',
     logoUrl: '',
     faviconUrl: '',
@@ -67,9 +67,39 @@ export default function BrandSettings() {
     );
 
     try {
-      const storageRef = ref(storage, `logos/${Date.now()}_${file.name}`);
-      await Promise.race([uploadBytes(storageRef, file), timeoutPromise]);
-      const url = await getDownloadURL(storageRef);
+      let url = '';
+      try {
+        const storageRef = ref(storage, `logos/${Date.now()}_${file.name}`);
+        await Promise.race([uploadBytes(storageRef, file), timeoutPromise]);
+        url = await getDownloadURL(storageRef);
+      } catch (sdkErr) {
+        console.warn('SDK upload failed, trying REST fallback:', sdkErr);
+        const user = auth.currentUser;
+        if (!user) throw new Error('Not authenticated');
+        const token = await user.getIdToken();
+        
+        // Fetch bucket name directly from config to avoid import issues if any
+        const responseConfig = await fetch('/firebase-applet-config.json');
+        const config = await responseConfig.json();
+        const storageBucket = config.storageBucket;
+        
+        const encodedPath = encodeURIComponent(`logos/${Date.now()}_${file.name}`);
+        const restUrl = `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o?uploadType=media&name=${encodedPath}`;
+        
+        const response = await fetch(restUrl, {
+          method: 'POST',
+          headers: { 
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': file.type 
+          },
+          body: file,
+        });
+        
+        if (!response.ok) throw new Error(`Upload failed with status ${response.status}`);
+        const data = await response.json();
+        url = `https://firebasestorage.googleapis.com/v0/b/${storageBucket}/o/${encodedPath}?alt=media&token=${data.downloadTokens}`;
+      }
+
       const newSettings = { ...settings, logoUrl: url };
       setSettings(newSettings);
       await setDoc(doc(db, 'settings', 'brand'), newSettings);

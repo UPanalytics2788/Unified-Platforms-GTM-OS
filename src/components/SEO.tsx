@@ -34,7 +34,7 @@ export default function SEO({
   schemaData,
   noindex = false
 }: SEOProps) {
-  const siteTitle = `${title} | Unified Platforms`;
+  const siteTitle = `${title} | GTM OS`;
   const schemaString = schemaData ? JSON.stringify(schemaData) : null;
 
   return (

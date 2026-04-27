@@ -51,7 +51,7 @@ export default function CaseStudyDetail() {
   return (
     <div className="bg-brand-white min-h-screen">
       <Helmet>
-        <title>{`${study.title} | Case Study | Unified Platforms`}</title>
+        <title>{`${study.title} | Case Study | GTM OS`}</title>
         <meta name="description" content={study.objective} />
       </Helmet>
 

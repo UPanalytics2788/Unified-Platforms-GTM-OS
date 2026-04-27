@@ -220,7 +220,7 @@ export default function ServicePageTemplate({ data, fallbackData }: ServicePageT
             {pageData.cta_title || 'Ready to get started?'}
           </h2>
           <p className="text-xl text-white/90 mb-10 leading-relaxed">
-            {pageData.cta_subtitle || 'Contact Unified Platforms to discuss your requirements.'}
+            {pageData.cta_subtitle || 'Contact GTM OS to discuss your requirements.'}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/contact" className="px-10 py-5 bg-white text-brand-primary font-bold rounded-xl hover:bg-gray-100 transition-all shadow-xl text-lg">

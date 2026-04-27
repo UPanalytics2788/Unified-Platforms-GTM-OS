@@ -11,8 +11,8 @@ const newService = {
     title: "Content Strategy Services",
     slug: "content-strategy",
     primary_keyword: "Content Strategy Services",
-    meta_title: "Content Strategy Services | Unified Platforms",
-    meta_description: "Build a content strategy that aligns with your business goals, serves your audience, and drives measurable growth. Unified Platforms develops content strategies that work across SEO, social, and paid channels.",
+    meta_title: "Content Strategy Services | GTM OS",
+    meta_description: "Build a content strategy that aligns with your business goals, serves your audience, and drives measurable growth. GTM OS develops content strategies that work across SEO, social, and paid channels.",
     description: "Build a content strategy that aligns with your business goals, serves your audience, and drives measurable growth. We develop content strategies that work across SEO, social, and paid channels.",
     primary_cta_text: "Get Content Strategy",
     secondary_cta_text: "View Framework",
@@ -56,7 +56,7 @@ const newService = {
       <h2>Content Strategy Services That Give Your Marketing a Direction Worth Following</h2>
       <p>Most businesses produce content without a content strategy. They publish blog posts when someone has time, push social updates when they remember, and create landing pages when campaigns demand them. The result is a fragmented content library that does not build on itself, does not serve a clear audience journey, and does not compound into business value over time.</p>
       <p>A content strategy changes that. It is the plan that determines what content you create, for whom, through which channels, at what frequency, and toward what measurable goals. It connects every piece of content to a business outcome and ensures that effort invested in content today builds something durable rather than disappearing into the noise.</p>
-      <p>At Unified Platforms, we develop content strategies for businesses that want their content to work as a genuine growth channel, not just as a box to check on the marketing to-do list.</p>
+      <p>At GTM OS, we develop content strategies for businesses that want their content to work as a genuine growth channel, not just as a box to check on the marketing to-do list.</p>
 
       <h3>What a Content Strategy Actually Is</h3>
       <p>A content strategy is a documented plan that defines the purpose of your content, the audiences it serves, the topics and formats it will cover, the channels it will be distributed through, and the metrics that will determine whether it is working. It is the connective tissue between your business objectives and the day-to-day content production decisions your team makes.</p>
@@ -110,7 +110,7 @@ const newService = {
       <p>Content strategy performance is measured across multiple timeframes. In the short term, we track publishing cadence adherence, content quality metrics, and early engagement signals. Over the medium term, we measure organic traffic growth, keyword ranking improvements, lead generation from content, and email subscriber growth. Over the longer term, we evaluate revenue attribution, customer lifetime value differences between content-acquired and other customers, and brand authority signals like share of voice and unsolicited media mentions.</p>
       <p>Quarterly strategy reviews assess whether the direction is producing the expected results and whether any adjustments are needed based on performance data or market changes.</p>
 
-      <p>Ready to give your content a direction that drives real business outcomes? Contact Unified Platforms to start your content strategy engagement.</p>
+      <p>Ready to give your content a direction that drives real business outcomes? Contact GTM OS to start your content strategy engagement.</p>
     `
 };
 
