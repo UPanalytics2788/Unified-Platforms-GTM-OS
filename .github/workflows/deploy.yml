@@ -1,0 +1,26 @@
+name: Deploy to Hostinger VPS
+
+on:
+  push:
+    branches: [ main ] # Or your primary branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: 22
+          script: |
+            cd /var/www/your-project-folder
+            git pull origin main
+            npm install
+            npm run build
+            pm2 restart all # Or your specific app name
