@@ -10,7 +10,7 @@ interface LeadFormProps {
   title?: string;
 }
 
-export default function LeadForm({ source = 'direct', campaign = 'none', title = 'Get a Free Audit' }: LeadFormProps) {
+export default function LeadForm({ source = 'direct', campaign = 'none', title = 'Book Consultation' }: LeadFormProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',

@@ -77,10 +77,10 @@ export default function ServiceDetail() {
             </p>
             <div className="flex flex-wrap gap-4">
               <a href="#contact" className="px-8 py-4 bg-brand-primary text-white font-bold rounded-xl hover:bg-brand-primary/90 transition-all shadow-lg shadow-brand-primary/20 flex items-center gap-2">
-                {service.primary_cta_text || 'Get Started'} <ArrowRight size={20} />
+                {service.primary_cta_text || 'Book Consultation'} <ArrowRight size={20} />
               </a>
               <a href="#contact" className="px-8 py-4 bg-white/10 text-white font-bold rounded-xl hover:bg-white/20 transition-all backdrop-blur-sm">
-                {service.secondary_cta_text || 'Get Free Audit'}
+                Request Proposal
               </a>
             </div>
           </div>
@@ -204,7 +204,7 @@ export default function ServiceDetail() {
               </div>
             </div>
             <div className="bg-brand-white p-8 rounded-3xl text-brand-dark">
-              <h3 className="text-2xl font-bold mb-6">Get a Free Audit</h3>
+              <h3 className="text-2xl font-bold mb-6">Book Your Consultation</h3>
               <LeadForm source="service_contact_section" campaign={service.slug} />
             </div>
           </div>

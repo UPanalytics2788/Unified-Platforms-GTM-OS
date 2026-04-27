@@ -143,9 +143,9 @@ export default function Navbar({ user }: NavbarProps) {
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
               {settings?.logoUrl ? (
-                <img src={settings.logoUrl} alt="Logo" className="h-[58px] w-auto object-contain" />
+                <img src={settings.logoUrl} alt="GTM OS" className="h-[58px] w-auto object-contain" />
               ) : (
-                <img src="/logo.png" alt="Logo" className="h-[58px] w-auto object-contain" />
+                <img src="/logo.png" alt="GTM OS" className="h-[58px] w-auto object-contain" />
               )}
             </Link>
           </div>
@@ -236,18 +236,6 @@ export default function Navbar({ user }: NavbarProps) {
 
           {/* CTAs & Profile */}
           <div className="hidden lg:flex items-center space-x-4">
-            <button
-              onClick={() => setIsSearchOpen(true)}
-              className="p-2 text-brand-gray hover:text-brand-primary transition-colors bg-brand-gray/5 hover:bg-brand-gray/10 rounded-full"
-            >
-              <Search size={20} />
-            </button>
-            <Link
-              to="/contact?type=audit"
-              className="text-sm font-semibold text-brand-gray hover:text-brand-primary transition-colors"
-            >
-              Get Free Audit
-            </Link>
             <Link
               to="/contact?type=consultation"
               className="px-5 py-2.5 bg-brand-primary text-brand-white text-sm font-bold rounded-xl hover:bg-brand-dark transition-all shadow-sm"
@@ -293,12 +281,6 @@ export default function Navbar({ user }: NavbarProps) {
 
           {/* Mobile menu button */}
           <div className="lg:hidden flex items-center gap-2">
-            <button
-              onClick={() => setIsSearchOpen(true)}
-              className="p-2 text-brand-gray hover:text-brand-dark focus:outline-none bg-brand-gray/10 rounded-lg"
-            >
-              <Search size={24} />
-            </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 text-brand-gray hover:text-brand-dark focus:outline-none bg-brand-gray/10 rounded-lg"
@@ -371,13 +353,6 @@ export default function Navbar({ user }: NavbarProps) {
                 </button>
               ) : (
                 <>
-                  <Link
-                    to="/contact?type=audit"
-                    onClick={() => setIsOpen(false)}
-                    className="block w-full text-center py-3.5 text-brand-gray font-bold border border-brand-dark/10 rounded-xl"
-                  >
-                    Get Free Audit
-                  </Link>
                   <Link
                     to="/contact?type=consultation"
                     onClick={() => setIsOpen(false)}

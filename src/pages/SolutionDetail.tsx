@@ -72,8 +72,8 @@ export default function SolutionDetail() {
               <a href="#contact" className="px-8 py-4 bg-brand-primary text-brand-white font-bold rounded-xl hover:bg-brand-primary/90 transition-all">
                 {solution.primary_cta_text || 'Book Consultation'}
               </a>
-              <a href="#audit" className="px-8 py-4 bg-brand-white text-brand-dark font-bold rounded-xl border border-brand-dark/10 hover:bg-brand-dark/5 transition-all">
-                {solution.secondary_cta_text || 'Get Free Audit'}
+              <a href="#contact" className="px-8 py-4 bg-brand-white text-brand-dark font-bold rounded-xl border border-brand-dark/10 hover:bg-brand-dark/5 transition-all">
+                {solution.secondary_cta_text || 'Request Proposal'}
               </a>
             </div>
           </div>
@@ -212,11 +212,17 @@ export default function SolutionDetail() {
             Join the leading enterprises that have optimized their GTM OS for predictable growth.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="px-10 py-4 bg-brand-dark text-brand-white font-bold rounded-xl hover:bg-brand-dark/90 transition-all">
+            <button 
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="px-10 py-4 bg-brand-dark text-brand-white font-bold rounded-xl hover:bg-brand-dark/90 transition-all"
+            >
               {solution.primary_cta_text || 'Book Consultation'}
             </button>
-            <button className="px-10 py-4 bg-brand-white text-brand-primary font-bold rounded-xl hover:bg-brand-white/90 transition-all">
-              {solution.secondary_cta_text || 'Get Free Audit'}
+            <button 
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="px-10 py-4 bg-brand-white text-brand-primary font-bold rounded-xl hover:bg-brand-white/90 transition-all"
+            >
+              Request Proposal
             </button>
           </div>
         </div>

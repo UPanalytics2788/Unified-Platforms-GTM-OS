@@ -139,11 +139,17 @@ export default function CaseStudyDetail() {
             Discover how our {study.industry} solutions can drive predictable growth for your enterprise.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="px-10 py-4 bg-brand-dark text-brand-white font-bold rounded-xl hover:bg-brand-dark/90 transition-all">
+            <button 
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="px-10 py-4 bg-brand-dark text-brand-white font-bold rounded-xl hover:bg-brand-dark/90 transition-all"
+            >
               Book Consultation
             </button>
-            <button className="px-10 py-4 bg-brand-white text-brand-primary font-bold rounded-xl hover:bg-brand-white/90 transition-all">
-              Get Free Audit
+            <button 
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="px-10 py-4 bg-brand-white text-brand-primary font-bold rounded-xl hover:bg-brand-white/90 transition-all"
+            >
+              Request Proposal
             </button>
           </div>
         </div>

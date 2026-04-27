@@ -131,7 +131,7 @@ export default function ChatBot() {
       case 'lead_capture_business':
         const finalData = { ...leadData, business: value, createdAt: serverTimestamp() };
         await addDoc(collection(db, 'leads'), finalData);
-        addMessage('assistant', "Perfect — this helps a lot.\nWe’ll review this and suggest a clear next step.", ["Book Consultation", "Get Free Audit"]);
+        addMessage('assistant', "Perfect — this helps a lot.\nWe’ll review this and suggest a clear next step.", ["Book Consultation"]);
         setState('completed');
         break;
     }
@@ -142,10 +142,6 @@ export default function ChatBot() {
     // CTA Actions
     if (option === 'Book Consultation') {
       window.open('https://calendar.google.com//YOUR-LINK', '_blank');
-      return;
-    }
-    if (option === 'Get Free Audit') {
-      navigate('/contact');
       return;
     }
     
@@ -175,7 +171,7 @@ export default function ChatBot() {
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             className="absolute bottom-20 right-0 w-96 bg-brand-white rounded-2xl shadow-2xl border border-brand-dark/10 overflow-hidden flex flex-col h-[500px]"
           >
-            <div className="p-4 bg-brand-primary text-brand-white font-bold">Unified Assistant</div>
+            <div className="p-4 bg-brand-primary text-brand-white font-bold">GTM OS Assistant</div>
             
             <div className="flex-grow p-4 overflow-y-auto space-y-4">
               {messages.map((m, i) => (
