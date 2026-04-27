@@ -59,7 +59,7 @@ export default function Login() {
           <div className="flex items-center justify-center mx-auto mb-6">
             <img src="/logo.png" alt="Logo" className="h-16 w-auto object-contain" />
           </div>
-          <h2 className="text-3xl font-bold text-brand-dark tracking-tight uppercase">GTM OS Portal</h2>
+          <h2 className="text-3xl font-bold text-brand-dark tracking-tight uppercase">Unified Platforms Portal</h2>
           <p className="text-brand-gray mt-2 font-medium">Secure Administrative Access</p>
         </div>
 

@@ -4,17 +4,17 @@ export const SOLUTIONS_CONTENT = [
     title: "Revenue Growth",
     slug: "revenue-growth",
     primary_keyword: "Revenue Growth Strategy",
-    meta_title: "Revenue Growth Strategy & Solutions | GTM OS",
-    meta_description: "Unlock predictable revenue growth with our comprehensive GTM operating system. We align sales, marketing, and success to drive sustainable enterprise growth.",
+    meta_title: "Revenue Growth Strategy & Solutions | Unified Platforms",
+    meta_description: "Unlock predictable revenue growth with our comprehensive Unified Platforms operating system. We align sales, marketing, and success to drive sustainable enterprise growth.",
     problem: "In today's volatile market, many enterprises find themselves trapped in a cycle of unpredictable revenue. Fragmented data, misaligned departments, and inefficient technology stacks create a 'leaky bucket' effect where growth is stalled despite high activity levels. Without a unified operating system, leadership lacks the visibility needed to make informed strategic pivots, leading to missed targets and wasted resources.",
-    approach: "Our Revenue Growth solution is built on the GTM OS framework, which integrates data, technology, and people into a single, high-performance engine. We don't just look at sales; we analyze the entire customer lifecycle to identify friction points and expansion opportunities. By implementing a data-driven culture and optimizing your revenue tech stack, we create a predictable path to sustainable growth.",
+    approach: "Our Revenue Growth solution is built on the Unified Platforms framework, which integrates data, technology, and people into a single, high-performance engine. We don't just look at sales; we analyze the entire customer lifecycle to identify friction points and expansion opportunities. By implementing a data-driven culture and optimizing your revenue tech stack, we create a predictable path to sustainable growth.",
     primary_cta_text: "Scale Your Revenue",
     secondary_cta_text: "Get Revenue Audit",
     services: ["SEO Strategy", "Performance Marketing", "Content Marketing", "Web Development"],
     faqs: [
       {
         question: "How long does it take to see results from a Revenue Growth strategy?",
-        answer: "While initial optimizations can yield quick wins within 30-60 days, a full GTM OS implementation typically shows significant revenue impact within 4-6 months as data alignment and process improvements begin to compound."
+        answer: "While initial optimizations can yield quick wins within 30-60 days, a full Unified Platforms implementation typically shows significant revenue impact within 4-6 months as data alignment and process improvements begin to compound."
       },
       {
         question: "Do you work with existing sales and marketing teams?",
@@ -22,7 +22,7 @@ export const SOLUTIONS_CONTENT = [
       },
       {
         question: "What industries do you specialize in for revenue growth?",
-        answer: "We have deep expertise in SaaS, Fintech, Ecommerce, and EdTech, but our GTM OS framework is designed to be adaptable to any enterprise with complex sales cycles or high-volume growth needs."
+        answer: "We have deep expertise in SaaS, Fintech, Ecommerce, and EdTech, but our Unified Platforms framework is designed to be adaptable to any enterprise with complex sales cycles or high-volume growth needs."
       },
       {
         question: "What is the difference between RevOps and traditional Sales Ops?",
@@ -33,13 +33,13 @@ export const SOLUTIONS_CONTENT = [
         answer: "We prioritize enterprise-grade security. Our integration process follows SOC2 and GDPR compliance standards, ensuring that your customer data is handled with the highest level of encryption and access control."
       },
       {
-        question: "Can GTM OS help with international market expansion?",
+        question: "Can Unified Platforms help with international market expansion?",
         answer: "Absolutely. Our framework includes modules for localized SEO, cultural messaging adaptation, and global compliance, making it the ideal operating system for companies scaling from domestic to international markets."
       }
     ],
     long_content: `
       <h2>The Foundation of Predictable Revenue Growth</h2>
-      <p>Revenue growth is not a happy accident; it is the result of a meticulously designed system. At GTM OS, we believe that the traditional silos of Sales, Marketing, and Customer Success are the primary inhibitors of enterprise growth. When these teams operate independently, they create fragmented customer experiences and inconsistent data streams. Our framework addresses these challenges by creating a unified revenue engine that is greater than the sum of its parts.</p>
+      <p>Revenue growth is not a happy accident; it is the result of a meticulously designed system. At Unified Platforms, we believe that the traditional silos of Sales, Marketing, and Customer Success are the primary inhibitors of enterprise growth. When these teams operate independently, they create fragmented customer experiences and inconsistent data streams. Our framework addresses these challenges by creating a unified revenue engine that is greater than the sum of its parts.</p>
       
       <h3>1. Data-Driven Alignment and the Single Source of Truth</h3>
       <p>The first step in our revenue growth strategy is establishing a 'Single Source of Truth'. We integrate your CRM, marketing automation, and customer success platforms to ensure every team is looking at the same metrics. This alignment allows for real-time adjustments and ensures that marketing efforts are directly contributing to sales pipeline quality. Without this foundation, any growth initiative is built on shaky ground. We perform deep-dive data audits to identify where information is being lost and implement robust tracking protocols that capture the entire customer journey from first touch to final expansion.</p>
@@ -54,11 +54,11 @@ export const SOLUTIONS_CONTENT = [
       <p>We use 'Predictive Analytics' to identify which customers are most likely to expand their relationship with you. By targeting these high-potential accounts with personalized offers and strategic outreach, we help you unlock 'Hidden Revenue' within your existing base. This shift from 'Acquisition-Only' to 'Full-Lifecycle' growth is what separates market leaders from the rest of the pack.</p>
       
       <h3>4. Continuous Optimization and the Culture of Testing</h3>
-      <p>The market is constantly evolving, and your GTM strategy should too. We implement a culture of testing and iteration. Whether it's optimizing your conversion rates (CRO) or refining your ideal customer profile (ICP), we use real-world data to continuously sharpen your competitive edge. Our agile approach to GTM allows us to pivot quickly based on market feedback, ensuring that your revenue engine remains efficient even as external conditions change. We set up 'Growth Sprints' that focus on high-impact experiments, allowing us to validate new channels and tactics with minimal risk.</p>
+      <p>The market is constantly evolving, and your Unified Platforms strategy should too. We implement a culture of testing and iteration. Whether it's optimizing your conversion rates (CRO) or refining your ideal customer profile (ICP), we use real-world data to continuously sharpen your competitive edge. Our agile approach to GTM allows us to pivot quickly based on market feedback, ensuring that your revenue engine remains efficient even as external conditions change. We set up 'Growth Sprints' that focus on high-impact experiments, allowing us to validate new channels and tactics with minimal risk.</p>
       <p>We use 'Multivariate Testing' to understand how different elements of your GTM strategy interact. It's not just about the headline or the CTA; it's about the entire 'Value Proposition' and how it's perceived by different segments of your market. By systematically testing every variable, we build a highly optimized revenue engine that is difficult for competitors to replicate.</p>
       
       <h3>5. Strategic Talent and Leadership Alignment</h3>
-      <p>A system is only as good as the people running it. We work with your leadership team to ensure that incentives are aligned across the entire revenue organization. This involves redefining KPIs to focus on shared outcomes rather than departmental metrics. We also provide training and support to help your teams adapt to the new GTM OS framework, ensuring long-term sustainability and internal buy-in. By fostering a culture of accountability and transparency, we help you build a world-class revenue organization that is capable of sustained high performance.</p>
+      <p>A system is only as good as the people running it. We work with your leadership team to ensure that incentives are aligned across the entire revenue organization. This involves redefining KPIs to focus on shared outcomes rather than departmental metrics. We also provide training and support to help your teams adapt to the new Unified Platforms framework, ensuring long-term sustainability and internal buy-in. By fostering a culture of accountability and transparency, we help you build a world-class revenue organization that is capable of sustained high performance.</p>
       <p>Leadership alignment is about more than just agreeing on goals; it's about 'Operational Harmony'. We facilitate regular 'Revenue Council' meetings where leaders from Sales, Marketing, and Success collaborate on strategic initiatives and resolve cross-functional friction. This ensures that the entire organization is pulling in the same direction, maximizing the impact of every resource.</p>
       
       <h3>6. Market Expansion and Global Scaling</h3>
@@ -66,8 +66,8 @@ export const SOLUTIONS_CONTENT = [
       <p>Global scaling requires a balance of central control and local autonomy. We help you build a 'Global GTM Playbook' that defines the core elements of your brand and process, while providing local teams with the flexibility to adapt to their specific market conditions. This ensures consistency in your brand promise while maximizing your relevance in every market you enter. We also address 'Global Compliance' and data residency requirements, ensuring your expansion is both successful and secure.</p>
       
       <h3>7. Revenue Intelligence and Predictive Forecasting</h3>
-      <p>In the final stage of maturity, the GTM OS provides predictive capabilities. By analyzing historical data and current pipeline trends, we help you move from 'rear-view' reporting to 'forward-looking' forecasting. This revenue intelligence allows you to see around corners, identifying potential shortfalls before they happen and doubling down on winning segments with confidence. We implement AI-driven tools that provide real-time insights into deal health, helping your sales managers focus their coaching where it will have the most impact.</p>
-      <p>Predictability is the ultimate goal of any revenue growth strategy. When you can accurately forecast your revenue 6-12 months out, you can make bolder investments in product, talent, and expansion. The GTM OS turns revenue from a source of anxiety into a source of competitive advantage. We use 'Monte Carlo Simulations' to model different growth scenarios, providing you with a range of possible outcomes and the probability of hitting your targets.</p>
+      <p>In the final stage of maturity, the Unified Platforms provides predictive capabilities. By analyzing historical data and current pipeline trends, we help you move from 'rear-view' reporting to 'forward-looking' forecasting. This revenue intelligence allows you to see around corners, identifying potential shortfalls before they happen and doubling down on winning segments with confidence. We implement AI-driven tools that provide real-time insights into deal health, helping your sales managers focus their coaching where it will have the most impact.</p>
+      <p>Predictability is the ultimate goal of any revenue growth strategy. When you can accurately forecast your revenue 6-12 months out, you can make bolder investments in product, talent, and expansion. The Unified Platforms turns revenue from a source of anxiety into a source of competitive advantage. We use 'Monte Carlo Simulations' to model different growth scenarios, providing you with a range of possible outcomes and the probability of hitting your targets.</p>
 
       <h3>8. Pricing Strategy and Value Capture</h3>
       <p>One of the most overlooked levers for revenue growth is pricing. We help you move from 'Cost-Plus' or 'Competitor-Based' pricing to 'Value-Based' pricing. By understanding the specific ROI your solution delivers to different customer segments, we help you capture more of the value you create. This involves analyzing price elasticity, testing different packaging models, and implementing dynamic pricing where appropriate. Small adjustments in pricing can have a massive impact on your bottom line without requiring any increase in sales volume.</p>
@@ -77,11 +77,11 @@ export const SOLUTIONS_CONTENT = [
       <p>Growth is impossible if you are losing customers as fast as you are acquiring them. We implement robust 'Churn Prevention' strategies that identify at-risk accounts before they leave. By analyzing usage patterns, support tickets, and engagement metrics, we create 'Early Warning Systems' that alert your success team to potential issues. We also focus on 'Net Revenue Retention' (NRR) as a primary metric, ensuring that your existing customer base is growing even without new acquisitions.</p>
       <p>We develop 'Customer Success Playbooks' that guide your team through the critical stages of the customer lifecycle—from onboarding to renewal. By ensuring that every customer achieves their desired outcomes, we build the loyalty and trust needed for long-term recurring revenue.</p>
 
-      <h3>10. The GTM OS Maturity Model</h3>
-      <p>Revenue growth is a journey, not a destination. We use our 'GTM OS Maturity Model' to assess your current state and define a clear path to excellence. Whether you are at the 'Ad-Hoc' stage or the 'Optimized' stage, we provide the specific roadmap and resources you need to move to the next level. This systematic approach ensures that you are always focused on the highest-impact initiatives, maximizing your ROI and accelerating your path to market leadership.</p>
+      <h3>10. The Unified Platforms Maturity Model</h3>
+      <p>Revenue growth is a journey, not a destination. We use our 'Unified Platforms Maturity Model' to assess your current state and define a clear path to excellence. Whether you are at the 'Ad-Hoc' stage or the 'Optimized' stage, we provide the specific roadmap and resources you need to move to the next level. This systematic approach ensures that you are always focused on the highest-impact initiatives, maximizing your ROI and accelerating your path to market leadership.</p>
       <p>Our maturity model covers five key dimensions: Data, Technology, Process, People, and Strategy. By achieving excellence in all five areas, you build a 'Resilient Revenue Engine' that is capable of sustained growth in any market condition. We provide regular 'Maturity Audits' to track your progress and ensure that your GTM strategy remains aligned with your evolving business goals.</p>
 
-      <p>By focusing on these ten pillars, we help enterprises move away from 'hero-based' growth to 'system-based' growth—where results are predictable, scalable, and sustainable. The GTM OS is not just a set of tactics; it is a fundamental shift in how businesses approach revenue, moving from fragmented activity to unified, data-driven performance. We help you build the foundation for long-term market dominance, ensuring that your brand is the definitive leader in your industry.</p>
+      <p>By focusing on these ten pillars, we help enterprises move away from 'hero-based' growth to 'system-based' growth—where results are predictable, scalable, and sustainable. The Unified Platforms is not just a set of tactics; it is a fundamental shift in how businesses approach revenue, moving from fragmented activity to unified, data-driven performance. We help you build the foundation for long-term market dominance, ensuring that your brand is the definitive leader in your industry.</p>
     `
   },
   {
@@ -89,7 +89,7 @@ export const SOLUTIONS_CONTENT = [
     title: "Lead Generation",
     slug: "lead-generation",
     primary_keyword: "B2B Lead Generation Services",
-    meta_title: "B2B Lead Generation Services | High-Quality Pipeline | GTM OS",
+    meta_title: "B2B Lead Generation Services | High-Quality Pipeline | Unified Platforms",
     meta_description: "Generate high-quality, sales-ready leads with our multi-channel lead generation strategies. We focus on pipeline quality over quantity to drive real business outcomes.",
     problem: "The biggest challenge in lead generation today isn't volume—it's quality. Many businesses are overwhelmed with low-intent leads that waste sales resources and never convert. This 'quantity over quality' approach leads to friction between marketing and sales, high customer acquisition costs (CAC), and a stagnant pipeline. Enterprises need a way to identify and engage high-intent prospects at the right moment in their buying journey.",
     approach: "Our Lead Generation solution focuses on 'Full-Funnel Intent'. We use a combination of SEO, performance marketing, and high-value content to attract prospects who are actively searching for solutions. By implementing sophisticated lead scoring and nurturing sequences, we ensure that only the most qualified leads reach your sales team, significantly increasing win rates and reducing sales cycle length.",
@@ -162,7 +162,7 @@ export const SOLUTIONS_CONTENT = [
       <p>The final step in the lead generation journey is the form fill. We use continuous A/B testing to optimize your lead forms and landing pages for maximum conversion. This includes testing different form lengths, field types, and CTA copy. By reducing friction at the point of conversion, we ensure that you capture as many high-intent leads as possible from your existing traffic. We also use 'Progressive Profiling' to gather more information about a prospect over time, rather than asking for everything in the first interaction.</p>
       <p>We focus on 'Trust Signals'—such as security badges, client logos, and testimonials—placed strategically near your forms to reduce anxiety and increase the likelihood of a conversion. Every detail matters when it comes to capturing the information of a busy enterprise executive.</p>
 
-      <p>Our goal is to create a seamless bridge between marketing activity and sales success, turning your lead generation efforts into a predictable source of high-quality pipeline. With GTM OS, lead generation is no longer a guessing game; it is a strategic, data-driven discipline that drives real business outcomes. We help you build a pipeline that is not just full, but also highly qualified and ready to convert into revenue.</p>
+      <p>Our goal is to create a seamless bridge between marketing activity and sales success, turning your lead generation efforts into a predictable source of high-quality pipeline. With Unified Platforms, lead generation is no longer a guessing game; it is a strategic, data-driven discipline that drives real business outcomes. We help you build a pipeline that is not just full, but also highly qualified and ready to convert into revenue.</p>
     `
   },
   {
@@ -170,7 +170,7 @@ export const SOLUTIONS_CONTENT = [
     title: "Customer Acquisition",
     slug: "customer-acquisition",
     primary_keyword: "Customer Acquisition Strategy",
-    meta_title: "Customer Acquisition Strategy | Scale Your Business | GTM OS",
+    meta_title: "Customer Acquisition Strategy | Scale Your Business | Unified Platforms",
     meta_description: "Acquire high-value customers at scale with our data-driven acquisition strategies. We optimize CAC and LTV to drive sustainable business growth.",
     problem: "Acquiring customers in a crowded market is increasingly expensive and complex. Rising ad costs, changing privacy regulations, and fragmented consumer behavior make it difficult to maintain a healthy Customer Acquisition Cost (CAC) to Lifetime Value (LTV) ratio. Many businesses struggle to find a scalable acquisition engine that doesn't rely solely on increasing ad spend.",
     approach: "Our Customer Acquisition solution is built on a multi-channel, data-first approach. We identify your most profitable customer segments and create tailored acquisition paths for each. By combining performance marketing with organic growth strategies and conversion optimization, we help you acquire high-value customers more efficiently and sustainably.",
@@ -243,7 +243,7 @@ export const SOLUTIONS_CONTENT = [
       <p>For businesses looking to expand internationally, we provide 'Global Scaling' strategies that include localization of your ads, landing pages, and content. We understand the nuances of different markets and help you navigate the cultural and regulatory challenges of international acquisition. By tailoring your message to each specific region, we ensure that your brand resonates with local audiences and drives meaningful growth on a global scale.</p>
       <p>We use 'Local Market Research' to understand the unique competitive landscape and consumer behavior in each region. This data-driven approach ensures that your international expansion is as efficient and successful as your domestic efforts.</p>
 
-      <p>By focusing on these strategic pillars, we help you build an acquisition engine that is not just scalable, but also sustainable and profitable. With GTM OS, customer acquisition becomes a strategic advantage that drives long-term enterprise value. We help you move from 'Buying Traffic' to 'Building a Customer Base' that fuels your long-term success.</p>
+      <p>By focusing on these strategic pillars, we help you build an acquisition engine that is not just scalable, but also sustainable and profitable. With Unified Platforms, customer acquisition becomes a strategic advantage that drives long-term enterprise value. We help you move from 'Buying Traffic' to 'Building a Customer Base' that fuels your long-term success.</p>
     `
   },
   {
@@ -251,7 +251,7 @@ export const SOLUTIONS_CONTENT = [
     title: "Conversion Rate Optimization",
     slug: "conversion-rate-optimization",
     primary_keyword: "Conversion Rate Optimization Services",
-    meta_title: "Conversion Rate Optimization (CRO) Services | GTM OS",
+    meta_title: "Conversion Rate Optimization (CRO) Services | Unified Platforms",
     meta_description: "Maximize your website's revenue potential with our data-driven CRO services. We use user research and A/B testing to turn more visitors into customers.",
     problem: "Driving traffic is only half the battle. If your website isn't converting that traffic into leads or sales, you're leaving money on the table. Many businesses suffer from 'leaky funnels' where high-intent visitors drop off due to poor user experience, confusing messaging, or technical friction. This inefficiency increases your CAC and limits your overall growth potential.",
     approach: "Our CRO solution is a scientific process of continuous improvement. We use a combination of quantitative data (analytics, heatmaps) and qualitative research (user testing, surveys) to identify friction points in your customer journey. By developing and testing hypotheses, we systematically eliminate barriers to conversion and maximize the revenue potential of every visitor.",
@@ -332,7 +332,7 @@ export const SOLUTIONS_CONTENT = [
     title: "Ecommerce Scaling",
     slug: "ecommerce-scaling",
     primary_keyword: "Ecommerce Scaling Strategy",
-    meta_title: "Ecommerce Scaling & Growth Strategy | GTM OS",
+    meta_title: "Ecommerce Scaling & Growth Strategy | Unified Platforms",
     meta_description: "Scale your ecommerce brand to 8 and 9 figures with our proven growth framework. We optimize every stage of the customer journey for maximum profitability.",
     problem: "Scaling an ecommerce brand beyond the initial growth phase is incredibly challenging. Many brands hit a 'revenue ceiling' where acquisition costs skyrocket, margins shrink, and operational complexity becomes unmanageable. Without a systematic approach to scaling, growth becomes unpredictable and unsustainable.",
     approach: "Our Ecommerce Scaling solution is a holistic framework that addresses every lever of growth: acquisition, conversion, retention, and operations. We use data-driven insights to identify your most profitable products and customer segments, then implement automated systems to scale your revenue while maintaining healthy margins.",
@@ -405,7 +405,7 @@ export const SOLUTIONS_CONTENT = [
       <p>Whether you're looking to sell your business or just build a long-term powerhouse, we help you focus on 'Exit Readiness'. This involves building a business that is not just profitable, but also highly attractive to potential acquirers. We focus on 'Enterprise Value'—the total value of your business, including its brand, systems, and customer base. By building a business that is systematic, scalable, and sustainable, we help you maximize your long-term return on investment.</p>
       <p>We help you document your processes, clean up your data, and build a strong management team that can operate the business without you. This 'System-Based' approach to scaling ensures that your business is a valuable asset that can be sold or passed on to future generations.</p>
 
-      <p>With GTM OS, ecommerce scaling is no longer a chaotic process; it is a strategic, data-driven journey toward market leadership. We provide the expertise and the systems you need to turn your brand into a global powerhouse. We help you build a business that is not just big, but also incredibly resilient, profitable, and valuable.</p>
+      <p>With Unified Platforms, ecommerce scaling is no longer a chaotic process; it is a strategic, data-driven journey toward market leadership. We provide the expertise and the systems you need to turn your brand into a global powerhouse. We help you build a business that is not just big, but also incredibly resilient, profitable, and valuable.</p>
     `
   },
   {
@@ -413,7 +413,7 @@ export const SOLUTIONS_CONTENT = [
     title: "Brand Building",
     slug: "brand-building",
     primary_keyword: "Brand Building Strategy",
-    meta_title: "Brand Building & Identity Strategy | GTM OS",
+    meta_title: "Brand Building & Identity Strategy | Unified Platforms",
     meta_description: "Build a powerful, recognizable brand that resonates with your target audience. We combine storytelling with data to create lasting brand equity.",
     problem: "In a crowded market, being 'just another option' is a recipe for stagnation. Many businesses struggle to differentiate themselves, leading to price wars and low customer loyalty. Without a strong, cohesive brand identity, your marketing efforts lack the 'halo effect' that drives efficient acquisition and long-term retention.",
     approach: "Our Brand Building solution focuses on creating a distinct, emotionally resonant identity for your business. We move beyond logos and colors to define your brand's voice, values, and unique value proposition. By integrating your brand story into every touchpoint, we help you build the trust and recognition needed to dominate your category.",
@@ -444,7 +444,7 @@ export const SOLUTIONS_CONTENT = [
     title: "Market Entry Strategy",
     slug: "market-entry-strategy",
     primary_keyword: "Market Entry Strategy",
-    meta_title: "Market Entry & Expansion Strategy | GTM OS",
+    meta_title: "Market Entry & Expansion Strategy | Unified Platforms",
     meta_description: "Scale your business into new territories with confidence. Our market entry strategy provides the data and roadmap needed for successful expansion.",
     problem: "Expanding into a new market is high-risk and high-reward. Many companies fail because they don't account for local nuances, competitive landscapes, or regulatory challenges. Without a clear, data-backed entry strategy, you risk wasting significant resources on a market that isn't ready for your solution.",
     approach: "We provide a comprehensive roadmap for successful market expansion. Our approach includes deep-dive market research, competitive analysis, and localized GTM planning. We help you identify the best entry points, adapt your messaging for cultural relevance, and build the local partnerships needed for sustained growth.",
@@ -475,7 +475,7 @@ export const SOLUTIONS_CONTENT = [
     title: "Retention & Lifecycle Marketing",
     slug: "retention-lifecycle",
     primary_keyword: "Retention Marketing Strategy",
-    meta_title: "Retention & Lifecycle Marketing | Maximize LTV | GTM OS",
+    meta_title: "Retention & Lifecycle Marketing | Maximize LTV | Unified Platforms",
     meta_description: "Turn one-time buyers into lifelong advocates. Our retention strategy focuses on maximizing customer lifetime value through personalized lifecycle marketing.",
     problem: "Acquiring a new customer is 5-25x more expensive than retaining an existing one. Yet, many businesses focus solely on acquisition, leading to a 'leaky bucket' where growth is stalled by high churn. Without a systematic approach to retention, you're leaving your most profitable revenue on the table.",
     approach: "Our Retention & Lifecycle solution focuses on the post-purchase experience. We use data-driven triggers to deliver the right message at the right time—from onboarding and nurture to win-back and expansion. By increasing purchase frequency and CLV, we help you build a more resilient and profitable business model.",
@@ -506,7 +506,7 @@ export const SOLUTIONS_CONTENT = [
     title: "Talent & Hiring Solutions",
     slug: "talent-hiring",
     primary_keyword: "Talent Acquisition Strategy",
-    meta_title: "Talent & Hiring Solutions | Build Your Growth Team | GTM OS",
+    meta_title: "Talent & Hiring Solutions | Build Your Growth Team | Unified Platforms",
     meta_description: "Scale your team with the right talent. Our hiring solutions help you find, attract, and retain the experts needed to execute your growth strategy.",
     problem: "A growth strategy is only as good as the team executing it. Many enterprises struggle to find and attract the specialized talent needed for modern marketing and sales. Inefficient hiring processes and a lack of employer branding lead to long time-to-hire and high turnover, stalling your growth initiatives.",
     approach: "We help you build a world-class growth organization. Our Talent & Hiring solution includes employer branding, strategic sourcing, and process optimization. We don't just find candidates; we help you build an environment where top talent wants to work and can thrive, ensuring your growth engine is powered by the best in the industry.",
@@ -541,7 +541,7 @@ export const SERVICES_CONTENT = [
     slug: "seo-strategy",
     category: "Search & Organic",
     primary_keyword: "B2B SEO Strategy",
-    meta_title: "SEO Strategy Services | GTM OS",
+    meta_title: "SEO Strategy Services | Unified Platforms",
     meta_description: "Expert seo strategy services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert seo strategy services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -575,7 +575,7 @@ export const SERVICES_CONTENT = [
     slug: "technical-seo",
     category: "Search & Organic",
     primary_keyword: "B2B Technical SEO",
-    meta_title: "Technical SEO Services | GTM OS",
+    meta_title: "Technical SEO Services | Unified Platforms",
     meta_description: "Expert technical seo services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert technical seo services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -609,7 +609,7 @@ export const SERVICES_CONTENT = [
     slug: "content-seo",
     category: "Search & Organic",
     primary_keyword: "B2B Content SEO",
-    meta_title: "Content SEO Services | GTM OS",
+    meta_title: "Content SEO Services | Unified Platforms",
     meta_description: "Expert content seo services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert content seo services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -643,7 +643,7 @@ export const SERVICES_CONTENT = [
     slug: "authority-building",
     category: "Search & Organic",
     primary_keyword: "B2B Authority Building",
-    meta_title: "Authority Building Services | GTM OS",
+    meta_title: "Authority Building Services | Unified Platforms",
     meta_description: "Expert authority building services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert authority building services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -677,7 +677,7 @@ export const SERVICES_CONTENT = [
     slug: "local-seo",
     category: "Search & Organic",
     primary_keyword: "B2B Local SEO",
-    meta_title: "Local SEO Services | GTM OS",
+    meta_title: "Local SEO Services | Unified Platforms",
     meta_description: "Expert local seo services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert local seo services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -711,7 +711,7 @@ export const SERVICES_CONTENT = [
     slug: "aeo-geo",
     category: "Search & Organic",
     primary_keyword: "Enterprise AEO & GEO Solutions",
-    meta_title: "AEO & GEO Services | Answer Engine Optimization | GTM OS",
+    meta_title: "AEO & GEO Services | Answer Engine Optimization | Unified Platforms",
     meta_description: "Expert AEO & GEO services to secure your brand's presence in AI search results. We optimize for LLM citations and generative engine visibility.",
     description: "Engineering brand visibility for the next era of search. We optimize your technical architecture and semantic network to ensure citation priority in AI-driven answer engines.",
     primary_cta_text: "Engine Your AI Presence",
@@ -735,7 +735,7 @@ export const SERVICES_CONTENT = [
       <h2>Architectural AEO & GEO for the Enterprise</h2>
       <p>Search is no longer just about ranking; it's about becoming the definitive answer. As search engines transition into Answer Engines, brands must adapt their technical and content architecture to be digestible by Large Language Models (LLMs).</p>
       <p>We provide the engineering layer that bridges traditional SEO with modern Generative Engine Optimization (GEO). This involves absolute precision in structured data, entity-relationship mapping, and topical velocity.</p>
-      <h3>The GTM-OS Approach to AI Search</h3>
+      <h3>The Unified Platforms Approach to AI Search</h3>
       <p>Traditional SEO is insufficient for RAG (Retrieval-Augmented Generation) systems. Our framework ensures your brand's core data is prioritized during the retrieval phase of generative answers. We focus on factual density and definitional clarity that LLMs require for authoritative citation.</p>
       <p>By implementing high-density schema and pruning technical debt that confuses scrapers, we build a resilient presence that withstands the volatility of AI model updates.</p>
     `
@@ -746,7 +746,7 @@ export const SERVICES_CONTENT = [
     slug: "paid-search",
     category: "Performance Marketing",
     primary_keyword: "B2B Paid Search",
-    meta_title: "Paid Search Services | GTM OS",
+    meta_title: "Paid Search Services | Unified Platforms",
     meta_description: "Expert paid search services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert paid search services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -780,7 +780,7 @@ export const SERVICES_CONTENT = [
     slug: "paid-social",
     category: "Performance Marketing",
     primary_keyword: "B2B Paid Social",
-    meta_title: "Paid Social Services | GTM OS",
+    meta_title: "Paid Social Services | Unified Platforms",
     meta_description: "Expert paid social services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert paid social services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -814,7 +814,7 @@ export const SERVICES_CONTENT = [
     slug: "marketplace-ads",
     category: "Performance Marketing",
     primary_keyword: "B2B Marketplace Ads",
-    meta_title: "Marketplace Ads Services | GTM OS",
+    meta_title: "Marketplace Ads Services | Unified Platforms",
     meta_description: "Expert marketplace ads services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert marketplace ads services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -848,7 +848,7 @@ export const SERVICES_CONTENT = [
     slug: "cro",
     category: "Performance Marketing",
     primary_keyword: "B2B Conversion Rate Optimization",
-    meta_title: "Conversion Rate Optimization Services | GTM OS",
+    meta_title: "Conversion Rate Optimization Services | Unified Platforms",
     meta_description: "Expert conversion rate optimization services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert conversion rate optimization services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -882,7 +882,7 @@ export const SERVICES_CONTENT = [
     slug: "content-strategy",
     category: "Content & Media",
     primary_keyword: "B2B Content Strategy",
-    meta_title: "Content Strategy Services | GTM OS",
+    meta_title: "Content Strategy Services | Unified Platforms",
     meta_description: "Expert content strategy services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert content strategy services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -916,7 +916,7 @@ export const SERVICES_CONTENT = [
     slug: "content-creation",
     category: "Content & Media",
     primary_keyword: "B2B Content Creation",
-    meta_title: "Content Creation Services | GTM OS",
+    meta_title: "Content Creation Services | Unified Platforms",
     meta_description: "Expert content creation services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert content creation services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -950,7 +950,7 @@ export const SERVICES_CONTENT = [
     slug: "social-media",
     category: "Content & Media",
     primary_keyword: "B2B Social Media",
-    meta_title: "Social Media Services | GTM OS",
+    meta_title: "Social Media Services | Unified Platforms",
     meta_description: "Expert social media services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert social media services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -984,7 +984,7 @@ export const SERVICES_CONTENT = [
     slug: "email-marketing",
     category: "Content & Media",
     primary_keyword: "B2B Email Marketing",
-    meta_title: "Email Marketing Services | GTM OS",
+    meta_title: "Email Marketing Services | Unified Platforms",
     meta_description: "Expert email marketing services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert email marketing services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -1018,7 +1018,7 @@ export const SERVICES_CONTENT = [
     slug: "copywriting",
     category: "Content & Media",
     primary_keyword: "B2B Copywriting",
-    meta_title: "Copywriting Services | GTM OS",
+    meta_title: "Copywriting Services | Unified Platforms",
     meta_description: "Expert copywriting services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert copywriting services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -1052,7 +1052,7 @@ export const SERVICES_CONTENT = [
     slug: "website-development",
     category: "Development",
     primary_keyword: "B2B Website Development",
-    meta_title: "Website Development Services | GTM OS",
+    meta_title: "Website Development Services | Unified Platforms",
     meta_description: "Expert website development services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert website development services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -1086,7 +1086,7 @@ export const SERVICES_CONTENT = [
     slug: "web-apps",
     category: "Development",
     primary_keyword: "B2B Web App Development",
-    meta_title: "Web App Development Services | GTM OS",
+    meta_title: "Web App Development Services | Unified Platforms",
     meta_description: "Expert web app development services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert web app development services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -1120,7 +1120,7 @@ export const SERVICES_CONTENT = [
     slug: "cms-development",
     category: "Development",
     primary_keyword: "B2B CMS Development",
-    meta_title: "CMS Development Services | GTM OS",
+    meta_title: "CMS Development Services | Unified Platforms",
     meta_description: "Expert cms development services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert cms development services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -1154,7 +1154,7 @@ export const SERVICES_CONTENT = [
     slug: "api-integrations",
     category: "Development",
     primary_keyword: "B2B API Integrations",
-    meta_title: "API Integrations Services | GTM OS",
+    meta_title: "API Integrations Services | Unified Platforms",
     meta_description: "Expert api integrations services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert api integrations services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -1188,7 +1188,7 @@ export const SERVICES_CONTENT = [
     slug: "recruitment",
     category: "Talent & HR",
     primary_keyword: "B2B Recruitment",
-    meta_title: "Recruitment Services | GTM OS",
+    meta_title: "Recruitment Services | Unified Platforms",
     meta_description: "Expert recruitment services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert recruitment services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -1222,7 +1222,7 @@ export const SERVICES_CONTENT = [
     slug: "executive-search",
     category: "Talent & HR",
     primary_keyword: "B2B Executive Search",
-    meta_title: "Executive Search Services | GTM OS",
+    meta_title: "Executive Search Services | Unified Platforms",
     meta_description: "Expert executive search services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert executive search services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -1256,7 +1256,7 @@ export const SERVICES_CONTENT = [
     slug: "rpo",
     category: "Talent & HR",
     primary_keyword: "B2B RPO Services",
-    meta_title: "RPO Services Services | GTM OS",
+    meta_title: "RPO Services Services | Unified Platforms",
     meta_description: "Expert rpo services services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert rpo services services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",
@@ -1290,7 +1290,7 @@ export const SERVICES_CONTENT = [
     slug: "hr-consulting",
     category: "Talent & HR",
     primary_keyword: "B2B HR Consulting",
-    meta_title: "HR Consulting Services | GTM OS",
+    meta_title: "HR Consulting Services | Unified Platforms",
     meta_description: "Expert hr consulting services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
     description: "Expert hr consulting services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
     primary_cta_text: "Get a Strategy Assessment",

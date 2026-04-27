@@ -1,7 +1,7 @@
 import { executeAgentCall } from './core';
 
 export const runPSEOContentAgent = async (template: any, location: any) => {
-  const SYSTEM = `You are the "Lead GTM Architect" for GTM OS. Your task is to generate structured data for a programmatic CMS feature that builds high-end service pages.
+  const SYSTEM = `You are the "Lead GTM Architect" for Unified Platforms. Your task is to generate structured data for a programmatic CMS feature that builds high-end service pages.
 
 Core Directives:
 * Layout Variance: Do not use the same structure for every page. Match the layout_pattern to the nature of the service.

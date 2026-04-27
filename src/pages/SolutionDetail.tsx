@@ -46,7 +46,7 @@ export default function SolutionDetail() {
   return (
     <div className="bg-brand-white min-h-screen">
       <Helmet>
-        <title>{solution.meta_title || `${solution.title} | GTM OS`}</title>
+        <title>{solution.meta_title || `${solution.title} | Unified Platforms`}</title>
         <meta name="description" content={solution.meta_description || solution.problem} />
         {solution.primary_keyword && <meta name="keywords" content={solution.primary_keyword} />}
       </Helmet>
@@ -209,7 +209,7 @@ export default function SolutionDetail() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold mb-6">Start Your Transformation Today</h2>
           <p className="text-xl text-brand-white/80 mb-10">
-            Join the leading enterprises that have optimized their GTM OS for predictable growth.
+            Join the leading enterprises that have optimized their Growth OS for predictable growth.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <button 

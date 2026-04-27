@@ -85,7 +85,7 @@ export default function PaidSearch() {
   return (
     <ServiceLayout
       title="Performance Paid Search"
-      metaTitle={pageData?.meta_title || "Sales Velocity Paid Search | ROI-Focused PPC | GTM OS"}
+      metaTitle={pageData?.meta_title || "Sales Velocity Paid Search | ROI-Focused PPC | Unified Platforms"}
       metaDescription={pageData?.meta_description || "Maximize your ROAS with expert Paid Search management. From Google Ads to Bing, we build high-converting search campaigns that drive sales velocity."}
       heroTitle={pageData?.h1 || "Paid Search That Turns Ad Spend Into Revenue"}
       heroSubtitle={pageData?.description || "Stop wasting budget on clicks that don't convert. We build and manage high-performance Google Ads campaigns that capture intent and drive measurable business growth."}
@@ -112,7 +112,7 @@ export default function PaidSearch() {
                 Most businesses running Google Ads are leaving significant money on the table. They are bidding on broad keywords that attract the wrong audience and running ad copy that does not speak to buying intent.
               </p>
               <p className="text-lg text-brand-gray leading-relaxed font-light">
-                At GTM OS, we apply a high-performance framework to your paid search—focusing on ROAS, Sales Velocity, and conversion funnels that convert cold traffic into revenue.
+                At Unified Platforms, we apply a high-performance framework to your paid search—focusing on ROAS, Sales Velocity, and conversion funnels that convert cold traffic into revenue.
               </p>
             </div>
             <div className="bg-brand-dark p-10 rounded-3xl text-white shadow-2xl">

@@ -86,7 +86,7 @@ export default function PaidSocial() {
   return (
     <div className="bg-white min-h-screen">
       <SEO 
-        title={pageData?.meta_title || "Paid Social Advertising | Performance Media | GTM OS"}
+        title={pageData?.meta_title || "Paid Social Advertising | Performance Media | Unified Platforms"}
         description={pageData?.meta_description || "Scale your brand with precision-targeted Paid Social campaigns. Expert management of Meta, LinkedIn, and TikTok ads designed for maximum conversion."}
       />
       
@@ -163,7 +163,7 @@ export default function PaidSocial() {
                 Social media platforms offer the most sophisticated targeting systems ever created. But reaching the right people is only half the battle. Business results happen when campaigns are structured intelligently and creative is built to stop the scroll.
               </p>
               <p className="text-lg text-brand-gray leading-relaxed">
-                At GTM OS, we don't optimize for vanity metrics like impressions or engagement. We build programs around lead generation, direct sales, and pipeline acceleration.
+                At Unified Platforms, we don't optimize for vanity metrics like impressions or engagement. We build programs around lead generation, direct sales, and pipeline acceleration.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-4">

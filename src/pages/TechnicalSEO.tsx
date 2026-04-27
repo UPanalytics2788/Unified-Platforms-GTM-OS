@@ -84,8 +84,8 @@ export default function TechnicalSEO() {
   return (
     <ServiceLayout
       title="Technical SEO Engineering"
-      metaTitle={pageData?.meta_title || "Technical SEO Audits & Implementation | GTM OS"}
-      metaDescription={pageData?.meta_description || "Fix the technical foundations holding your website back. GTM OS delivers enterprise-grade technical SEO audits, site speed optimization, and schema engineering."}
+      metaTitle={pageData?.meta_title || "Technical SEO Audits & Implementation | Unified Platforms"}
+      metaDescription={pageData?.meta_description || "Fix the technical foundations holding your website back. Unified Platforms delivers enterprise-grade technical SEO audits, site speed optimization, and schema engineering."}
       heroTitle={pageData?.h1 || "Technical SEO That Fixes What Search Engines Cannot Ignore"}
       heroSubtitle={pageData?.description || "Technical SEO is the infrastructure layer of your digital presence. We don't just find problems; we engineer solutions that create the perfect conditions for organic growth."}
       heroImage="https://picsum.photos/seed/tech-seo/800/600"
@@ -108,7 +108,7 @@ export default function TechnicalSEO() {
             <div>
               <h2 className="text-4xl font-bold text-brand-dark mb-6 tracking-tight uppercase">Engineering-Led Approach</h2>
               <p className="text-lg text-brand-gray leading-relaxed mb-6 font-light">
-                At GTM OS, we don't treat technical SEO as a checklist. We treat it as an engineering challenge. We analyze crawl budget, render-blocking resources, and data structure to build a foundation that search engines love.
+                At Unified Platforms, we don't treat technical SEO as a checklist. We treat it as an engineering challenge. We analyze crawl budget, render-blocking resources, and data structure to build a foundation that search engines love.
               </p>
               <div className="grid grid-cols-2 gap-4">
                 {['Log Analysis', 'Crawl Budget', 'JS Rendering', 'Schema Logic'].map((item) => (

@@ -69,8 +69,8 @@ export default function ContentStrategy() {
   return (
     <div className="bg-white min-h-screen">
       <SEO 
-        title={pageData?.meta_title || "Content Strategy Services | GTM OS"}
-        description={pageData?.meta_description || "Build a content strategy that aligns with your business goals, serves your audience, and drives measurable growth. GTM OS develops content strategies that work."}
+        title={pageData?.meta_title || "Content Strategy Services | Unified Platforms"}
+        description={pageData?.meta_description || "Build a content strategy that aligns with your business goals, serves your audience, and drives measurable growth. Unified Platforms develops content strategies that work."}
       />
       <SchemaMarkup type="Service" data={{
         title: pageData?.title || "Content Strategy Services",
@@ -253,7 +253,7 @@ export default function ContentStrategy() {
         />
         <div className="max-w-3xl mx-auto px-4 relative z-10">
           <h2 className="text-4xl font-bold mb-6">Ready to give your content a clear direction?</h2>
-          <p className="text-xl mb-8">Contact GTM OS to start building your content strategy.</p>
+          <p className="text-xl mb-8">Contact Unified Platforms to start building your content strategy.</p>
           <a href="/contact" className="inline-block px-8 py-4 bg-white text-brand-primary font-bold rounded-xl hover:bg-gray-100 transition-all">
             Contact Us
           </a>

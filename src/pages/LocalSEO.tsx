@@ -92,12 +92,12 @@ export default function LocalSEO() {
   return (
     <div className="bg-white min-h-screen">
       <SEO 
-        title={pageData?.meta_title || "Local SEO Services | Local Search & Map Pack Dominance | GTM OS"}
-        description={pageData?.meta_description || "Dominate local search and Google Maps with GTM OS. We optimize your local presence to drive high-intent traffic and customers to your physical and service area locations."}
+        title={pageData?.meta_title || "Local SEO Services | Local Search & Map Pack Dominance | Unified Platforms"}
+        description={pageData?.meta_description || "Dominate local search and Google Maps with Unified Platforms. We optimize your local presence to drive high-intent traffic and customers to your physical and service area locations."}
       />
       <SchemaMarkup type="Service" data={{
         title: pageData?.title || "Local SEO Services",
-        description: pageData?.description || "Dominate local search results and Google Maps with GTM OS. We help businesses rank for high-intent local searches that bring customers through the door."
+        description: pageData?.description || "Dominate local search results and Google Maps with Unified Platforms. We help businesses rank for high-intent local searches that bring customers through the door."
       }} />
       <SchemaMarkup type="FAQPage" data={{ faqs }} />
       
@@ -174,7 +174,7 @@ export default function LocalSEO() {
                 Being a well-run business with a good website is not enough to get there. Local search has its own set of ranking factors, and businesses that understand and optimize for those factors dominate their markets while their competitors remain invisible.
               </p>
               <p className="text-lg text-brand-gray leading-relaxed">
-                At GTM OS, our local SEO service is built specifically for businesses that need to capture customers in defined geographic areas. Whether you operate from a single location or manage dozens of sites across multiple regions, we provide the strategy and execution needed to win in local search.
+                At Unified Platforms, our local SEO service is built specifically for businesses that need to capture customers in defined geographic areas. Whether you operate from a single location or manage dozens of sites across multiple regions, we provide the strategy and execution needed to win in local search.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-6">

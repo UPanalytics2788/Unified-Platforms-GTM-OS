@@ -171,7 +171,7 @@ export default function ChatBot() {
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             className="absolute bottom-20 right-0 w-96 bg-brand-white rounded-2xl shadow-2xl border border-brand-dark/10 overflow-hidden flex flex-col h-[500px]"
           >
-            <div className="p-4 bg-brand-primary text-brand-white font-bold">GTM OS Assistant</div>
+            <div className="p-4 bg-brand-primary text-brand-white font-bold">Unified Platforms Assistant</div>
             
             <div className="flex-grow p-4 overflow-y-auto space-y-4">
               {messages.map((m, i) => (

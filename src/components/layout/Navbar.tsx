@@ -143,9 +143,9 @@ export default function Navbar({ user }: NavbarProps) {
           <div className="flex items-center">
             <Link to="/" className="flex items-center group">
               {settings?.logoUrl ? (
-                <img src={settings.logoUrl} alt="GTM OS" className="h-[58px] w-auto object-contain" />
+                <img src={settings.logoUrl} alt="Unified Platforms" className="h-[58px] w-auto object-contain" />
               ) : (
-                <img src="/logo.png" alt="GTM OS" className="h-[58px] w-auto object-contain" />
+                <img src="/logo.png" alt="Unified Platforms" className="h-[58px] w-auto object-contain" />
               )}
             </Link>
           </div>

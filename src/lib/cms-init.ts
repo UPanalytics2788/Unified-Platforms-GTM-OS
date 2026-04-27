@@ -159,12 +159,12 @@ export const SEED_NAV = [
 export const SEED_AUTHORS = [
   {
     id: 'team',
-    name: 'GTM OS Team',
+    name: 'Unified Platforms Team',
     slug: 'team',
     title: 'Expert Growth Collective',
     credentials: ['GTM Strategy', 'Performance Media'],
-    bio: 'The GTM OS team is a group of seasoned digital marketing experts with decades of combined experience in scaling complex, global brands.',
-    linkedin: 'https://linkedin.com/company/gtm-os',
+    bio: 'The Unified Platforms team is a group of seasoned digital marketing experts with decades of combined experience in scaling complex, global brands.',
+    linkedin: 'https://linkedin.com/company/unifiedplatforms',
     avatar: 'https://picsum.photos/seed/team/200/200'
   }
 ];
@@ -212,7 +212,7 @@ export const SEED_INSIGHTS = [
     summary: "Discover the architectural approach to SEO that translates directly into revenue growth for your business.",
     author_id: 'team',
     content: "<p>SEO is not just about traffic; it is about revenue. In this article, we explore how to build a topical authority roadmap that aligns with your sales funnel. By focusing on intent-driven keywords and technical excellence, we help you capture high-value users at the moment they are ready to convert. Our approach involves a deep audit of your current stack, followed by a multi-phase implementation plan that covers technical debt, on-page optimization, and strategic link acquisition.</p><p>We have seen brands triple their organic revenue by simply restructuring their content around user journey pillars rather than raw volume stats. This shift in perspective is what separates high-end growth engineering from generic digital marketing.</p>",
-    meta_title: "How to Scale Revenue Using SEO | GTM OS",
+    meta_title: "How to Scale Revenue Using SEO | Unified Platforms",
     meta_description: "Learn the high-end SEO strategies used by leading brands to drive consistent organic revenue growth."
   },
   {
@@ -222,7 +222,7 @@ export const SEED_INSIGHTS = [
     summary: "The definitive guide to sales velocity and ROAS optimization in the AI-first marketing landscape.",
     author_id: 'team',
     content: "<p>The landscape of performance marketing is shifting rapidly towards AI-driven automation. To succeed in 2026, brands must focus on Sales Velocity and ACoS optimization through multi-channel attribution. This playbook outlines the exact frameworks we use to manage millions in monthly ad spend while maintaining peak efficiency. We cover everything from creative diversification on Paid Social to the granular auction dynamics of Marketplace Ads.</p><p>The key to winning in this environment is data density. By feeding accurate conversion signals back into the platforms, you allow AI bidding to find your best customers faster than manual optimizations ever could. This guide provides the technical steps to set up this feedback loop correctly.</p>",
-    meta_title: "Performance Marketing Playbook 2026 | GTM OS",
+    meta_title: "Performance Marketing Playbook 2026 | Unified Platforms",
     meta_description: "Unlock the growth frameworks needed to master performance marketing in the era of AI and automated bidding."
   },
   {
@@ -232,7 +232,7 @@ export const SEED_INSIGHTS = [
     summary: "Why Answer Engine Optimization and Generative Engine Optimization are the next frontiers of search.",
     author_id: 'team',
     content: "<p>Traditional search is evolving into answer engines. AEO (Answer Engine Optimization) and GEO (Generative Engine Optimization) are becoming critical for brands that want to remain visible in AI-powered search results. This article breaks down how to structure your data for LLMs to scrape and cite your brand as an authority.</p><p>We discuss the importance of concise, factual declarations and why Schema.org markup is more important than ever. If you want to be the answer to your customers' questions in ChatGPT or Google Search Generative Experience, you need to adapt your content strategy today. We provide actionable tips on how to prune your content for maximum clarity and technical digestibility.</p>",
-    meta_title: "The Rise of AEO and GEO | GTM OS",
+    meta_title: "The Rise of AEO and GEO | Unified Platforms",
     meta_description: "Learn how to optimize your brand for the new era of AI answer engines and generative search results."
   },
   {
@@ -242,7 +242,7 @@ export const SEED_INSIGHTS = [
     summary: "A comprehensive guide to finding and fixing the technical debt that is holding back your rankings.",
     author_id: 'team',
     content: "<p>Technical SEO is the foundation upon which all other organic growth is built. Without a crawlable and indexable site, even the best content will fail to rank. This checklist covers the 45 critical points we examine during our deep technical audits. From Core Web Vitals and server-side rendering issues to complex canonical chains and internationalization tags, we leave no stone unturned.</p><p>We also look at log file analysis to understand how actual search bots interact with your infrastructure. This data often reveals hidden crawl budget waste that standard tools miss. Fixing these issues can lead to immediate and dramatic improvements in indexation speed and rank stability.</p>",
-    meta_title: "Technical SEO Audit Checklist | GTM OS",
+    meta_title: "Technical SEO Audit Checklist | Unified Platforms",
     meta_description: "A professional-grade checklist for performing deep technical SEO audits on complex web applications and platforms."
   },
   {
@@ -252,7 +252,7 @@ export const SEED_INSIGHTS = [
     summary: "Transform your traffic into transactions with these high-impact conversion rate optimization tactics.",
     author_id: 'team',
     content: "<p>Traffic is expensive; conversion is where the value is created. For ecommerce brands, CRO (Conversion Rate Optimization) is the lever that doubles your growth without increasing your ad spend. This article details our process for analyzing user behavior through heatmaps, session recordings, and A/B testing.</p><p>We focus on reducing friction at the most critical points of the funnel: the product page and the checkout. Small changes in micro-copy, button placement, and social proof can lead to double-digit increases in conversion rate. We share real-world case studies where we improved mobile checkout rates by 40% using simple psychological triggers and technical speed optimizations.</p>",
-    meta_title: "Maximizing CRO for Ecommerce | GTM OS",
+    meta_title: "Maximizing CRO for Ecommerce | Unified Platforms",
     meta_description: "Learn how to optimize your ecommerce store for maximum conversions and higher average order value."
   }
 ];
@@ -271,7 +271,7 @@ export const PAGES_DATA = [
       },
       {
         type: 'advantage',
-        badge: 'The GTM OS Advantage',
+        badge: 'The Unified Platforms Advantage',
         title: 'Data-Driven Growth with Proprietary Insights',
         description: "We don't just execute campaigns; we engineer growth. Our unique approach combines cross-channel expertise with advanced AI analytics to uncover hidden opportunities and maximize your ROI.",
         items: [
@@ -285,7 +285,7 @@ export const PAGES_DATA = [
       }
     ],
     seo: {
-      title: 'Revenue-Focused Marketing & Growth Partner | GTM OS',
+      title: 'Revenue-Focused Marketing & Growth Partner | Unified Platforms',
       description: 'We help brands scale through SEO, performance marketing, content, web development, and hiring.'
     }
   }
@@ -438,7 +438,7 @@ export async function runCMSInitialization(force: boolean = false) {
           url_slug: "architectural-seo-strategy"
         },
         seo: {
-          title: "Architectural SEO Strategy | GTM OS",
+          title: "Architectural SEO Strategy | Unified Platforms",
           meta_description: "Deep, technical SEO roadmaps and topical authority engineering for high-growth brands.",
           schema_type: "Service"
         },
@@ -481,7 +481,7 @@ export async function runCMSInitialization(force: boolean = false) {
           url_slug: "sales-velocity-performance"
         },
         seo: {
-          title: "Sales Velocity Performance Media | GTM OS",
+          title: "Sales Velocity Performance Media | Unified Platforms",
           meta_description: "Maximizing ROAS and minimizing ACoS through AI-driven bid management and high-density creative testing.",
           schema_type: "Service"
         },
@@ -524,7 +524,7 @@ export async function runCMSInitialization(force: boolean = false) {
           url_slug: "headless-commerce-development"
         },
         seo: {
-          title: "Headless Commerce & Web Engineering | GTM OS",
+          title: "Headless Commerce & Web Engineering | Unified Platforms",
           meta_description: "Building blazing-fast Next.js and Shopify Headless storefronts that outperform standard stacks.",
           schema_type: "SoftwareApplication"
         },
@@ -567,7 +567,7 @@ export async function runCMSInitialization(force: boolean = false) {
           url_slug: "aeo-geo-answer-engine-optimization"
         },
         seo: {
-          title: "AEO & GEO: Answer Engine Optimization | GTM OS",
+          title: "AEO & GEO: Answer Engine Optimization | Unified Platforms",
           meta_description: "Expert AEO & GEO services to secure brand citations in AI-generated answers and LLM results.",
           schema_type: "Service"
         },
@@ -610,7 +610,7 @@ export async function runCMSInitialization(force: boolean = false) {
           url_slug: "rpo-talent-acquisition-engineering"
         },
         seo: {
-          title: "RPO & Talent Acquisition Engineering | GTM OS",
+          title: "RPO & Talent Acquisition Engineering | Unified Platforms",
           meta_description: "Building high-performance talent pipelines through algorithmic sourcing and culture-fit engineering.",
           schema_type: "Service"
         },
@@ -674,18 +674,18 @@ export async function runCMSInitialization(force: boolean = false) {
     
     // 10. Migrate default settings
     await setDoc(doc(db, 'settings', 'brand'), {
-      siteName: 'GTM OS',
+      siteName: 'Unified Platforms',
       description: 'Revenue-focused marketing and growth partner helping brands scale through SEO, performance marketing, and content.',
       logoUrl: '/logo.png',
       faviconUrl: '/favicon.ico',
       primaryColor: '#5dcaeb',
       secondaryColor: '#eb735d',
-      contactEmail: 'hello@gtm-os.com',
+      contactEmail: 'hello@unifiedplatforms.com',
       contactPhone: '+91 98765 43210',
       address: 'Bangalore, India',
       socialLinks: {
-        linkedin: 'https://linkedin.com/company/gtm-os',
-        twitter: 'https://twitter.com/gtm_os',
+        linkedin: 'https://linkedin.com/company/unifiedplatforms',
+        twitter: 'https://twitter.com/unifiedplatforms',
         facebook: '',
         instagram: ''
       }

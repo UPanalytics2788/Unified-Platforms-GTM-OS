@@ -12,7 +12,7 @@ export default function Contact() {
   return (
     <div className="bg-brand-white min-h-screen py-20">
       <SEO 
-        title="Contact Our Growth Experts | GTM OS"
+        title="Contact Our Growth Experts | Unified Platforms"
         description="Get in touch with our revenue-focused growth experts. Book a free consultation or request a technical audit for your digital presence."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

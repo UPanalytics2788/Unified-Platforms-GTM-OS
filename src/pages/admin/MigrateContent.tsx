@@ -85,7 +85,7 @@ export default function MigrateContent() {
                 setStatus('migrating');
                 try {
                   await setDoc(doc(db, 'settings', 'brand'), {
-                    siteName: 'GTM OS',
+                    siteName: 'Unified Platforms',
                     description: 'Revenue-focused marketing and growth partner helping brands scale through SEO, performance marketing, and content.',
                     logoUrl: 'https://gtm-os.com/logo.png',
                     faviconUrl: '/favicon.ico',

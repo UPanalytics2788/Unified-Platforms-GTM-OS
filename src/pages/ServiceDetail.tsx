@@ -46,7 +46,7 @@ export default function ServiceDetail() {
   return (
     <div className="bg-brand-white min-h-screen">
       <Helmet>
-        <title>{service.meta_title || `${service.title} | GTM OS`}</title>
+        <title>{service.meta_title || `${service.title} | Unified Platforms`}</title>
         <meta name="description" content={service.meta_description || service.description} />
         {service.primary_keyword && <meta name="keywords" content={service.primary_keyword} />}
       </Helmet>

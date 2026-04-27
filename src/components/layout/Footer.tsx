@@ -39,7 +39,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-brand-gray/20 text-xs text-center">
-          &copy; {new Date().getFullYear()} {settings?.siteName || 'GTM OS'}. All rights reserved.
+          &copy; {new Date().getFullYear()} {settings?.siteName || 'Unified Platforms'}. All rights reserved.
         </div>
       </div>
     </footer>

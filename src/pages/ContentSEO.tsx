@@ -92,12 +92,12 @@ export default function ContentSEO() {
   return (
     <div className="bg-white min-h-screen">
       <SEO 
-        title={pageData?.meta_title || "Content SEO Services | Topical Authority Experts | GTM OS"}
+        title={pageData?.meta_title || "Content SEO Services | Topical Authority Experts | Unified Platforms"}
         description={pageData?.meta_description || "Drive predictable organic growth with data-driven Content SEO. We engineer topical clusters and expert content that captures intent and converts visitors into leads."}
       />
       <SchemaMarkup type="Service" data={{
         title: pageData?.title || "Content SEO Services",
-        description: pageData?.description || "Drive organic growth with data-driven Content SEO. GTM OS creates high-ranking, engaging content that builds topical authority and converts."
+        description: pageData?.description || "Drive organic growth with data-driven Content SEO. Unified Platforms creates high-ranking, engaging content that builds topical authority and converts."
       }} />
       <SchemaMarkup type="FAQPage" data={{ faqs }} />
       
@@ -174,7 +174,7 @@ export default function ContentSEO() {
                 Creating content in a vacuum is a waste of resources. To win in search, your content must be structurally sound, topically relevant, and better than the competition.
               </p>
               <p className="text-lg text-brand-gray leading-relaxed">
-                At GTM OS, we treat content as a compounding asset. We build topical maps that cover entire subjects comprehensively, signaling to search engines that your brand is the ultimate authority in your space.
+                At Unified Platforms, we treat content as a compounding asset. We build topical maps that cover entire subjects comprehensively, signaling to search engines that your brand is the ultimate authority in your space.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-6">

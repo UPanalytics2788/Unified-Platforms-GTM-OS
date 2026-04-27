@@ -2,7 +2,7 @@
   "entities": {
     "Solution": {
       "title": "Solution",
-      "description": "A business solution offered by GTM OS.",
+      "description": "A business solution offered by Unified Platforms.",
       "type": "object",
       "properties": {
         "title": { "type": "string" },

@@ -30,7 +30,7 @@ export default function SchemaMarkup({ type, data }: SchemaMarkupProps) {
       "description": data.description || data.problem,
       "provider": {
         "@type": "Organization",
-        "name": "GTM OS"
+        "name": "Unified Platforms"
       }
     };
   } else if (type === 'Article') {
@@ -41,7 +41,7 @@ export default function SchemaMarkup({ type, data }: SchemaMarkupProps) {
       "description": data.summary || data.description,
       "author": {
         "@type": "Organization",
-        "name": "GTM OS"
+        "name": "Unified Platforms"
       },
       "datePublished": data.createdAt
     };

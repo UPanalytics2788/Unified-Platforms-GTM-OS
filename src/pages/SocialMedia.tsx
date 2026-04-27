@@ -96,8 +96,8 @@ export default function SocialMedia() {
   return (
     <div className="bg-white min-h-screen">
       <SEO 
-        title={pageData?.meta_title || "Full-Service Social Media Management | GTM OS"}
-        description={pageData?.meta_description || "Build a high-performance social media presence. GTM OS manages end-to-end strategy, content creation, and community engagement to drive real business growth."}
+        title={pageData?.meta_title || "Full-Service Social Media Management | Unified Platforms"}
+        description={pageData?.meta_description || "Build a high-performance social media presence. Unified Platforms manages end-to-end strategy, content creation, and community engagement to drive real business growth."}
       />
       <SchemaMarkup type="Service" data={{
         title: pageData?.title || "Social Media Management Services",

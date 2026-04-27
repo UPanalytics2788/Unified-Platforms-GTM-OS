@@ -69,7 +69,7 @@ export default function InsightDetail() {
   return (
     <div className="bg-brand-white min-h-screen">
       <Helmet>
-        <title>{insight.meta_title || `${insight.title} | GTM OS Insights`}</title>
+        <title>{insight.meta_title || `${insight.title} | Unified Platforms Insights`}</title>
         <meta name="description" content={insight.meta_description || insight.summary} />
         {insight.primary_keyword && <meta name="keywords" content={insight.primary_keyword} />}
       </Helmet>
@@ -102,7 +102,7 @@ export default function InsightDetail() {
                 <User size={20} className="text-brand-gray" />
               </div>
               <div>
-                <p className="text-sm font-bold text-brand-dark">{insight.author || 'GTM OS Team'}</p>
+                <p className="text-sm font-bold text-brand-dark">{insight.author || 'Unified Platforms Team'}</p>
                 <p className="text-xs text-brand-gray">Growth Strategy</p>
               </div>
             </div>

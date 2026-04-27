@@ -7,7 +7,7 @@ import MediaModal from '../../components/admin/MediaModal';
 
 export default function BrandSettings() {
   const [settings, setSettings] = useState({
-    siteName: 'GTM OS',
+    siteName: 'Unified Platforms',
     description: '',
     logoUrl: '',
     faviconUrl: '',
