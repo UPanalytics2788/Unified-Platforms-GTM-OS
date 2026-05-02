@@ -42,7 +42,7 @@ export default function Login() {
     } catch (err: any) {
       console.error('Google Login Error:', err);
       setLoading(false);
-      setError(`Google Sign-In failed: ${err.message}. Please ensure you are using your @gtm-os.com account and that this domain is authorized in Firebase Console.`);
+      setError(`Google Sign-In failed: ${err.message}. Please ensure you are using your @unifiedplatforms.com account and that this domain is authorized in Firebase Console.`);
     }
   };
 
@@ -77,7 +77,7 @@ export default function Login() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="name@gtm-os.com"
+              placeholder="name@unifiedplatforms.com"
               className="w-full px-5 py-4 border border-brand-dark/10 rounded-2xl focus:ring-4 focus:ring-brand-primary/10 focus:border-brand-primary outline-none transition-all bg-brand-white text-brand-dark font-medium placeholder:text-brand-gray/40"
               required
             />

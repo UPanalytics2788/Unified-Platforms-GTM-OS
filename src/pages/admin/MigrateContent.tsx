@@ -87,16 +87,16 @@ export default function MigrateContent() {
                   await setDoc(doc(db, 'settings', 'brand'), {
                     siteName: 'Unified Platforms',
                     description: 'Revenue-focused marketing and growth partner helping brands scale through SEO, performance marketing, and content.',
-                    logoUrl: 'https://gtm-os.com/logo.png',
+                    logoUrl: 'https://unifiedplatforms.com/logo.png',
                     faviconUrl: '/favicon.ico',
                     primaryColor: '#5dcaeb',
                     secondaryColor: '#eb735d',
-                    contactEmail: 'hello@gtm-os.com',
+                    contactEmail: 'hello@unifiedplatforms.com',
                     contactPhone: '+91 98765 43210',
                     address: 'Bangalore, India',
                     socialLinks: {
-                      linkedin: 'https://linkedin.com/company/gtm-os',
-                      twitter: 'https://twitter.com/gtm_os',
+                      linkedin: 'https://linkedin.com/company/unified-platforms',
+                      twitter: 'https://twitter.com/unifiedplatform',
                       facebook: '',
                       instagram: ''
                     }
