@@ -21,10 +21,27 @@ jobs:
           command_timeout: 30m
           script: |
             set -e
-            cd /var/www/unified-platforms || exit 1
-            git pull origin main
+            # Ensure folder exists
+            mkdir -p /var/www/unified-platforms
+            cd /var/www/unified-platforms
+            
+            echo "Pulling latest code..."
+            if [ -d .git ]; then
+              # Re-initialize remote if needed to ensure correct URL
+              git remote set-url origin https://github.com/${{ github.repository }} || true
+              git pull origin main
+            else
+              git clone https://github.com/${{ github.repository }} .
+            fi
+
+            echo "Installing dependencies..."
             npm install
+            
+            echo "Building application..."
             npm run build
-            # Ensure PM2 runs the server in production mode
+            
+            echo "Starting/Restarting application..."
+            # Using tsx to run server.ts directly in production mode
+            # Ensure pm2 is installed globally or use local if possible
             pm2 delete unified-platforms || true
-            NODE_ENV=production pm2 start server.ts --name "unified-platforms" --interpreter ./node_modules/.bin/tsx
+            NODE_ENV=production pm2 start server.ts --name "unified-platforms" --interpreter ./node_modules/.bin/tsx -- --port 3000

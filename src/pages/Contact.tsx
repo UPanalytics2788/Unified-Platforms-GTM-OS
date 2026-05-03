@@ -31,8 +31,8 @@ export default function Contact() {
                   <Mail className="text-brand-primary" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-brand-dark">Email Us</h3>
-                  <p className="text-brand-gray">growth@gtm-os.com</p>
+                  <p className="font-bold text-brand-dark">Email Us</p>
+                  <p className="text-brand-gray">growth@unifiedplatforms.com</p>
                 </div>
               </div>
 
@@ -41,8 +41,8 @@ export default function Contact() {
                   <Phone className="text-brand-primary" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-brand-dark">Call Us</h3>
-                  <p className="text-brand-gray">+1 (888) GTM-EXEC</p>
+                  <p className="font-bold text-brand-dark">Call Us</p>
+                  <p className="text-brand-gray">+1 (888) UNIFIED</p>
                 </div>
               </div>
 
