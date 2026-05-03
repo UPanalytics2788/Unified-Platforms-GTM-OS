@@ -22,7 +22,7 @@ export default function Contact() {
               Let's Scale Your <span className="text-brand-primary">Revenue</span>
             </h1>
             <p className="text-xl text-brand-gray mb-12 leading-relaxed">
-              Whether you're looking for a full GTM overhaul or a specific performance marketing boost, our team is ready to help you execute.
+              Whether you're looking for a full growth engine overhaul or a specific performance marketing boost, our team is ready to help you execute.
             </p>
 
             <div className="space-y-8">

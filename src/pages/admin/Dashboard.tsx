@@ -143,7 +143,7 @@ export default function AdminDashboard({ user, role }: AdminDashboardProps) {
       {/* Sidebar */}
       <aside className={`${isSidebarOpen ? 'w-64' : 'w-20'} bg-brand-dark text-white transition-all duration-300 flex flex-col fixed inset-y-0 z-50 lg:relative`}>
         <div className="p-6 flex items-center justify-between">
-          {isSidebarOpen && <span className="font-bold text-xl tracking-tight">GTM<span className="text-brand-primary">OS</span></span>}
+          {isSidebarOpen && <span className="font-bold text-xl tracking-tight">Unified<span className="text-brand-primary">Platforms</span></span>}
           <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="p-1 hover:bg-white/10 rounded">
             {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
