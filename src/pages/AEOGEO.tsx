@@ -89,7 +89,7 @@ export default function AEOGEO() {
             className="max-w-4xl"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold uppercase tracking-wider border border-brand-primary/20 mb-6">
-              <Zap size={14} /> GTM-OS PROMETHEUS ARCHITECTURE
+              <Zap size={14} /> UNIFIED PROMETHEUS ARCHITECTURE
             </div>
             <h1 className="text-5xl lg:text-7xl font-bold text-brand-dark mb-8 tracking-tight leading-[1.05]">
                become the <span className="text-brand-primary italic">definitive</span> AI answer.

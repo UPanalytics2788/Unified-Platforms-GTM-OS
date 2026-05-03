@@ -81,7 +81,7 @@ export const SEED_NAV = [
         ]
       },
       {
-        title: "GTM-OS Strategies",
+        title: "Unified Strategies",
         links: [
           { label: "Architectural SEO", href: "/gtm/architectural-seo-strategy" },
           { label: "Sales Velocity Media", href: "/gtm/sales-velocity-performance" },

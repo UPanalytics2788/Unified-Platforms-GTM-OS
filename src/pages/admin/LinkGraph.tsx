@@ -265,7 +265,7 @@ export default function LinkGraph() {
           <h1 className="text-2xl font-bold text-brand-dark flex items-center gap-2">
             <GitMerge className="text-brand-primary" /> Internal Link Graph
           </h1>
-          <p className="text-brand-gray text-sm">Managing semantic connections across GTM-OS.</p>
+          <p className="text-brand-gray text-sm">Managing semantic connections across Unified Platforms.</p>
         </div>
         <div className="flex items-center gap-4">
           {status && (
