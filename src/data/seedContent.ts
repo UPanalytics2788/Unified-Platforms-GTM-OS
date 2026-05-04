@@ -54,8 +54,8 @@ export const SOLUTIONS_CONTENT = [
       <p>We use 'Predictive Analytics' to identify which customers are most likely to expand their relationship with you. By targeting these high-potential accounts with personalized offers and strategic outreach, we help you unlock 'Hidden Revenue' within your existing base. This shift from 'Acquisition-Only' to 'Full-Lifecycle' growth is what separates market leaders from the rest of the pack.</p>
       
       <h3>4. Continuous Optimization and the Culture of Testing</h3>
-      <p>The market is constantly evolving, and your Unified Platforms strategy should too. We implement a culture of testing and iteration. Whether it's optimizing your conversion rates (CRO) or refining your ideal customer profile (ICP), we use real-world data to continuously sharpen your competitive edge. Our agile approach to GTM allows us to pivot quickly based on market feedback, ensuring that your revenue engine remains efficient even as external conditions change. We set up 'Growth Sprints' that focus on high-impact experiments, allowing us to validate new channels and tactics with minimal risk.</p>
-      <p>We use 'Multivariate Testing' to understand how different elements of your GTM strategy interact. It's not just about the headline or the CTA; it's about the entire 'Value Proposition' and how it's perceived by different segments of your market. By systematically testing every variable, we build a highly optimized revenue engine that is difficult for competitors to replicate.</p>
+      <p>The market is constantly evolving, and your Unified Platforms strategy should too. We implement a culture of testing and iteration. Whether it's optimizing your conversion rates (CRO) or refining your ideal customer profile (ICP), we use real-world data to continuously sharpen your competitive edge. Our agile approach to growth allows us to pivot quickly based on market feedback, ensuring that your revenue engine remains efficient even as external conditions change. We set up 'Growth Sprints' that focus on high-impact experiments, allowing us to validate new channels and tactics with minimal risk.</p>
+      <p>We use 'Multivariate Testing' to understand how different elements of your growth strategy interact. It's not just about the headline or the CTA; it's about the entire 'Value Proposition' and how it's perceived by different segments of your market. By systematically testing every variable, we build a highly optimized revenue engine that is difficult for competitors to replicate.</p>
       
       <h3>5. Strategic Talent and Leadership Alignment</h3>
       <p>A system is only as good as the people running it. We work with your leadership team to ensure that incentives are aligned across the entire revenue organization. This involves redefining KPIs to focus on shared outcomes rather than departmental metrics. We also provide training and support to help your teams adapt to the new Unified Platforms framework, ensuring long-term sustainability and internal buy-in. By fostering a culture of accountability and transparency, we help you build a world-class revenue organization that is capable of sustained high performance.</p>
@@ -63,7 +63,7 @@ export const SOLUTIONS_CONTENT = [
       
       <h3>6. Market Expansion and Global Scaling</h3>
       <p>For enterprises looking to move into new territories, we provide the strategic roadmap needed for successful market entry. This includes localized SEO, cultural adaptation of messaging, and strategic partnership development. We help you navigate the complexities of global scaling, ensuring that your revenue growth is not limited by geography. Our framework provides a standardized approach to growth that can be replicated across different regions while allowing for the necessary local nuances.</p>
-      <p>Global scaling requires a balance of central control and local autonomy. We help you build a 'Global GTM Playbook' that defines the core elements of your brand and process, while providing local teams with the flexibility to adapt to their specific market conditions. This ensures consistency in your brand promise while maximizing your relevance in every market you enter. We also address 'Global Compliance' and data residency requirements, ensuring your expansion is both successful and secure.</p>
+      <p>Global scaling requires a balance of central control and local autonomy. We help you build a 'Global Growth Playbook' that defines the core elements of your brand and process, while providing local teams with the flexibility to adapt to their specific market conditions. This ensures consistency in your brand promise while maximizing your relevance in every market you enter. We also address 'Global Compliance' and data residency requirements, ensuring your expansion is both successful and secure.</p>
       
       <h3>7. Revenue Intelligence and Predictive Forecasting</h3>
       <p>In the final stage of maturity, the Unified Platforms provides predictive capabilities. By analyzing historical data and current pipeline trends, we help you move from 'rear-view' reporting to 'forward-looking' forecasting. This revenue intelligence allows you to see around corners, identifying potential shortfalls before they happen and doubling down on winning segments with confidence. We implement AI-driven tools that provide real-time insights into deal health, helping your sales managers focus their coaching where it will have the most impact.</p>
@@ -79,7 +79,7 @@ export const SOLUTIONS_CONTENT = [
 
       <h3>10. The Unified Platforms Maturity Model</h3>
       <p>Revenue growth is a journey, not a destination. We use our 'Unified Platforms Maturity Model' to assess your current state and define a clear path to excellence. Whether you are at the 'Ad-Hoc' stage or the 'Optimized' stage, we provide the specific roadmap and resources you need to move to the next level. This systematic approach ensures that you are always focused on the highest-impact initiatives, maximizing your ROI and accelerating your path to market leadership.</p>
-      <p>Our maturity model covers five key dimensions: Data, Technology, Process, People, and Strategy. By achieving excellence in all five areas, you build a 'Resilient Revenue Engine' that is capable of sustained growth in any market condition. We provide regular 'Maturity Audits' to track your progress and ensure that your GTM strategy remains aligned with your evolving business goals.</p>
+      <p>Our maturity model covers five key dimensions: Data, Technology, Process, People, and Strategy. By achieving excellence in all five areas, you build a 'Resilient Revenue Engine' that is capable of sustained growth in any market condition. We provide regular 'Maturity Audits' to track your progress and ensure that your growth strategy remains aligned with your evolving business goals.</p>
 
       <p>By focusing on these ten pillars, we help enterprises move away from 'hero-based' growth to 'system-based' growth—where results are predictable, scalable, and sustainable. The Unified Platforms is not just a set of tactics; it is a fundamental shift in how businesses approach revenue, moving from fragmented activity to unified, data-driven performance. We help you build the foundation for long-term market dominance, ensuring that your brand is the definitive leader in your industry.</p>
     `
@@ -447,7 +447,7 @@ export const SOLUTIONS_CONTENT = [
     meta_title: "Market Entry & Expansion Strategy | Unified Platforms",
     meta_description: "Scale your business into new territories with confidence. Our market entry strategy provides the data and roadmap needed for successful expansion.",
     problem: "Expanding into a new market is high-risk and high-reward. Many companies fail because they don't account for local nuances, competitive landscapes, or regulatory challenges. Without a clear, data-backed entry strategy, you risk wasting significant resources on a market that isn't ready for your solution.",
-    approach: "We provide a comprehensive roadmap for successful market expansion. Our approach includes deep-dive market research, competitive analysis, and localized GTM planning. We help you identify the best entry points, adapt your messaging for cultural relevance, and build the local partnerships needed for sustained growth.",
+    approach: "We provide a comprehensive roadmap for successful market expansion. Our approach includes deep-dive market research, competitive analysis, and localized growth planning. We help you identify the best entry points, adapt your messaging for cultural relevance, and build the local partnerships needed for sustained growth.",
     primary_cta_text: "Enter New Markets",
     secondary_cta_text: "View Expansion Framework",
     services: ["SEO Strategy", "Performance Marketing", "Content Marketing"],
@@ -467,7 +467,7 @@ export const SOLUTIONS_CONTENT = [
       <h3>1. Deep-Dive Market Intelligence</h3>
       <p>We perform exhaustive research into your target market, identifying key trends, customer behaviors, and competitive threats. This data allows us to build a strategy that is rooted in reality, not assumptions.</p>
       <h3>2. Localized GTM Orchestration</h3>
-      <p>We help you adapt your GTM operating system for the local market. This includes everything from localized SEO and content to cultural messaging adaptation and strategic partnership development.</p>
+      <p>We help you adapt your growth operating system for the local market. This includes everything from localized SEO and content to cultural messaging adaptation and strategic partnership development.</p>
     `
   },
   {
@@ -715,7 +715,7 @@ export const SERVICES_CONTENT = [
     meta_description: "Expert AEO & GEO services to secure your brand's presence in AI search results. We optimize for LLM citations and generative engine visibility.",
     description: "Engineering brand visibility for the next era of search. We optimize your technical architecture and semantic network to ensure citation priority in AI-driven answer engines.",
     primary_cta_text: "Engine Your AI Presence",
-    secondary_cta_text: "View GTM Framework",
+    secondary_cta_text: "View Growth Framework",
     use_cases: [
       "Securing brand citations in ChatGPT & Perplexity",
       "Optimizing for Google SGE & AI Overviews",

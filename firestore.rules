@@ -33,7 +33,7 @@ service cloud.firestore {
     match /insights/{doc}         { allow read: if true; allow write: if isEditorOrAdmin(); }
     match /pages/{doc}            { allow read: if true; allow write: if isEditorOrAdmin(); }
     match /landing-pages/{doc}    { allow read: if true; allow write: if isEditorOrAdmin(); }
-    match /gtm_pages/{doc}       { allow read: if true; allow write: if isEditorOrAdmin(); }
+    match /unified_pages/{doc}   { allow read: if true; allow write: if isEditorOrAdmin(); }
     match /media_library/{doc}    { allow read: if true; allow write: if isEditorOrAdmin(); }
     
     // ----------------------------------------------------

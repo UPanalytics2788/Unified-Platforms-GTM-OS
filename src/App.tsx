@@ -56,7 +56,7 @@ const CRO = lazy(() => import('./pages/CRO'));
 const AdminDashboard = lazy(() => import('./pages/admin/Dashboard'));
 const ClientPortal = lazy(() => import('./pages/ClientPortal'));
 const Login = lazy(() => import('./pages/Login'));
-const GTMPageView = lazy(() => import('./pages/GTMPageView'));
+const UnifiedPageView = lazy(() => import('./pages/UnifiedPageView'));
 
 const PageLoader = () => (
   <div className="min-h-[60vh] flex items-center justify-center">
@@ -211,7 +211,7 @@ export default function App() {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/lp/:slug" element={<LandingPageView />} />
                 <Route path="/local/:slug" element={<PSEOView />} />
-                <Route path="/gtm/:slug" element={<GTMPageView />} />
+                <Route path="/unified/:slug" element={<UnifiedPageView />} />
                 <Route
                   path="/client-portal"
                   element={

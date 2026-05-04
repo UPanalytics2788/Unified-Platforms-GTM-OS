@@ -121,7 +121,7 @@ export default function InsightDetail() {
           <div className="lg:col-span-8">
             <div className="prose prose-neutral prose-lg max-w-none">
               <p className="text-xl text-brand-gray leading-relaxed mb-8 font-medium italic">
-                {insight.summary || "In this playbook, we explore the critical strategies for scaling revenue through integrated GTM operations."}
+                {insight.summary || "In this playbook, we explore the critical strategies for scaling revenue through integrated growth operations."}
               </p>
               <div className="text-brand-dark leading-relaxed space-y-6">
                 {insight.content?.split('\n').map((para: string, i: number) => (
@@ -134,7 +134,7 @@ export default function InsightDetail() {
               <h3 className="text-xl font-bold text-brand-dark mb-4">Key Takeaways</h3>
               <ul className="space-y-3">
                 {[
-                  "Data-driven decision making is the core of modern GTM.",
+                  "Data-driven decision making is the core of modern growth strategy.",
                   "Alignment between sales and marketing is non-negotiable.",
                   "Technology should enable strategy, not define it."
                 ].map((item, i) => (

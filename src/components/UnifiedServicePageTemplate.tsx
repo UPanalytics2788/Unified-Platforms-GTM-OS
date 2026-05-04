@@ -4,11 +4,11 @@ import { motion } from 'motion/react';
 import SEO from './SEO';
 import SchemaMarkup from './ui/SchemaMarkup';
 
-interface GTMPageProps {
+interface UnifiedPageProps {
   data: any;
 }
 
-export default function GTMServicePageTemplate({ data }: GTMPageProps) {
+export default function UnifiedServicePageTemplate({ data }: UnifiedPageProps) {
   if (!data) return null;
 
   const { page_config, seo, hero, value_grid, main_framework, comparison_module, growth_entities, faq } = data;

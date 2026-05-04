@@ -97,7 +97,7 @@ export default function PSEOView() {
             />
           </div>
         ) : (
-          /* GTM Architect Structured Layout */
+          /* Unified Architect Structured Layout */
           <article className="overflow-hidden">
             
             {/* HERO SECTION */}

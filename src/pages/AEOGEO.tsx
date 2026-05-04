@@ -25,8 +25,8 @@ import { motion } from 'motion/react';
 
 export default function AEOGEO() {
   const { data: pageData, loading } = useCMSDocument('services', 'aeo-geo');
-  // Also try to check GTM pages for the high-end version if this is missing
-  const { data: gtmData } = useCMSDocument('gtm_pages', 'aeo-geo-answer-engine-optimization');
+  // Also try to check unified pages for the high-end version if this is missing
+  const { data: gtmData } = useCMSDocument('unified_pages', 'aeo-geo-answer-engine-optimization');
 
   const localFallback = SERVICES_CONTENT.find(s => s.slug === 'aeo-geo');
   const service = pageData || gtmData || localFallback;

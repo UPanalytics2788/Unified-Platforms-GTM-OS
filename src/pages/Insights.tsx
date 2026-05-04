@@ -25,7 +25,7 @@ export default function Insights() {
     <div className="py-20 bg-brand-white min-h-screen">
       <SEO 
         title="Growth Insights & Industry Playbooks | Unified Platforms"
-        description="Expert perspectives on growth engineering, marketing technology, and the future of GTM operations. Access our free strategy playbooks and guides."
+        description="Expert perspectives on growth engineering, marketing technology, and the future of growth operations. Access our free strategy playbooks and guides."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
@@ -33,7 +33,7 @@ export default function Insights() {
             {typeFilter ? `${typeFilter.charAt(0).toUpperCase() + typeFilter.slice(1)}` : 'Insights & Playbooks'}
           </h1>
           <p className="text-brand-gray max-w-2xl">
-            Expert perspectives on growth, technology, and the future of GTM operations.
+            Expert perspectives on growth, technology, and the future of growth operations.
           </p>
         </div>
 

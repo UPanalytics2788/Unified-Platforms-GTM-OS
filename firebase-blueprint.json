@@ -294,7 +294,7 @@
     "/settings": { "schema": "Settings", "description": "Site-wide settings" },
     "/landing_pages": { "schema": "LandingPage", "description": "Collection of landing pages" },
     "/pages": { "schema": "Page", "description": "Collection of static pages" },
-    "/gtm_pages": { "schema": "GTMPage", "description": "High-end GTM service pages" },
+    "/unified_pages": { "schema": "UnifiedPage", "description": "High-end Unified service pages" },
     "/calendar_configs": { "schema": "CalendarConfig", "description": "Collection of calendar configurations" }
   }
 }

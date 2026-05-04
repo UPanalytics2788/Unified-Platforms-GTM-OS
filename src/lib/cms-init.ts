@@ -40,7 +40,7 @@ export const SEED_NAV = [
           { label: "Content SEO", href: "/services/content-seo" },
           { label: "Authority Building", href: "/services/authority-building" },
           { label: "Local SEO", href: "/services/local-seo" },
-          { label: "AEO / GEO Dominance", href: "/gtm/aeo-geo-answer-engine-optimization" }
+          { label: "AEO / GEO Dominance", href: "/services/aeo-geo-answer-engine-optimization" }
         ]
       },
       {
@@ -83,10 +83,10 @@ export const SEED_NAV = [
       {
         title: "Unified Strategies",
         links: [
-          { label: "Architectural SEO", href: "/gtm/architectural-seo-strategy" },
-          { label: "Sales Velocity Media", href: "/gtm/sales-velocity-performance" },
-          { label: "Headless Commerce", href: "/gtm/headless-commerce-development" },
-          { label: "Talent Engineering", href: "/gtm/rpo-talent-acquisition-engineering" }
+          { label: "Architectural SEO", href: "/unified/architectural-seo-strategy" },
+          { label: "Sales Velocity Media", href: "/unified/sales-velocity-performance" },
+          { label: "Headless Commerce", href: "/unified/headless-commerce-development" },
+          { label: "Talent Engineering", href: "/unified/rpo-talent-acquisition-engineering" }
         ]
       }
     ]
@@ -136,7 +136,7 @@ export const SEED_NAV = [
     order: 6,
     links: [
       "About Us",
-      { label: "GTM Framework", href: "#" },
+      { label: "Unified Framework", href: "#" },
       { label: "Leadership", href: "#" },
       { label: "Clients", href: "#" },
       { label: "Careers", href: "#" }
@@ -162,7 +162,7 @@ export const SEED_AUTHORS = [
     name: 'Unified Platforms Team',
     slug: 'team',
     title: 'Expert Growth Collective',
-    credentials: ['GTM Strategy', 'Performance Media'],
+    credentials: ['Unified Strategy', 'Performance Media'],
     bio: 'The Unified Platforms team is a group of seasoned digital marketing experts with decades of combined experience in scaling complex, global brands.',
     linkedin: 'https://linkedin.com/company/unifiedplatforms',
     avatar: 'https://picsum.photos/seed/team/200/200'
@@ -429,8 +429,8 @@ export async function runCMSInitialization(force: boolean = false) {
       });
     }
 
-    // 9. Migrate GTM Pages (New Programmatic CMS Feature)
-    const GTM_PAGES = [
+    // 9. Migrate Unified Pages (New Programmatic CMS Feature)
+    const UNIFIED_PAGES = [
       {
         page_config: {
           layout_pattern: "ARCHITECT",
@@ -662,10 +662,10 @@ export async function runCMSInitialization(force: boolean = false) {
       }
     }
 
-    // 9. Migrate GTM Pages
-    for (const gtmPage of GTM_PAGES) {
-      await setDoc(doc(db, 'gtm_pages', gtmPage.page_config.url_slug), {
-        ...gtmPage,
+    // 9. Migrate Unified Pages
+    for (const unifiedPage of UNIFIED_PAGES) {
+      await setDoc(doc(db, 'unified_pages', unifiedPage.page_config.url_slug), {
+        ...unifiedPage,
         status: 'published',
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString()

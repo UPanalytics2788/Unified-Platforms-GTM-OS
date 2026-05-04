@@ -87,7 +87,7 @@ export default function SolutionDetail() {
             <div>
               <h2 className="text-3xl font-bold text-brand-dark mb-6">The Challenge</h2>
               <p className="text-brand-gray text-lg leading-relaxed mb-8">
-                Many enterprises struggle with {solution.primary_keyword || 'scaling their GTM operations'} effectively. 
+                Many enterprises struggle with {solution.primary_keyword || 'scaling their growth operations'} effectively. 
                 The common pitfalls include fragmented data, misaligned teams, and inefficient technology stacks.
               </p>
               <div className="space-y-4">
@@ -104,7 +104,7 @@ export default function SolutionDetail() {
             <div className="bg-brand-dark p-8 rounded-3xl text-brand-white">
               <h3 className="text-xl font-bold mb-4">Why this matters</h3>
               <p className="text-brand-gray mb-6 italic">
-                "Without a unified GTM operating system, companies lose an average of 20% in potential revenue due to operational friction."
+                "Without a unified growth operating system, companies lose an average of 20% in potential revenue due to operational friction."
               </p>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-brand-primary/20 flex items-center justify-center">

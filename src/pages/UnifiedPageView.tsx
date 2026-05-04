@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import GTMServicePageTemplate from '../components/GTMServicePageTemplate';
+import UnifiedServicePageTemplate from '../components/UnifiedServicePageTemplate';
 
-export default function GTMPageView() {
+export default function UnifiedPageView() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [data, setData] = useState<any>(null);
@@ -16,18 +16,16 @@ export default function GTMPageView() {
       if (!slug) return;
       setLoading(true);
       try {
-        const docRef = doc(db, 'gtm_pages', slug);
+        const docRef = doc(db, 'unified_pages', slug);
         const docSnap = await getDoc(docRef);
         
         if (docSnap.exists()) {
           setData(docSnap.data());
         } else {
           setError('Page not found');
-          // Optional: redirect to 404 or home
-          // navigate('/');
         }
       } catch (err: any) {
-        console.error("Error fetching GTM page:", err);
+        console.error("Error fetching Unified page:", err);
         setError(err.message);
       } finally {
         setLoading(false);
@@ -59,5 +57,5 @@ export default function GTMPageView() {
     );
   }
 
-  return <GTMServicePageTemplate data={data} />;
+  return <UnifiedServicePageTemplate data={data} />;
 }
