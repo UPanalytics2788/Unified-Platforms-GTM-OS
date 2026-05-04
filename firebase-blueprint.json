@@ -179,7 +179,7 @@
       },
       "required": ["title", "slug"]
     },
-    "GTMPage": {
+    "UnifiedPage": {
       "title": "Unified Service Page",
       "description": "A high-end service page following the Unified Platforms architecture.",
       "type": "object",

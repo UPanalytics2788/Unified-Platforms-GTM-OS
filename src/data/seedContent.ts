@@ -458,7 +458,7 @@ export const SOLUTIONS_CONTENT = [
       },
       {
         question: "How long does it take to launch in a new market?",
-        answer: "A typical market entry project takes 3-6 months from initial research to full GTM execution, depending on the complexity of the market and the level of localization required."
+        answer: "A typical market entry project takes 3-6 months from initial research to full growth execution, depending on the complexity of the market and the level of localization required."
       }
     ],
     long_content: `
@@ -466,7 +466,7 @@ export const SOLUTIONS_CONTENT = [
       <p>Expansion is the lifeblood of growth, but it requires surgical precision. Our market entry strategy is designed to help you scale into new territories with confidence and efficiency. We provide the data, insights, and execution roadmap needed to turn a new market into a predictable source of revenue.</p>
       <h3>1. Deep-Dive Market Intelligence</h3>
       <p>We perform exhaustive research into your target market, identifying key trends, customer behaviors, and competitive threats. This data allows us to build a strategy that is rooted in reality, not assumptions.</p>
-      <h3>2. Localized GTM Orchestration</h3>
+      <h3>2. Localized Growth Orchestration</h3>
       <p>We help you adapt your growth operating system for the local market. This includes everything from localized SEO and content to cultural messaging adaptation and strategic partnership development.</p>
     `
   },

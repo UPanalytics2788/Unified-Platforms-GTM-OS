@@ -26,10 +26,10 @@ import { motion } from 'motion/react';
 export default function AEOGEO() {
   const { data: pageData, loading } = useCMSDocument('services', 'aeo-geo');
   // Also try to check unified pages for the high-end version if this is missing
-  const { data: gtmData } = useCMSDocument('unified_pages', 'aeo-geo-answer-engine-optimization');
+  const { data: unifiedData } = useCMSDocument('unified_pages', 'aeo-geo-answer-engine-optimization');
 
   const localFallback = SERVICES_CONTENT.find(s => s.slug === 'aeo-geo');
-  const service = pageData || gtmData || localFallback;
+  const service = pageData || unifiedData || localFallback;
 
   if (loading && !service) {
     return (
@@ -51,7 +51,7 @@ export default function AEOGEO() {
     );
   }
 
-  // If we have GTM data, we should ideally use the GTM Template, 
+  // If we have unified data, we should ideally use the Unified Template, 
   // but for now let's enhance this component to look like the ARCHITECT pattern.
   
   return (
@@ -158,7 +158,7 @@ export default function AEOGEO() {
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
               <h2 className="text-4xl lg:text-5xl font-bold text-brand-dark mb-8 leading-[1.1]">
-                The Architectural <span className="text-brand-primary">AEO Dominance</span> Framework.
+                The Architectural <span className="text-brand-primary">Growth Dominance</span> Framework.
               </h2>
               <div className="space-y-12">
                 {[

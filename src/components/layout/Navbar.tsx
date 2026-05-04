@@ -539,7 +539,7 @@ const INITIAL_NAV_STRUCTURE: NavItem[] = [
     order: 6,
     links: [
       "About Us",
-      "GTM Framework",
+      "Unified Framework",
       "Leadership",
       "Clients",
       "Careers"
