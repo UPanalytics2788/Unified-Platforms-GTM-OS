@@ -6,7 +6,7 @@ import { db, storage, handleFirestoreError, OperationType } from '../../lib/fire
 import { Save, ArrowLeft, Loader2, Upload, Image as ImageIcon } from 'lucide-react';
 import RichTextEditor from '../../components/admin/RichTextEditor';
 import MediaModal from '../../components/admin/MediaModal';
-import { runLinkDiscovery } from '../../lib/linkDiscovery';
+import { findInboundLinkOpportunities } from '../../lib/linkDiscovery';
 
 export default function ContentEditor() {
   const { id } = useParams();
@@ -73,9 +73,8 @@ export default function ContentEditor() {
       if (id) {
         await setDoc(doc(db, collectionName, id), formData, { merge: true });
         if (formData.status === 'published') {
-          const content = formData.long_content || formData.content || '';
           const title = formData.title || formData.name || '';
-          runLinkDiscovery(id, collectionName, title, content).catch(console.error);
+          findInboundLinkOpportunities(id, collectionName, title, formData.primary_keyword || title).catch(console.error);
         }
       } else {
         const docRef = await addDoc(collection(db, collectionName), {
@@ -83,9 +82,8 @@ export default function ContentEditor() {
           createdAt: new Date().toISOString()
         });
         if (formData.status === 'published') {
-          const content = formData.long_content || formData.content || '';
           const title = formData.title || formData.name || '';
-          runLinkDiscovery(docRef.id, collectionName, title, content).catch(console.error);
+          findInboundLinkOpportunities(docRef.id, collectionName, title, formData.primary_keyword || title).catch(console.error);
         }
       }
       navigate(`/admin/${collectionName}`);
@@ -1233,6 +1231,50 @@ export default function ContentEditor() {
                   onChange={handleEditorChange} 
                 />
               </div>
+
+              {(collectionName === 'services' || collectionName === 'solutions' || collectionName === 'unified_pages') && (
+                <div className="pt-6 border-t border-brand-dark/10">
+                  <div className="flex justify-between items-center mb-4">
+                    <h3 className="text-lg font-bold text-brand-dark">Programmatic Page Configuration (JSON)</h3>
+                    <div className="px-3 py-1 bg-brand-primary/10 text-brand-primary text-xs font-bold rounded-full uppercase">
+                      AI Generated
+                    </div>
+                  </div>
+                  <p className="text-sm text-brand-gray mb-4">
+                    Paste the JSON schema generated from the Agents here. This will automatically populate the page's Hero, Value Grid, Framework, and FAQ sections.
+                  </p>
+                  <div>
+                    <textarea
+                      name="json_source"
+                      rows={12}
+                      placeholder='{ "page_config": { ... }, "seo": { ... }, "hero": { ... } }'
+                      value={formData.json_source || ''}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        try {
+                          const parsed = JSON.parse(val);
+                          setFormData((prev: any) => ({
+                            ...prev,
+                            ...parsed,
+                            json_source: val
+                          }));
+                        } catch (err) {
+                          setFormData((prev: any) => ({ ...prev, json_source: val }));
+                        }
+                      }}
+                      className="w-full px-4 py-3 border border-brand-dark/10 rounded-lg focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none transition-all bg-gray-900 text-green-400 font-mono text-sm leading-relaxed"
+                    />
+                    {formData.json_source && (
+                      <p className="mt-2 text-xs text-brand-gray">
+                        {(() => {
+                           try { JSON.parse(formData.json_source); return <span className="text-green-500">✓ Valid JSON format</span>; }
+                           catch(e) { return <span className="text-red-500">Invalid JSON format - Please check for syntax errors</span>; }
+                        })()}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              )}
 
               {(collectionName === 'case_studies' || collectionName === 'solutions') && (
                 <div className="pt-6 border-t border-brand-dark/10">

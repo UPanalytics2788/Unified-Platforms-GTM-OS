@@ -2,12 +2,13 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, Anchor, GitMerge, AlertTriangle, Loader2, Check, X, Trash2, Search, ExternalLink, Maximize2, Minimize2 } from 'lucide-react';
 import { collection, query, getDocs, where, deleteDoc, doc, updateDoc, writeBatch } from 'firebase/firestore';
 import { db } from '../../lib/firebase';
-import { runLinkDiscovery } from '../../lib/linkDiscovery';
+import { findInboundLinkOpportunities } from '../../lib/linkDiscovery';
 import * as d3 from 'd3';
 
 export default function LinkGraph() {
   const [links, setLinks] = useState<any[]>([]);
   const [stats, setStats] = useState({ totalActive: 0, pending: 0, orphans: 0 });
+  const [orphanedPages, setOrphanedPages] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [scanning, setScanning] = useState(false);
   const [filter, setFilter] = useState<'all' | 'suggested' | 'active' | 'rejected'>('all');
@@ -188,16 +189,22 @@ export default function LinkGraph() {
       const pending = linksData.filter((l: any) => l.status === 'suggested').length;
       
       // Calculate orphans among published insights/services
-      const [insights, services] = await Promise.all([
+      const [insights, services, pseoSnap] = await Promise.all([
         getDocs(query(collection(db, 'insights'), where('status', '==', 'published'))),
-        getDocs(query(collection(db, 'services'), where('status', '==', 'published')))
+        getDocs(query(collection(db, 'services'), where('status', '==', 'published'))),
+        getDocs(query(collection(db, 'pseo_pages'), where('status', '==', 'published')))
       ]);
       
-      const allPageIds = [...insights.docs.map(d => d.id), ...services.docs.map(d => d.id)];
-      const idsWithIncoming = new Set(linksData.filter((l: any) => l.status === 'active').map((l: any) => l.targetId));
-      const orphans = allPageIds.filter(id => !idsWithIncoming.has(id)).length;
+      const allPages = [
+        ...insights.docs.map(d => ({ id: d.id, coll: 'insights', ...d.data() as any })),
+        ...services.docs.map(d => ({ id: d.id, coll: 'services', ...d.data() as any })),
+        ...pseoSnap.docs.map(d => ({ id: d.id, coll: 'pseo_pages', ...d.data() as any }))
+      ];
+      const idsWithIncoming = new Set(linksData.filter((l: any) => l.status === 'active' || l.status === 'suggested').map((l: any) => l.targetId));
+      const orphans = allPages.filter(p => !idsWithIncoming.has(p.id));
 
-      setStats({ totalActive: active, pending, orphans });
+      setOrphanedPages(orphans);
+      setStats({ totalActive: active, pending, orphans: orphans.length });
     } catch (e) {
       console.error(e);
     }
@@ -223,32 +230,27 @@ export default function LinkGraph() {
     }
   };
 
-  const runFullScan = async () => {
+  const findLinksForOrphans = async () => {
+    if (orphanedPages.length === 0) {
+      alert('No orphan pages found.');
+      return;
+    }
     setScanning(true);
     try {
-      const [insights, services, pseo] = await Promise.all([
-        getDocs(query(collection(db, 'insights'), where('status', '==', 'published'))),
-        getDocs(query(collection(db, 'services'), where('status', '==', 'published'))),
-        getDocs(query(collection(db, 'pseo_pages'), where('status', '==', 'published')))
-      ]);
-
-      const allDocs = [
-        ...insights.docs.map(d => ({ id: d.id, coll: 'insights', data: d.data() })),
-        ...services.docs.map(d => ({ id: d.id, coll: 'services', data: d.data() })),
-        ...pseo.docs.map(d => ({ id: d.id, coll: 'pseo_pages', data: d.data() }))
-      ];
-
-      for (const item of allDocs) {
-        let contentText = item.data.content || '';
-        if (typeof contentText === 'object') {
-          // Flatten PSEO structured content for scanning
-          contentText = JSON.stringify(contentText);
-        }
-        await runLinkDiscovery(item.id, item.coll, item.data.title || item.data.name, contentText);
+      // Process up to 5 orphans at a time to prevent timeout
+      const toProcess = orphanedPages.slice(0, 5);
+      
+      for (const orphan of toProcess) {
+        await findInboundLinkOpportunities(
+          orphan.id, 
+          orphan.coll, 
+          orphan.title || orphan.name, 
+          orphan.primary_keyword || orphan.title || orphan.name
+        );
       }
 
       await fetchLinks();
-      alert('Scanning complete! Discovered links across Insights, Services, and PSEO pages.');
+      alert(`Scanned ${toProcess.length} orphan pages and generated inbound link suggestions.`);
     } catch (e) {
       console.error(e);
       alert('Scan failed. See console.');
@@ -285,12 +287,12 @@ export default function LinkGraph() {
             {showVisual ? 'Hide Visual Graph' : 'Show Visual Graph'}
           </button>
           <button 
-            onClick={runFullScan}
-            disabled={scanning}
+            onClick={findLinksForOrphans}
+            disabled={scanning || orphanedPages.length === 0}
             className="px-4 py-2 bg-brand-primary text-white rounded-lg text-sm font-bold flex items-center gap-2 disabled:opacity-50"
           >
             {scanning ? <Loader2 className="animate-spin" size={16} /> : <Search size={16} />}
-            Scan All Published Pages
+            Generate Inbound Links for Orphans ({orphanedPages.length})
           </button>
         </div>
       </div>

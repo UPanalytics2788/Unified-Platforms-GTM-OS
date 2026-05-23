@@ -37,8 +37,6 @@ import ContentEditor from './ContentEditor';
 import BrandsSettings from './BrandSettings';
 import LandingPages from './LandingPages';
 import LandingPageBuilder from './LandingPageBuilder';
-import Leads from './Leads';
-import Analytics from './Analytics';
 import MigrateContent from './MigrateContent';
 import PSEODashboard from './PSEODashboard';
 import BlogStudio from './BlogStudio';
@@ -46,7 +44,6 @@ import TrustSignals from './TrustSignals';
 import LinkGraph from './LinkGraph';
 import MediaManager from './MediaManager';
 import UserManagement from './UserManagement';
-import Campaigns from './Campaigns';
 import SEOSettings from './SEOSettings';
 
 interface AdminDashboardProps {
@@ -125,12 +122,9 @@ export default function AdminDashboard({ user, role }: AdminDashboardProps) {
     { icon: Users, label: 'Authors', path: '/admin/authors' },
     { icon: Image, label: 'Media', path: '/admin/media' },
     { icon: Users, label: 'User Management', path: '/admin/users' },
-    { icon: BarChart, label: 'Campaigns', path: '/admin/campaigns' },
     { icon: Settings2, label: 'SEO Settings', path: '/admin/seo-settings' },
     { icon: PenTool, label: 'Blog Studio', path: '/admin/blog' },
     { icon: Layers, label: 'Landing Pages', path: '/admin/landing-pages' },
-    { icon: Users, label: 'Leads', path: '/admin/leads' },
-    { icon: BarChart, label: 'Analytics', path: '/admin/analytics' },
     { icon: Globe, label: 'PSEO Dashboard', path: '/admin/pseo' },
     { icon: Shield, label: 'Trust Signals', path: '/admin/trust' },
     { icon: LinkIcon, label: 'Link Graph', path: '/admin/links' },
@@ -207,7 +201,7 @@ export default function AdminDashboard({ user, role }: AdminDashboardProps) {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {[
                     { label: 'Published Pages', value: stats.pages, icon: FileText, color: 'text-blue-600', bg: 'bg-blue-50' },
-                    { label: 'Total Leads', value: stats.leads, icon: Users, color: 'text-green-600', bg: 'bg-green-50' },
+                    { label: 'Users', value: stats.users, icon: Users, color: 'text-green-600', bg: 'bg-green-50' },
                     { label: 'Blog Posts', value: stats.insights, icon: PenTool, color: 'text-purple-600', bg: 'bg-purple-50' },
                     { label: 'Conversion Rate', value: '3.2%', change: '+0.4%', icon: TrendingUp, color: 'text-brand-primary', bg: 'bg-brand-primary/10' }
                   ].map((stat, i) => (
@@ -261,7 +255,6 @@ export default function AdminDashboard({ user, role }: AdminDashboardProps) {
             <Route path="/authors/edit/:id" element={<ContentEditor />} />
             <Route path="/media" element={<MediaManager />} />
             <Route path="/users" element={<UserManagement />} />
-            <Route path="/campaigns" element={<Campaigns />} />
             <Route path="/seo-settings" element={<SEOSettings />} />
 
             <Route path="/content" element={<ContentList />} />
@@ -271,8 +264,6 @@ export default function AdminDashboard({ user, role }: AdminDashboardProps) {
             <Route path="/landing-pages" element={<LandingPages />} />
             <Route path="/landing-pages/new" element={<LandingPageBuilder />} />
             <Route path="/landing-pages/edit/:id" element={<LandingPageBuilder />} />
-            <Route path="/leads" element={<Leads />} />
-            <Route path="/analytics" element={<Analytics />} />
             <Route path="/pseo" element={<PSEODashboard />} />
             <Route path="/trust" element={<TrustSignals />} />
             <Route path="/links" element={<LinkGraph />} />

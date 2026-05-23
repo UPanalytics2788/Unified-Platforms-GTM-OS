@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import { doc, getDoc } from 'firebase/firestore';
+import { collection, query, where, getDocs, limit, doc, getDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import LeadForm from '../components/ui/LeadForm';
 import { Helmet } from 'react-helmet-async';
@@ -18,17 +18,25 @@ export default function CaseStudyDetail() {
       if (!slug) return;
       
       try {
-        // Try Firestore first
-        const docRef = doc(db, 'case_studies', slug);
-        const docSnap = await getDoc(docRef);
+        // Try Firestore first via query by slug
+        const q = query(collection(db, 'case_studies'), where('slug', '==', slug), limit(1));
+        const querySnapshot = await getDocs(q);
         
-        if (docSnap.exists()) {
-          setStudy({ id: docSnap.id, ...docSnap.data() });
+        if (!querySnapshot.empty) {
+          setStudy({ id: querySnapshot.docs[0].id, ...querySnapshot.docs[0].data() });
         } else {
-          // Fallback to local data
-          const foundStudy = CASE_STUDIES.find(s => s.slug === slug);
-          if (foundStudy) {
-            setStudy(foundStudy);
+          // If not found by query, check if slug is actually a document ID
+          const docRef = doc(db, 'case_studies', slug);
+          const docSnap = await getDoc(docRef);
+          
+          if (docSnap.exists()) {
+            setStudy({ id: docSnap.id, ...docSnap.data() });
+          } else {
+            // Fallback to local data
+            const foundStudy = CASE_STUDIES.find(s => s.slug === slug);
+            if (foundStudy) {
+              setStudy(foundStudy);
+            }
           }
         }
       } catch (error) {

@@ -15,13 +15,11 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
 import ChatBot from './components/ChatBot';
-import Home from './pages/Home';
 
 // Lazy Pages
+const Home = lazy(() => import('./pages/Home'));
 const Solutions = lazy(() => import('./pages/Solutions'));
-const SolutionDetail = lazy(() => import('./pages/SolutionDetail'));
 const Services = lazy(() => import('./pages/Services'));
-const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
 const Insights = lazy(() => import('./pages/Insights'));
 const InsightDetail = lazy(() => import('./pages/InsightDetail'));
 const CaseStudies = lazy(() => import('./pages/CaseStudiesPage'));
@@ -29,29 +27,6 @@ const Contact = lazy(() => import('./pages/Contact'));
 const CaseStudyDetail = lazy(() => import('./pages/CaseStudyDetail'));
 const LandingPageView = lazy(() => import('./pages/LandingPageView'));
 const PSEOView = lazy(() => import('./pages/PSEOView'));
-const SEOStrategy = lazy(() => import('./pages/SEOStrategy'));
-const TechnicalSEO = lazy(() => import('./pages/TechnicalSEO'));
-const ContentSEO = lazy(() => import('./pages/ContentSEO'));
-const ContentStrategy = lazy(() => import('./pages/ContentStrategy'));
-const ContentCreation = lazy(() => import('./pages/ContentCreation'));
-const SocialMedia = lazy(() => import('./pages/SocialMedia'));
-const EmailMarketing = lazy(() => import('./pages/EmailMarketing'));
-const Copywriting = lazy(() => import('./pages/Copywriting'));
-const WebsiteDevelopment = lazy(() => import('./pages/WebsiteDevelopment'));
-const WebAppDevelopment = lazy(() => import('./pages/WebAppDevelopment'));
-const CMSDevelopment = lazy(() => import('./pages/CMSDevelopment'));
-const APIIntegrations = lazy(() => import('./pages/APIIntegrations'));
-const Recruitment = lazy(() => import('./pages/Recruitment'));
-const ExecutiveSearch = lazy(() => import('./pages/ExecutiveSearch'));
-const RPO = lazy(() => import('./pages/RPO'));
-const HRConsulting = lazy(() => import('./pages/HRConsulting'));
-const AuthorityBuilding = lazy(() => import('./pages/AuthorityBuilding'));
-const LocalSEO = lazy(() => import('./pages/LocalSEO'));
-const AEOGEO = lazy(() => import('./pages/AEOGEO'));
-const PaidSearch = lazy(() => import('./pages/PaidSearch'));
-const PaidSocial = lazy(() => import('./pages/PaidSocial'));
-const MarketplaceAds = lazy(() => import('./pages/MarketplaceAds'));
-const CRO = lazy(() => import('./pages/CRO'));
 const AdminDashboard = lazy(() => import('./pages/admin/Dashboard'));
 const ClientPortal = lazy(() => import('./pages/ClientPortal'));
 const Login = lazy(() => import('./pages/Login'));
@@ -177,32 +152,9 @@ export default function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/solutions" element={<Solutions />} />
-                <Route path="/solutions/:slug" element={<SolutionDetail />} />
+                <Route path="/solutions/:slug" element={<UnifiedPageView />} />
                 <Route path="/services" element={<Services />} />
-                <Route path="/services/seo-strategy" element={<SEOStrategy />} />
-                <Route path="/services/technical-seo" element={<TechnicalSEO />} />
-                <Route path="/services/content-seo" element={<ContentSEO />} />
-                <Route path="/services/content-strategy" element={<ContentStrategy />} />
-                <Route path="/services/content-creation" element={<ContentCreation />} />
-                <Route path="/services/social-media" element={<SocialMedia />} />
-                <Route path="/services/email-marketing" element={<EmailMarketing />} />
-                <Route path="/services/copywriting" element={<Copywriting />} />
-                <Route path="/services/website-development" element={<WebsiteDevelopment />} />
-                <Route path="/services/web-apps" element={<WebAppDevelopment />} />
-                <Route path="/services/cms-development" element={<CMSDevelopment />} />
-                <Route path="/services/api-integrations" element={<APIIntegrations />} />
-                <Route path="/services/recruitment" element={<Recruitment />} />
-                <Route path="/services/executive-search" element={<ExecutiveSearch />} />
-                <Route path="/services/rpo" element={<RPO />} />
-                <Route path="/services/hr-consulting" element={<HRConsulting />} />
-                <Route path="/services/authority-building" element={<AuthorityBuilding />} />
-                <Route path="/services/local-seo" element={<LocalSEO />} />
-                <Route path="/services/aeo-geo" element={<AEOGEO />} />
-                <Route path="/services/paid-search" element={<PaidSearch />} />
-                <Route path="/services/paid-social" element={<PaidSocial />} />
-                <Route path="/services/marketplace-ads" element={<MarketplaceAds />} />
-                <Route path="/services/cro" element={<CRO />} />
-                <Route path="/services/:slug" element={<ServiceDetail />} />
+                <Route path="/services/:slug" element={<UnifiedPageView />} />
                 <Route path="/insights" element={<Insights />} />
                 <Route path="/insights/:slug" element={<InsightDetail />} />
                 <Route path="/case-studies" element={<CaseStudies />} />
