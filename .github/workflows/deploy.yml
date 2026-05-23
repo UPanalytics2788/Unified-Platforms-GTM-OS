@@ -1,46 +1,48 @@
-name: Build and Deploy
+name: Deploy to Hostinger VPS
 
 on:
   push:
-    branches: [ main ]
-
-permissions:
-  contents: read
-  packages: write
+    branches: [ main ] # Or your primary branch name
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Log in to GHCR
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and push image
-        run: |
-          IMAGE=ghcr.io/upanalytics2788/unified-platforms-gtm-os
-          docker build -t $IMAGE:latest -t $IMAGE:${{ github.sha }} .
-          docker push $IMAGE:latest
-          docker push $IMAGE:${{ github.sha }}
-
-      - name: Deploy on VPS
+      - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           port: 22
+          debug: true
           command_timeout: 30m
           script: |
             set -e
-            echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
+            # Ensure folder exists
+            mkdir -p /var/www/unified-platforms
             cd /var/www/unified-platforms
-            docker compose pull
-            docker compose up -d --remove-orphans
+            
+            echo "Pulling latest code..."
+            if [ -d .git ]; then
+              # Re-initialize remote if needed to ensure correct URL
+              git remote set-url origin https://github.com/${{ github.repository }} || true
+              git pull origin main
+            else
+              git clone https://github.com/${{ github.repository }} .
+            fi
+
+            echo "Installing dependencies..."
+            npm install
+            
+            echo "Building application..."
+            npm run build
+            
+            echo "Starting/Restarting application..."
+            # Using tsx to run server.ts directly in production mode
+            # Ensure pm2 is installed globally or use local if possible
+            pm2 delete unified-platforms || true
+            NODE_ENV=production pm2 start server.ts --name "unified-platforms" --interpreter ./node_modules/.bin/tsx -- --port 3000

@@ -234,7 +234,7 @@ export default function Navbar({ user }: NavbarProps) {
             ))}
           </div>
 
-          {/* CTAs & Profile */}
+          {/* CTAs */}
           <div className="hidden lg:flex items-center space-x-4">
             <Link
               to="/contact?type=consultation"
@@ -242,41 +242,6 @@ export default function Navbar({ user }: NavbarProps) {
             >
               Book Consultation
             </Link>
-
-            {user && (
-              <div className="relative group">
-                <button className="w-10 h-10 bg-brand-gray/10 rounded-full flex items-center justify-center hover:bg-brand-gray/20 transition-colors">
-                  <UserIcon size={20} className="text-brand-gray" />
-                </button>
-                <div className="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                  <div className="bg-brand-white rounded-xl shadow-xl border border-brand-dark/10 w-56 p-2">
-                    <div className="px-3 py-2 border-b border-brand-dark/5 mb-1">
-                      <p className="text-xs font-bold text-brand-gray/60 uppercase tracking-widest">Account</p>
-                      <p className="text-sm font-medium text-brand-dark truncate">{user.email}</p>
-                    </div>
-                    {userRole === 'admin' && (
-                      <Link to="/admin" className="flex items-center space-x-2 px-3 py-2 text-sm text-brand-gray hover:bg-brand-gray/5 rounded-lg transition-colors">
-                        <LayoutDashboard size={16} />
-                        <span>Admin Dashboard</span>
-                      </Link>
-                    )}
-                    {(userRole === 'client' || userRole === 'admin') && (
-                      <Link to="/client-portal" className="flex items-center space-x-2 px-3 py-2 text-sm text-brand-gray hover:bg-brand-gray/5 rounded-lg transition-colors">
-                        <ShieldCheck size={16} />
-                        <span>Client Portal</span>
-                      </Link>
-                    )}
-                    <button
-                      onClick={handleLogout}
-                      className="w-full flex items-center space-x-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors mt-1"
-                    >
-                      <LogOut size={16} />
-                      <span>Logout</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
 
           {/* Mobile menu button */}
@@ -303,65 +268,19 @@ export default function Navbar({ user }: NavbarProps) {
             className="absolute top-full left-0 right-0 h-[calc(100vh-80px)] z-[9999] lg:hidden bg-brand-white"
           >
             <div className="px-4 py-6 space-y-4 overflow-y-auto h-full pb-48">
-              {user && (
-                <div className="p-4 bg-brand-gray/5 rounded-2xl mb-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 bg-brand-primary/10 rounded-full flex items-center justify-center">
-                      <UserIcon size={20} className="text-brand-primary" />
-                    </div>
-                    <div className="overflow-hidden">
-                      <p className="text-xs font-bold text-brand-gray/60 uppercase tracking-widest">Logged in as</p>
-                      <p className="text-sm font-medium text-brand-dark truncate">{user.email}</p>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 gap-2">
-                    {userRole === 'admin' && (
-                      <Link 
-                        to="/admin" 
-                        onClick={() => setIsOpen(false)}
-                        className="flex items-center space-x-2 p-3 text-sm text-brand-gray hover:bg-brand-white rounded-xl transition-colors"
-                      >
-                        <LayoutDashboard size={18} />
-                        <span>Admin Dashboard</span>
-                      </Link>
-                    )}
-                    {(userRole === 'client' || userRole === 'admin') && (
-                      <Link 
-                        to="/client-portal" 
-                        onClick={() => setIsOpen(false)}
-                        className="flex items-center space-x-2 p-3 text-sm text-brand-gray hover:bg-brand-white rounded-xl transition-colors"
-                      >
-                        <ShieldCheck size={18} />
-                        <span>Client Portal</span>
-                      </Link>
-                    )}
-                  </div>
-                </div>
-              )}
               {navItems.filter(isVisible).map((item) => (
                 <MobileNavItem key={item.label} item={item} onClose={() => setIsOpen(false)} />
               ))}
             </div>
             
             <div className="absolute bottom-0 left-0 right-0 p-4 bg-brand-white border-t border-brand-dark/5 space-y-3 shadow-[0_-10px_20px_rgba(0,0,0,0.05)]">
-              {user ? (
-                <button
-                  onClick={handleLogout}
-                  className="block w-full text-center py-3.5 text-red-600 font-bold border border-red-100 bg-red-50 rounded-xl"
-                >
-                  Logout
-                </button>
-              ) : (
-                <>
-                  <Link
-                    to="/contact?type=consultation"
-                    onClick={() => setIsOpen(false)}
-                    className="block w-full text-center py-3.5 bg-brand-primary text-brand-white font-bold rounded-xl shadow-sm"
-                  >
-                    Book Consultation
-                  </Link>
-                </>
-              )}
+              <Link
+                to="/contact?type=consultation"
+                onClick={() => setIsOpen(false)}
+                className="block w-full text-center py-3.5 bg-brand-primary text-brand-white font-bold rounded-xl shadow-sm"
+              >
+                Book Consultation
+              </Link>
             </div>
           </motion.div>
         )}

@@ -6,7 +6,6 @@ import { Loader2 } from 'lucide-react';
 
 export default function Home() {
   const [data, setData] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,20 +16,11 @@ export default function Home() {
           setData(docSnap.data());
         }
       } catch (error) {
-        // Rely on defaultData if fetch fails (e.g. offline/placeholder config)
+        // Rely on defaultData if fetch fails
       }
-      setLoading(false);
     };
     fetchData();
   }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="animate-spin text-brand-primary" size={40} />
-      </div>
-    );
-  }
 
   // Default content if CMS data is missing or incomplete
   const defaultData = {

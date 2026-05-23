@@ -15,10 +15,9 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
 import ChatBot from './components/ChatBot';
+import Home from './pages/Home';
 
 // Lazy Pages
-// ... (imports remain the same below)
-const Home = lazy(() => import('./pages/Home'));
 const Solutions = lazy(() => import('./pages/Solutions'));
 const SolutionDetail = lazy(() => import('./pages/SolutionDetail'));
 const Services = lazy(() => import('./pages/Services'));
