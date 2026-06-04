@@ -29,7 +29,7 @@ export default function ServiceDetail() {
           }
         }
       } catch (error) {
-        console.error("Error fetching service from Firestore, falling back to local data:", error);
+        console.warn("Error fetching service from Firestore, falling back to local data:", error);
         const localService = SERVICES_CONTENT.find(s => s.slug === slug);
         if (localService) {
           setService(localService);

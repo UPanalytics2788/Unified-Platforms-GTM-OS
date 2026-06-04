@@ -32,6 +32,7 @@ import {
   RefreshCw
 } from 'lucide-react';
 import { runCMSInitialization } from '../../lib/cms-init';
+import { migrateServicesToNewSchema } from '../../lib/migrate-schema';
 import ContentList from './ContentList';
 import ContentEditor from './ContentEditor';
 import BrandsSettings from './BrandSettings';
@@ -55,6 +56,8 @@ export default function AdminDashboard({ user, role }: AdminDashboardProps) {
   const location = useLocation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isSyncing, setIsSyncing] = useState(false);
+  const [isMigrating, setIsMigrating] = useState(false);
+  const [migrateResult, setMigrateResult] = useState<{ success: number; failed: number } | null>(null);
   const [stats, setStats] = useState<any>({
     pages: 0,
     leads: 0,
@@ -75,6 +78,22 @@ export default function AdminDashboard({ user, role }: AdminDashboardProps) {
     }
     setIsSyncing(false);
   };
+
+  const handleRepairSchema = async () => {
+    if (!window.confirm('This will upgrade all service/solution documents to the new schema. Safe to run multiple times. Continue?')) return;
+    setIsMigrating(true);
+    setMigrateResult(null);
+    try {
+      const result = await migrateServicesToNewSchema();
+      setMigrateResult({ success: result.success, failed: result.failed });
+      if (result.errors.length > 0) console.warn('Migration errors:', result.errors);
+      alert(`Schema repair complete! ${result.success} docs upgraded, ${result.failed} failed.`);
+    } catch (err) {
+      console.error(err);
+      alert('Schema repair failed. Check console for details.');
+    }
+    setIsMigrating(false);
+  };
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -91,6 +110,18 @@ export default function AdminDashboard({ user, role }: AdminDashboardProps) {
           users: usersSnap.size,
           insights: insightsSnap.size
         });
+
+        if (pagesSnap.size === 0 && insightsSnap.size === 0) {
+          console.log("Empty Firebase detected - auto running CMS sync (force)");
+          await runCMSInitialization(true);
+          const newPages = await getDocs(collection(db, 'pages'));
+          const newInsights = await getDocs(collection(db, 'insights'));
+          setStats(prev => ({
+            ...prev,
+            pages: newPages.size,
+            insights: newInsights.size
+          }));
+        }
       } catch (err) {
         console.error('Error fetching dashboard stats:', err);
       }
@@ -166,6 +197,22 @@ export default function AdminDashboard({ user, role }: AdminDashboardProps) {
           >
             {isSyncing ? <Loader2 size={20} className="animate-spin text-brand-primary" /> : <RefreshCw size={20} />}
             {isSidebarOpen && <span className="font-medium text-sm">System Sync</span>}
+          </button>
+          <button
+            onClick={handleRepairSchema}
+            disabled={isMigrating}
+            className="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-colors w-full text-left disabled:opacity-50"
+            title="Upgrade service/solution docs to new schema"
+          >
+            {isMigrating ? <Loader2 size={20} className="animate-spin text-green-400" /> : <CheckCircle size={20} />}
+            {isSidebarOpen && (
+              <span className="font-medium text-sm">
+                Repair Schema
+                {migrateResult && (
+                  <span className="ml-1 text-green-400 text-xs">({migrateResult.success}✓)</span>
+                )}
+              </span>
+            )}
           </button>
           <button className="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-colors w-full text-left">
             <LogOut size={20} />

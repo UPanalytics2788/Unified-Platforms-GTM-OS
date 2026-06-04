@@ -55,7 +55,7 @@ export default function InsightDetail() {
           }
         }
       } catch (err) {
-        console.error("Error fetching insight:", err);
+        console.warn("Error fetching insight:", err);
       } finally {
         setLoading(false);
       }

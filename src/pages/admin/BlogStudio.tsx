@@ -79,20 +79,13 @@ export default function BlogStudio() {
     const toApply = suggestions.filter(s => selectedSuggestions[s.id || s.targetId]);
     
     for (const s of toApply) {
-      const anchor = `<a href="/insights/${s.targetSlug}" class="text-brand-primary font-semibold hover:underline">${s.anchorText}</a>`;
-      // Simple string replace of the first occurrence of the context sentence with anchor wrapped around it if it matches
-      // Actually the instruction says: insert anchor tags into eeatDraft at the contextSentence location (simple string replace of the first occurrence of the sentence with the sentence wrapped in an a tag)
-      // Wait, anchorText is what should be wrapped? Or should I replace the sentence?
-      // "insert anchor tags into eeatDraft at the contextSentence location (simple string replace of the first occurrence of the sentence with the sentence wrapped in an <a href="/insights/{slug}">{anchorText}</a>)"
-      // Actually it's more common to wrap the anchor text. But I'll follow instructions.
-      // Instructions: "replace of the first occurrence of the sentence with the sentence wrapped in an <a href="/insights/{slug}">{anchorText}</a>" -> this doesn't make sense.
-      // Re-reading: "simple string replace of the first occurrence of the sentence with the sentence wrapped in an <a href="/insights/{slug}">{anchorText}</a>"
-      // Maybe it meant: replace the first occurrence of s.anchorText within s.contextSentence with the link.
-      // Let's do a more robust approach: replace first occurrence of contextSentence with a version where anchorText is linked.
-      if (newHtml.includes(s.contextSentence)) {
-        const linkedSentence = s.contextSentence.replace(s.anchorText, `<a href="/insights/${s.targetSlug}" class="text-brand-primary font-semibold hover:underline">${s.anchorText}</a>`);
-        newHtml = newHtml.replace(s.contextSentence, linkedSentence);
-      }
+      if (!s.anchorText || !s.targetSlug) continue;
+      // Escape special regex characters in the anchor text
+      const escaped = s.anchorText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      // Match first occurrence NOT already inside an <a> tag
+      const regex = new RegExp(`(?<!href=[^>]*)\\b(${escaped})\\b`, 'i');
+      const linked = `<a href="/insights/${s.targetSlug}" class="text-brand-primary font-semibold hover:underline">$1</a>`;
+      newHtml = newHtml.replace(regex, linked);
     }
     setEEATDraft(newHtml);
     setSuggestions(prev => prev.filter(s => !selectedSuggestions[s.id || s.targetId]));
@@ -189,11 +182,28 @@ export default function BlogStudio() {
     if (!eeatDraft || !metaInfo) return;
     
     try {
-      // Create a new document in the insights collection
+      // Generate clean, URL-safe slug from title
+      const rawSlug = (metaInfo.title || topic)
+        .toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-');
+      // Check for duplicate slug before saving
+      const existingQ = query(collection(db, 'insights'), where('slug', '==', rawSlug));
+      const existingSnap = await getDocs(existingQ);
+      const slug = existingSnap.empty ? rawSlug : `${rawSlug}-${Date.now()}`;
+
       const docRef = await addDoc(collection(db, 'insights'), {
         title: metaInfo.title,
         content: eeatDraft,
-        slug: topic.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, ''),
+        slug,
+        status: 'published',
+        type: 'blog',
+        author_id: 'team',
+        createdAt: new Date().toISOString(),
+        publish_date: new Date().toISOString(),
         seoContext: {
           title: metaInfo.title,
           description: metaInfo.description,

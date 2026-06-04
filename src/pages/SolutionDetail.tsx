@@ -29,7 +29,7 @@ export default function SolutionDetail() {
           }
         }
       } catch (error) {
-        console.error("Error fetching solution from Firestore, falling back to local data:", error);
+        console.warn("Error fetching solution from Firestore, falling back to local data:", error);
         const localSolution = SOLUTIONS_CONTENT.find(s => s.slug === slug);
         if (localSolution) {
           setSolution(localSolution);

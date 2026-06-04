@@ -542,31 +542,46 @@ export const SERVICES_CONTENT = [
     category: "Search & Organic",
     primary_keyword: "B2B SEO Strategy",
     meta_title: "SEO Strategy Services | Unified Platforms",
-    meta_description: "Expert seo strategy services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
-    description: "Expert seo strategy services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
+    meta_description: "Unified Platforms builds custom SEO strategies that drive measurable organic growth. Our revenue-first framework connects every SEO action to your business objectives.",
+    description: "Most businesses spend months publishing content without seeing results. We build the strategic framework that connects every action to your larger business objectives.",
     primary_cta_text: "Get a Strategy Assessment",
     secondary_cta_text: "View Our Methodology",
-    use_cases: [
-      "Scaling architecture for enterprise systems",
-      "Optimizing performance and stability",
-      "Driving highly qualified B2B leads"
+    layout_pattern: "ARCHITECT",
+    features: [
+      {
+        title: "Data-Driven Framework",
+        description: "We don't guess. We use deep data analysis to identify the highest-impact opportunities for your specific business.",
+        icon: 'BarChart3'
+      },
+      {
+        title: "Revenue-First Approach",
+        description: "Our strategies are built to drive leads and sales, not just vanity metrics like impressions or rankings.",
+        icon: 'TrendingUp'
+      },
+      {
+        title: "Competitive Advantage",
+        description: "We analyze your competitors' playbooks to find the gaps they've missed and the strengths we can neutralize.",
+        icon: 'Target'
+      }
+    ],
+    process_steps: [
+      { label: "Discovery & Alignment", detail: "Before we look at keywords or competitors, we spend time understanding your business targets and funnel." },
+      { label: "Full SEO Audit", detail: "Technical health, on-page optimization, and off-page analysis to identify gains." },
+      { label: "Competitive Analysis", detail: "Map out who is winning in organic search in your space, analyze their strategies, and identify gaps." },
+      { label: "Keyword Research", detail: "Build a complete keyword universe mapped to topic clusters and the buyer journey." },
+      { label: "Architecture Planning", detail: "Define website architecture and content plans to pass authority efficiently." }
     ],
     faqs: [
-      { question: "How do you measure success for seo strategy?", answer: "We focus exclusively on metrics that impact your pipeline and revenue, moving beyond vanity metrics to real business outcomes." },
-      { question: "What makes your approach to seo strategy different?", answer: "We bring an engineering mindset to every discipline, ensuring robust architecture, data-driven decisions, and sustainable long-term scale." },
-      { question: "How long does a typical engagement last?", answer: "Most engagements begin with a strategic foundation mapping phase followed by continuous execution and optimization over 6 to 12 months." },
-      { question: "Do you offer tailored solutions?", answer: "Yes, every strategy is highly tailored to your specific industry environment, competitive landscape, and ICP requirements." }
+      { question: "How long does it take to see results from an SEO strategy?", answer: "For most websites, the first noticeable improvements in keyword rankings appear within 60 to 90 days of beginning execution. Meaningful organic traffic growth typically follows within four to six months." },
+      { question: "What is the difference between an SEO strategy and just doing SEO?", answer: "Doing SEO without a strategy means executing individual tactics without a clear framework. An SEO strategy defines which keywords to target and why, how to structure your content, and what technical issues to prioritize." },
+      { question: "Do you work with businesses in all industries?", answer: "Yes. We have developed SEO strategies across industries including professional services, ecommerce, SaaS, healthcare, and B2B." }
     ],
     content: `
-      <h2>Comprehensive SEO Strategy for B2B Enterprises</h2>
-      <p>Modern businesses require structural engineering in their marketing and operations. Our seo strategy services are built to address complex challenges that off-the-shelf solutions cannot touch. We prioritize scalability, precision, and alignment with your overarching revenue goals.</p>
-      <p>We approach every engagement by first mapping your existing architecture, identifying constraints, and developing a strategic roadmap for optimization. By doing so, we ensure that every action we take compounds over time, building a moat around your competitive advantage.</p>
-      <h3>The Architecture of Success</h3>
-      <p>Success requires more than just execution; it requires a highly tuned framework. Our experts deploy industry-leading methodologies to reconstruct your processes from the ground up. This means eliminating bottlenecks, accelerating velocity, and implementing strict quality controls at every touchpoint.</p>
-      <p>We operate as an extension of your team, bringing deep technical expertise and strategic foresight to the table. Our focus remains resolutely fixed on generating tangible business value and moving the needle on the metrics that matter most to your board and leadership.</p>
-      <h3>Continuous Iteration and Growth</h3>
-      <p>The landscape is constantly evolving, and so must your strategy. We institute rapid feedback loops, robust measurement systems, and continuous iteration protocols. This agile methodology ensures that your seo strategy remains resilient and highly adaptive, capable of capitalizing on new opportunities while mitigating emerging risks.</p>
-      <p>Through our rigorous approach, we transform your operations into a predictable, scalable engine of growth, driving long-term enterprise value and securing your position as a market leader.</p>
+      <h2>The Architecture of a High-Performance SEO Strategy</h2>
+      <p>An SEO strategy is a long-term plan that defines which keywords to target, how to structure your website, what content to create, and how to build authority in your niche.</p>
+      <p>Without a strategy, SEO becomes reactive. You end up chasing algorithm updates and copying competitors without context. With a strategy, every action has a reason and every result is measurable.</p>
+      <h3>Strategic Topic Clustering</h3>
+      <p>We move beyond simple keyword lists to build comprehensive topic clusters. This approach signals absolute topical authority to search engines and ensures that you capture intent across the entire buyer journey—from initial research to final purchase decision.</p>
     `
   },
   {
@@ -575,32 +590,43 @@ export const SERVICES_CONTENT = [
     slug: "technical-seo",
     category: "Search & Organic",
     primary_keyword: "B2B Technical SEO",
-    meta_title: "Technical SEO Services | Unified Platforms",
-    meta_description: "Expert technical seo services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
-    description: "Expert technical seo services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
-    primary_cta_text: "Get a Strategy Assessment",
-    secondary_cta_text: "View Our Methodology",
-    use_cases: [
-      "Scaling architecture for enterprise systems",
-      "Optimizing performance and stability",
-      "Driving highly qualified B2B leads"
+    meta_title: "Technical SEO Audit & Infrastructure | Unified Platforms",
+    meta_description: "Deep technical SEO audits to resolve crawl budget issues, rendering bottlenecks, and site architecture flaws for enterprise platforms.",
+    description: "Technical SEO is the foundation of organic growth. We resolve the infrastructure-level issues that prevent search engines from discovering and ranking your content.",
+    primary_cta_text: "Request Technical Audit",
+    secondary_cta_text: "System Architecture Hub",
+    layout_pattern: "ENGINEER",
+    features: [
+      {
+        title: "Crawl Budget Optimization",
+        description: "Eliminating redundant paths and low-value pages to ensure bots focus on your conversion assets.",
+        icon: 'Cpu'
+      },
+      {
+        title: "Performance (Core Web Vitals)",
+        description: "Optimizing LCP, FID, and CLS to meet search engine performance benchmarks.",
+        icon: 'Zap'
+      },
+      {
+        title: "Indexing Integrity",
+        description: "Solving complex canonical chains and JavaScript rendering hurdles.",
+        icon: 'ShieldCheck'
+      }
+    ],
+    process_steps: [
+      { label: "Infrastructure Audit", detail: "Deep dive into server response codes, log files, and crawl patterns." },
+      { label: "Architecture Mapping", detail: "Restructuring URL hierarchy for maximum authority distribution." },
+      { label: "Rendering Fixes", detail: "Optimizing SSR/ISR pipelines for modern JavaScript frameworks." },
+      { label: "Global Technical SEO", detail: "Implementing Hreflang and multi-region configuration for global scale." }
     ],
     faqs: [
-      { question: "How do you measure success for technical seo?", answer: "We focus exclusively on metrics that impact your pipeline and revenue, moving beyond vanity metrics to real business outcomes." },
-      { question: "What makes your approach to technical seo different?", answer: "We bring an engineering mindset to every discipline, ensuring robust architecture, data-driven decisions, and sustainable long-term scale." },
-      { question: "How long does a typical engagement last?", answer: "Most engagements begin with a strategic foundation mapping phase followed by continuous execution and optimization over 6 to 12 months." },
-      { question: "Do you offer tailored solutions?", answer: "Yes, every strategy is highly tailored to your specific industry environment, competitive landscape, and ICP requirements." }
+      { question: "How often should we perform a technical audit?", answer: "For large enterprise sites, we recommend a deep audit every 6 months and continuous monitoring for regression." },
+      { question: "Can technical SEO fix ranking drops?", answer: "Often, yes. Sudden drops are frequently caused by technical blocks like accidentally no-indexing sections or server capacity issues." }
     ],
     content: `
-      <h2>Comprehensive Technical SEO for B2B Enterprises</h2>
-      <p>Modern businesses require structural engineering in their marketing and operations. Our technical seo services are built to address complex challenges that off-the-shelf solutions cannot touch. We prioritize scalability, precision, and alignment with your overarching revenue goals.</p>
-      <p>We approach every engagement by first mapping your existing architecture, identifying constraints, and developing a strategic roadmap for optimization. By doing so, we ensure that every action we take compounds over time, building a moat around your competitive advantage.</p>
-      <h3>The Architecture of Success</h3>
-      <p>Success requires more than just execution; it requires a highly tuned framework. Our experts deploy industry-leading methodologies to reconstruct your processes from the ground up. This means eliminating bottlenecks, accelerating velocity, and implementing strict quality controls at every touchpoint.</p>
-      <p>We operate as an extension of your team, bringing deep technical expertise and strategic foresight to the table. Our focus remains resolutely fixed on generating tangible business value and moving the needle on the metrics that matter most to your board and leadership.</p>
-      <h3>Continuous Iteration and Growth</h3>
-      <p>The landscape is constantly evolving, and so must your strategy. We institute rapid feedback loops, robust measurement systems, and continuous iteration protocols. This agile methodology ensures that your technical seo remains resilient and highly adaptive, capable of capitalizing on new opportunities while mitigating emerging risks.</p>
-      <p>Through our rigorous approach, we transform your operations into a predictable, scalable engine of growth, driving long-term enterprise value and securing your position as a market leader.</p>
+      <h2>Engineering Your Way to the Top of Search</h2>
+      <p>Technical SEO is not a one-time project; it's a discipline of continuous infrastructure maintenance. We focus on ensuring that search engine crawlers can efficiently navigate and understand your site's content without hitting bottlenecks.</p>
+      <p>Our team works directly with yours to implement technical fixes that reduce server load, improve page speed, and resolve complex duplicate content issues that dilute your organic authority.</p>
     `
   },
   {
@@ -610,14 +636,20 @@ export const SERVICES_CONTENT = [
     category: "Search & Organic",
     primary_keyword: "B2B Content SEO",
     meta_title: "Content SEO Services | Unified Platforms",
-    meta_description: "Expert content seo services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
-    description: "Expert content seo services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
-    primary_cta_text: "Get a Strategy Assessment",
-    secondary_cta_text: "View Our Methodology",
-    use_cases: [
-      "Scaling architecture for enterprise systems",
-      "Optimizing performance and stability",
-      "Driving highly qualified B2B leads"
+    meta_description: "Engineering topical dominance through high-density content clusters and semantic network optimization for B2B ICPs.",
+    description: "Stop publishing fluff. We build semantic content clusters that establish absolute topical authority, forcing search engines to recognize your brand as the definitive source.",
+    primary_cta_text: "Audit Content Graph",
+    secondary_cta_text: "View Semantic Framework",
+    layout_pattern: "ARCHITECT",
+    features: [
+      { title: "Semantic Cluster Mapping", description: "Defining entity-based content architecture that covers entire buyer journeys.", icon: 'Network' },
+      { title: "Information Density Audit", description: "Ensuring every piece of content provides unique SME-led value.", icon: 'FileText' },
+      { title: "Entity Optimization", description: "Hardening content for LLM extraction and Answer Engine visibility.", icon: 'Cpu' }
+    ],
+    process_steps: [
+      { label: "Semantic Discovery", detail: "Auditing existing content against the target Knowledge Graph." },
+      { label: "Cluster Architecture", detail: "Building Pillar-Cluster frameworks that distribute Authority efficiently." },
+      { label: "SME Orchestration", detail: "Executing high-density content sprints led by subject matter experts." }
     ],
     faqs: [
       { question: "How do you measure success for content seo?", answer: "We focus exclusively on metrics that impact your pipeline and revenue, moving beyond vanity metrics to real business outcomes." },
@@ -644,14 +676,20 @@ export const SERVICES_CONTENT = [
     category: "Search & Organic",
     primary_keyword: "B2B Authority Building",
     meta_title: "Authority Building Services | Unified Platforms",
-    meta_description: "Expert authority building services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
-    description: "Expert authority building services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
-    primary_cta_text: "Get a Strategy Assessment",
-    secondary_cta_text: "View Our Methodology",
-    use_cases: [
-      "Scaling architecture for enterprise systems",
-      "Optimizing performance and stability",
-      "Driving highly qualified B2B leads"
+    meta_description: "Strategic authority building through targeted digital PR and earned media. We acquire high-trust citations from authoritative industry nodes.",
+    description: "Links are the currency of search, but only high-trust nodes matter. We engineer digital PR campaigns that acquire authoritative citations.",
+    primary_cta_text: "Build Authority Portfolio",
+    secondary_cta_text: "View Outreach Protocol",
+    layout_pattern: "ARCHITECT",
+    features: [
+      { title: "Earned Media Orchestration", description: "Securing brand citations in top-tier industry publications.", icon: 'Newspaper' },
+      { title: "Entity Relationship Mapping", description: "Acquiring links from relevant topical neighbors.", icon: 'Link' },
+      { title: "Toxic Audit & Mitigation", description: "Proactively managing backlink profiles to protect against penalties.", icon: 'Shield' }
+    ],
+    process_steps: [
+      { label: "Network Analysis", detail: "Identifying high-trust nodes and authority entry-points." },
+      { label: "PR Narrative Design", detail: "Developing data-rich stories that naturally attract citations." },
+      { label: "Outreach Execution", detail: "Direct orchestration of earned media placements." }
     ],
     faqs: [
       { question: "How do you measure success for authority building?", answer: "We focus exclusively on metrics that impact your pipeline and revenue, moving beyond vanity metrics to real business outcomes." },
@@ -745,33 +783,27 @@ export const SERVICES_CONTENT = [
     title: "Paid Search",
     slug: "paid-search",
     category: "Performance Marketing",
-    primary_keyword: "B2B Paid Search",
-    meta_title: "Paid Search Services | Unified Platforms",
-    meta_description: "Expert paid search services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
-    description: "Expert paid search services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
-    primary_cta_text: "Get a Strategy Assessment",
-    secondary_cta_text: "View Our Methodology",
-    use_cases: [
-      "Scaling architecture for enterprise systems",
-      "Optimizing performance and stability",
-      "Driving highly qualified B2B leads"
+    primary_keyword: "B2B Paid Search Management",
+    meta_title: "Paid Search Management & PPC | Unified Platforms",
+    meta_description: "Expert Paid Search management focused on Sales Velocity and ROAS. We optimize Google Ads and Bing Ads for high-intent B2B conversion.",
+    description: "Paid search should be a predictable revenue engine. We focus on high-intent intent-matching and auction-level bid optimization to maximize your return on ad spend.",
+    primary_cta_text: "Audit My Ad Account",
+    secondary_cta_text: "Performance Model",
+    layout_pattern: "ACCELERATOR",
+    features: [
+      { title: "Intent-Based Targeting", description: "Focusing on high-value keywords that indicate immediate purchase readiness.", icon: 'Target' },
+      { title: "AI-Bid Optimization", description: "Leveraging custom scripts to manage bids at the auction level for maximum efficiency.", icon: 'Cpu' },
+      { title: "Landing Page Precision", description: "Seamlessly connecting ad copy to high-converting, dedicated landing pages.", icon: 'Layout' }
     ],
-    faqs: [
-      { question: "How do you measure success for paid search?", answer: "We focus exclusively on metrics that impact your pipeline and revenue, moving beyond vanity metrics to real business outcomes." },
-      { question: "What makes your approach to paid search different?", answer: "We bring an engineering mindset to every discipline, ensuring robust architecture, data-driven decisions, and sustainable long-term scale." },
-      { question: "How long does a typical engagement last?", answer: "Most engagements begin with a strategic foundation mapping phase followed by continuous execution and optimization over 6 to 12 months." },
-      { question: "Do you offer tailored solutions?", answer: "Yes, every strategy is highly tailored to your specific industry environment, competitive landscape, and ICP requirements." }
+    process_steps: [
+      { label: "Account Anatomy Audit", detail: "Identifying wasted spend and structural flaws in your existing account." },
+      { label: "Keyword Universe Expansion", detail: "Mapping out the full intent-journey from research to direct acquisition." },
+      { label: "Creative Testing Loop", detail: "Continuous A/B testing of ad copy and extensions to improve CTR and Quality Score." }
     ],
     content: `
-      <h2>Comprehensive Paid Search for B2B Enterprises</h2>
-      <p>Modern businesses require structural engineering in their marketing and operations. Our paid search services are built to address complex challenges that off-the-shelf solutions cannot touch. We prioritize scalability, precision, and alignment with your overarching revenue goals.</p>
-      <p>We approach every engagement by first mapping your existing architecture, identifying constraints, and developing a strategic roadmap for optimization. By doing so, we ensure that every action we take compounds over time, building a moat around your competitive advantage.</p>
-      <h3>The Architecture of Success</h3>
-      <p>Success requires more than just execution; it requires a highly tuned framework. Our experts deploy industry-leading methodologies to reconstruct your processes from the ground up. This means eliminating bottlenecks, accelerating velocity, and implementing strict quality controls at every touchpoint.</p>
-      <p>We operate as an extension of your team, bringing deep technical expertise and strategic foresight to the table. Our focus remains resolutely fixed on generating tangible business value and moving the needle on the metrics that matter most to your board and leadership.</p>
-      <h3>Continuous Iteration and Growth</h3>
-      <p>The landscape is constantly evolving, and so must your strategy. We institute rapid feedback loops, robust measurement systems, and continuous iteration protocols. This agile methodology ensures that your paid search remains resilient and highly adaptive, capable of capitalizing on new opportunities while mitigating emerging risks.</p>
-      <p>Through our rigorous approach, we transform your operations into a predictable, scalable engine of growth, driving long-term enterprise value and securing your position as a market leader.</p>
+      <h2>Dominating the Auction with Precision Engineering</h2>
+      <p>Paid Search is the fastest lever for growth, but without strict optimization, it can also be the fastest way to burn capital. We treat Google Ads as a complex marketplace where the winner is the one with the most accurate conversion signals.</p>
+      <p>Our Accelerator framework ensures your budget is allocated to the segments that actually drive revenue, not just clicks. We look at down-funnel metrics like SQLs and MQLs to define our bidding strategy.</p>
     `
   },
   {
@@ -848,32 +880,26 @@ export const SERVICES_CONTENT = [
     slug: "cro",
     category: "Performance Marketing",
     primary_keyword: "B2B Conversion Rate Optimization",
-    meta_title: "Conversion Rate Optimization Services | Unified Platforms",
-    meta_description: "Expert conversion rate optimization services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
-    description: "Expert conversion rate optimization services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
-    primary_cta_text: "Get a Strategy Assessment",
-    secondary_cta_text: "View Our Methodology",
-    use_cases: [
-      "Scaling architecture for enterprise systems",
-      "Optimizing performance and stability",
-      "Driving highly qualified B2B leads"
+    meta_title: "CRO & Funnel Optimization | Unified Platforms",
+    meta_description: "Transform your traffic into revenue. Our CRO services focus on reducing friction and maximizing conversion volume through rigorous A/B testing.",
+    description: "Traffic is expensive; conversion is where the value is created. We optimize every touchpoint of your user journey to turn visitors into loyal customers.",
+    primary_cta_text: "Start Funnel Audit",
+    secondary_cta_text: "Success Stories",
+    layout_pattern: "ACCELERATOR",
+    features: [
+      { title: "Heatmap & Session Analysis", description: "Visualizing exactly where users drop off or get confused within your UI.", icon: 'Eye' },
+      { title: "A/B Testing Framework", description: "Scientific testing of copy, layout, and offers to prove what works.", icon: 'FlaskConical' },
+      { title: "Friction Reduction", description: "Streamlining checkout and lead-gen flows to eliminate barriers to conversion.", icon: 'Scissors' }
     ],
-    faqs: [
-      { question: "How do you measure success for conversion rate optimization?", answer: "We focus exclusively on metrics that impact your pipeline and revenue, moving beyond vanity metrics to real business outcomes." },
-      { question: "What makes your approach to conversion rate optimization different?", answer: "We bring an engineering mindset to every discipline, ensuring robust architecture, data-driven decisions, and sustainable long-term scale." },
-      { question: "How long does a typical engagement last?", answer: "Most engagements begin with a strategic foundation mapping phase followed by continuous execution and optimization over 6 to 12 months." },
-      { question: "Do you offer tailored solutions?", answer: "Yes, every strategy is highly tailored to your specific industry environment, competitive landscape, and ICP requirements." }
+    process_steps: [
+      { label: "Data Collection", detail: "Setting up robust tracking to capture user behavior at every step." },
+      { label: "Hypothesis Building", detail: "Creating data-backed theories on what will drive the highest impact." },
+      { label: "Execution & Analysis", detail: "Running tests in controlled environments and analyzing the statistical significance of results." }
     ],
     content: `
-      <h2>Comprehensive Conversion Rate Optimization for B2B Enterprises</h2>
-      <p>Modern businesses require structural engineering in their marketing and operations. Our conversion rate optimization services are built to address complex challenges that off-the-shelf solutions cannot touch. We prioritize scalability, precision, and alignment with your overarching revenue goals.</p>
-      <p>We approach every engagement by first mapping your existing architecture, identifying constraints, and developing a strategic roadmap for optimization. By doing so, we ensure that every action we take compounds over time, building a moat around your competitive advantage.</p>
-      <h3>The Architecture of Success</h3>
-      <p>Success requires more than just execution; it requires a highly tuned framework. Our experts deploy industry-leading methodologies to reconstruct your processes from the ground up. This means eliminating bottlenecks, accelerating velocity, and implementing strict quality controls at every touchpoint.</p>
-      <p>We operate as an extension of your team, bringing deep technical expertise and strategic foresight to the table. Our focus remains resolutely fixed on generating tangible business value and moving the needle on the metrics that matter most to your board and leadership.</p>
-      <h3>Continuous Iteration and Growth</h3>
-      <p>The landscape is constantly evolving, and so must your strategy. We institute rapid feedback loops, robust measurement systems, and continuous iteration protocols. This agile methodology ensures that your conversion rate optimization remains resilient and highly adaptive, capable of capitalizing on new opportunities while mitigating emerging risks.</p>
-      <p>Through our rigorous approach, we transform your operations into a predictable, scalable engine of growth, driving long-term enterprise value and securing your position as a market leader.</p>
+      <h2>The Science of Conversion</h2>
+      <p>Conversion Rate Optimization is the multiplier that makes all your other marketing efforts more valuable. By improving your CVR by 20%, you effectively lower your customer acquisition cost (CAC) by the same margin.</p>
+      <p>Our approach centers on empathy for the user combined with the cold logic of data. We don't just move buttons; we re-engineer the psychology of your sales funnel to align with how humans actually make decisions.</p>
     `
   },
   {
@@ -882,32 +908,26 @@ export const SERVICES_CONTENT = [
     slug: "content-strategy",
     category: "Content & Media",
     primary_keyword: "B2B Content Strategy",
-    meta_title: "Content Strategy Services | Unified Platforms",
-    meta_description: "Expert content strategy services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
-    description: "Expert content strategy services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
-    primary_cta_text: "Get a Strategy Assessment",
-    secondary_cta_text: "View Our Methodology",
-    use_cases: [
-      "Scaling architecture for enterprise systems",
-      "Optimizing performance and stability",
-      "Driving highly qualified B2B leads"
+    meta_title: "Content Strategy & Authority Mapping | Unified Platforms",
+    meta_description: "Expert content strategy to drive organic authority and lead generation. We build high-density content maps aligned with your sales funnel.",
+    description: "Content is the bridge between your brand and your customers. We build the skeletal structure of your content engine to ensure every piece serves a strategic purpose.",
+    primary_cta_text: "Get Content Audit",
+    secondary_cta_text: "Authority Playbook",
+    layout_pattern: "ARCHITECT",
+    features: [
+      { title: "Authority Mapping", description: "Identifying the semantic neighbors your brand needs to own to be seen as a leader.", icon: 'Network' },
+      { title: "Funnel Alignment", description: "Ensuring you have content for TOFU, MOFU, and BOFU stages of the buyers journey.", icon: 'Filter' },
+      { title: "E-E-A-T Optimization", description: "Infusing every piece of content with expert-led insights and first-hand experience.", icon: 'Award' }
     ],
-    faqs: [
-      { question: "How do you measure success for content strategy?", answer: "We focus exclusively on metrics that impact your pipeline and revenue, moving beyond vanity metrics to real business outcomes." },
-      { question: "What makes your approach to content strategy different?", answer: "We bring an engineering mindset to every discipline, ensuring robust architecture, data-driven decisions, and sustainable long-term scale." },
-      { question: "How long does a typical engagement last?", answer: "Most engagements begin with a strategic foundation mapping phase followed by continuous execution and optimization over 6 to 12 months." },
-      { question: "Do you offer tailored solutions?", answer: "Yes, every strategy is highly tailored to your specific industry environment, competitive landscape, and ICP requirements." }
+    process_steps: [
+      { label: "Content Inventory", detail: "Auditing every existing asset to find reuse opportunities and gaps." },
+      { label: "Topical Research", detail: "Deep dive into the questions and problems your ICP is actually searching for." },
+      { label: "Content Calendar", detail: "A predictable publishing cadence designed for long-term topical velocity." }
     ],
     content: `
-      <h2>Comprehensive Content Strategy for B2B Enterprises</h2>
-      <p>Modern businesses require structural engineering in their marketing and operations. Our content strategy services are built to address complex challenges that off-the-shelf solutions cannot touch. We prioritize scalability, precision, and alignment with your overarching revenue goals.</p>
-      <p>We approach every engagement by first mapping your existing architecture, identifying constraints, and developing a strategic roadmap for optimization. By doing so, we ensure that every action we take compounds over time, building a moat around your competitive advantage.</p>
-      <h3>The Architecture of Success</h3>
-      <p>Success requires more than just execution; it requires a highly tuned framework. Our experts deploy industry-leading methodologies to reconstruct your processes from the ground up. This means eliminating bottlenecks, accelerating velocity, and implementing strict quality controls at every touchpoint.</p>
-      <p>We operate as an extension of your team, bringing deep technical expertise and strategic foresight to the table. Our focus remains resolutely fixed on generating tangible business value and moving the needle on the metrics that matter most to your board and leadership.</p>
-      <h3>Continuous Iteration and Growth</h3>
-      <p>The landscape is constantly evolving, and so must your strategy. We institute rapid feedback loops, robust measurement systems, and continuous iteration protocols. This agile methodology ensures that your content strategy remains resilient and highly adaptive, capable of capitalizing on new opportunities while mitigating emerging risks.</p>
-      <p>Through our rigorous approach, we transform your operations into a predictable, scalable engine of growth, driving long-term enterprise value and securing your position as a market leader.</p>
+      <h2>The Blueprint for Topical Dominance</h2>
+      <p>A great content strategy is more than just a list of blog posts. It's a comprehensive map of how your brand owns its category. We focus on building 'Content Moats'—moats of authority that competitors find impossible to cross.</p>
+      <p>By leveraging our 'Unified Framework', we ensure that your content is not only crawlable and rankable but also highly persuasive, moving users closer to a purchase decision with every interaction.</p>
     `
   },
   {
@@ -1051,16 +1071,22 @@ export const SERVICES_CONTENT = [
     title: "Website Development",
     slug: "website-development",
     category: "Development",
-    primary_keyword: "B2B Website Development",
-    meta_title: "Website Development Services | Unified Platforms",
-    meta_description: "Expert website development services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
-    description: "Expert website development services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
-    primary_cta_text: "Get a Strategy Assessment",
-    secondary_cta_text: "View Our Methodology",
-    use_cases: [
-      "Scaling architecture for enterprise systems",
-      "Optimizing performance and stability",
-      "Driving highly qualified B2B leads"
+    primary_keyword: "High-Performance B2B Web",
+    meta_title: "High-Performance Website Development | Unified Platforms",
+    meta_description: "Engineering blazing-fast, revenue-focused web infrastructures. We prioritize LCP performance, modular UI architecture, and technical resilience.",
+    description: "Your website is your most valuable engineer. We build high-performance web infrastructures that load in sub-seconds and convert high-intent traffic with surgical precision.",
+    primary_cta_text: "Start Build Blueprint",
+    secondary_cta_text: "View Tech Stack",
+    layout_pattern: "ENGINEER",
+    features: [
+      { title: "Modular UI Architecture", description: "Building reusable component libraries that ensure consistency and code-reusability.", icon: 'Box' },
+      { title: "Performance Hardening", description: "Optimizing for perfect Core Web Vitals to maximize search visibility and UX.", icon: 'Zap' },
+      { title: "Scalable Infrastructure", description: "Edge-first deployment strategies that handle massive traffic spikes without latency.", icon: 'Globe' }
+    ],
+    process_steps: [
+      { label: "Infrastructure Mapping", detail: "Defining the technical requirements and choosing the optimal stack for your scale." },
+      { label: "Engineering Sprint", detail: "Component-driven development with strict quality controls and linting protocols." },
+      { label: "Deployment & Rigging", detail: "Automated CI/CD pipelines and edge-delivery configuration for global performance." }
     ],
     faqs: [
       { question: "How do you measure success for website development?", answer: "We focus exclusively on metrics that impact your pipeline and revenue, moving beyond vanity metrics to real business outcomes." },
@@ -1187,16 +1213,22 @@ export const SERVICES_CONTENT = [
     title: "Recruitment",
     slug: "recruitment",
     category: "Talent & HR",
-    primary_keyword: "B2B Recruitment",
-    meta_title: "Recruitment Services | Unified Platforms",
-    meta_description: "Expert recruitment services to accelerate your growth. We focus on scalable architecture and driving measurable impact for B2B enterprises.",
-    description: "Expert recruitment services designed for scale and performance. We build robust systems to drive sustainable business growth and predictable pipeline.",
-    primary_cta_text: "Get a Strategy Assessment",
-    secondary_cta_text: "View Our Methodology",
-    use_cases: [
-      "Scaling architecture for enterprise systems",
-      "Optimizing performance and stability",
-      "Driving highly qualified B2B leads"
+    primary_keyword: "Technical Talent Acquisition",
+    meta_title: "Technical Recruitment & Talent Engineering | Unified Platforms",
+    meta_description: "Engineering high-performance teams through algorithmic sourcing and technical vetting. We find the top 1% of growth and dev talent.",
+    description: "Finding talent is easy; finding the right engineering and growth minds is difficult. We build algorithmic sourcing pipelines that find the outliers who drive revenue.",
+    primary_cta_text: "Hire Top Talent",
+    secondary_cta_text: "View Talent Framework",
+    layout_pattern: "CONNECTOR",
+    features: [
+      { title: "Algorithmic Sourcing", description: "Using proprietary tools to find passive candidates that standard portals miss.", icon: 'Search' },
+      { title: "Technical Vetting", description: "Rigorous assessment of skills by subject matter experts, not generic recruiters.", icon: 'ShieldCheck' },
+      { title: "Culture-Fit Matrix", description: "Ensuring alignment with high-velocity and high-accountability team cultures.", icon: 'Users' }
+    ],
+    process_steps: [
+      { label: "Persona Architecture", detail: "Mapping the technical and behavioral traits of your ideal high-performer." },
+      { label: "Sourcing Sprint", detail: "High-density outreach campaigns targeting pre-vetted talent nodes." },
+      { label: "Calibration & Hire", detail: "Strategic consulting on final selection and high-conversion offer structures." }
     ],
     faqs: [
       { question: "How do you measure success for recruitment?", answer: "We focus exclusively on metrics that impact your pipeline and revenue, moving beyond vanity metrics to real business outcomes." },
@@ -1317,5 +1349,223 @@ export const SERVICES_CONTENT = [
       <p>The landscape is constantly evolving, and so must your strategy. We institute rapid feedback loops, robust measurement systems, and continuous iteration protocols. This agile methodology ensures that your hr consulting remains resilient and highly adaptive, capable of capitalizing on new opportunities while mitigating emerging risks.</p>
       <p>Through our rigorous approach, we transform your operations into a predictable, scalable engine of growth, driving long-term enterprise value and securing your position as a market leader.</p>
     `
+  }
+];
+
+export const UNIFIED_PAGES = [
+  {
+    page_config: {
+      layout_pattern: "ARCHITECT",
+      theme: "LIGHT",
+      url_slug: "architectural-seo-strategy"
+    },
+    seo: {
+      title: "Architectural SEO Strategy | Unified Platforms",
+      meta_description: "Deep, technical SEO roadmaps and topical authority engineering for high-growth brands.",
+      schema_type: "Service"
+    },
+    hero: {
+      h1: "Topical Authority & Technical Precision.",
+      intro_text: "We don't just 'do SEO'. We engineer topical dominance through multi-phase technical audits and semantic network maps that force Google to recognize your category leadership."
+    },
+    value_grid: [
+      { title: "Technical Audit (Deep)", description: "Going beyond surface-level fixes to resolve crawl budget waste and SSR bottlenecks.", icon: "Settings" },
+      { title: "Semantic Mapping", description: "Mapping 1,000+ keywords into a cohesive, interlinked knowledge graph.", icon: "Network" },
+      { title: "Topical Velocity", description: "Increasing publication frequency without sacrificing E-E-A-T integrity.", icon: "Zap" }
+    ],
+    main_framework: {
+      title: "The Architectural SEO Process",
+      steps: [
+        { number: 1, label: "Core Audit", detail: "Exhaustive analysis of server response headers, canonical chains, and rendering pipelines." },
+        { number: 2, label: "Graph Construction", detail: "Defining primary entities and supporting LSI nodes to build absolute topical authority." },
+        { number: 3, label: "Sprint Deployment", detail: "Bi-weekly implementation of technical fixes and content injections." }
+      ]
+    },
+    comparison_module: {
+      left_side_title: "The 'Weak' Strategy",
+      left_side_points: ["Rank-chasing without intent", "Shallow 500-word blog posts", "Zero technical oversight", "Manual backlink begging"],
+      right_side_title: "The Architectural Strategy",
+      right_side_points: ["Revenue-aligned keyword maps", "High-density SME-led insights", "Infrastructure-level optimization", "Organic authority through value"]
+    },
+    growth_entities: [
+      { title: "Enterprise SaaS", description: "Scales through complex feature-subset authority.", context: "Focus on feature-specific LSI clusters." },
+      { title: "High-Ticket Service", description: "Scales through trust and precision.", context: "Focus on E-E-A-T signals and case study links." }
+    ],
+    faq: [
+      { question: "How long does a technical audit take?", answer: "Our deep audits typically take 14 business days, resulting in a 40-page technical roadmap." },
+      { question: "Is this suitable for new domains?", answer: "Yes, but we adjust the velocity to match domain age to avoid sandbox triggers." }
+    ]
+  },
+  {
+    page_config: {
+      layout_pattern: "ACCELERATOR",
+      theme: "LIGHT",
+      url_slug: "sales-velocity-performance"
+    },
+    seo: {
+      title: "Sales Velocity Performance Media | Unified Platforms",
+      meta_description: "Maximizing ROAS and minimizing ACoS through AI-driven bid management and high-density creative testing.",
+      schema_type: "Service"
+    },
+    hero: {
+      h1: "High-Octane Performance Engineering.",
+      intro_text: "Stop burning budget on generic algorithms. Our Accelerator framework focuses on Sales Velocity and LTV:CAC ratios, leveraging custom attribution loops that feed the machines better data."
+    },
+    value_grid: [
+      { title: "Auction Mastery", description: "Real-time bid adjustments based on inventory density and competitor signal.", icon: "TrendingUp" },
+      { title: "Creative Velocity", description: "Testing 50+ creative iterations per week to find the outliers that scale.", icon: "Layout" },
+      { title: "Attribution Sync", description: "First-party data loops that resolve cross-device attribution gaps.", icon: "RefreshCw" }
+    ],
+    main_framework: {
+      title: "The Performance Accelerator Cycle",
+      steps: [
+        { number: 1, label: "Signal Audit", detail: "Cleaning CAPI events and ensuring pixel integrity across all conversion touchpoints." },
+        { number: 2, label: "Creative Sprint", detail: "Rapid production of high-performance hook variations and CTA tests." },
+        { number: 3, label: "Scale Injection", detail: "Increasing daily spend on winning permutations while maintaining margin targets." }
+      ]
+    },
+    comparison_module: {
+      left_side_title: "The 'Standard' Agency",
+      left_side_points: ["Set-and-forget campaign builds", "Monthly reporting on vanity metrics", "Generic stock-photo creatives", "No deep attribution setup"],
+      right_side_title: "The Performance Accelerator",
+      right_side_points: ["Daily auction-level optimizations", "Real-time revenue-first dashboards", "Custom motion-graphic assets", "Server-side proprietary tracking"]
+    },
+    growth_entities: [
+      { title: "D2C Ecommerce", description: "Requires massive creative volume and attribution data.", context: "Focus on ACoS targets and first-purchase ROAS." },
+      { title: "B2B Lead Gen", description: "Requires high-intent signal and MQL validation.", context: "Focus on lead quality scoring and CRM feedback." }
+    ],
+    faq: [
+      { question: "What is the minimum ad spend required?", answer: "We typically work with brands spending $25,000/month or more to ensure statistical significance." },
+      { question: "Do you handle creative production?", answer: "Yes, we have an in-house performance creative studio." }
+    ]
+  },
+  {
+    page_config: {
+      layout_pattern: "ENGINEER",
+      theme: "LIGHT",
+      url_slug: "headless-commerce-development"
+    },
+    seo: {
+      title: "Headless Commerce & Web Engineering | Unified Platforms",
+      meta_description: "Building blazing-fast Next.js and Shopify Headless storefronts that outperform standard stacks.",
+      schema_type: "SoftwareApplication"
+    },
+    hero: {
+      h1: "Engineering for Next-Gen Conversion.",
+      intro_text: "Legacy stacks are the biggest bottleneck to growth. Our Engineering team builds headless, high-performance web applications that load in under 1s and scale to millions of users without breaking."
+    },
+    value_grid: [
+      { title: "Edge Deployment", description: "Sub-100ms global delivery using Vercel/Cloudflare edge networks.", icon: "Globe" },
+      { title: "API-First Logic", description: "Seamlessly connecting ERPs, CRMs, and CMS via robust GraphQL layers.", icon: "Cpu" },
+      { title: "Modular UI", description: "Custom component libraries built for design-system consistency and speed.", icon: "Box" }
+    ],
+    main_framework: {
+      title: "The Engineering Sprint Roadmap",
+      steps: [
+        { number: 1, label: "Stack Analysis", detail: "Evaluating current technical debt and defining the target microservices architecture." },
+        { number: 2, label: "Core Build", detail: "Implementing the frontend shell with Next.js and Tailwind CSS for max performance." },
+        { number: 3, label: "Integrations", detail: "Wiring up the headless backend (Sanity/Contentful/Shopify) and middleware." }
+      ]
+    },
+    comparison_module: {
+      left_side_title: "The 'Plugin-Heavy' Site",
+      left_side_points: ["Bloated WordPress/Shopify themes", "Slow LCP and bridge-heavy scripts", "Security vulnerabilities", "Hard-to-maintain codebases"],
+      right_side_title: "The Headless Solution",
+      right_side_points: ["Blazing fast static generation", "Absolute design freedom", "Rock-solid security posture", "Scalable, developer-friendly stack"]
+    },
+    growth_entities: [
+      { title: "Global Retailers", description: "Need multi-currency and multi-region support.", context: "Focus on localization and performance at scale." },
+      { title: "Product Platforms", description: "Complex user logic and dashboard requirements.", context: "Focus on state management and API efficiency." }
+    ],
+    faq: [
+      { question: "Why go headless?", answer: "Headless decoupled the frontend from the backend, providing better performance, security, and scalability." },
+      { question: "Is it more expensive to maintain?", answer: "Initial build costs are higher, but long-term maintenance and scaling costs are lower." }
+    ]
+  },
+  {
+    page_config: {
+      layout_pattern: "ARCHITECT",
+      theme: "LIGHT",
+      url_slug: "aeo-geo-answer-engine-optimization"
+    },
+    seo: {
+      title: "AEO & GEO: Answer Engine Optimization | Unified Platforms",
+      meta_description: "Expert AEO & GEO services to secure brand citations in AI-generated answers and LLM results.",
+      schema_type: "Service"
+    },
+    hero: {
+      h1: "Become the Definitive AI Answer.",
+      intro_text: "Traditional SEO is dead. In the era of Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO), visibility is measured by citations in LLM Knowledge Graphs. We build the semantic infrastructure that forces AI to trust your brand."
+    },
+    value_grid: [
+      { title: "Entity Reinforcement", description: "Hardening your brand's presence in global knowledge bases like Wikipedia and Wikidata.", icon: "Globe" },
+      { title: "Structured Answer Blocks", description: "Writing concise, factual content blocks optimized for RAG (Retrieval-Augmented Generation).", icon: "MessageSquare" },
+      { title: "Knowledge Result Visibility", description: "Technical optimization for Google AI Overviews and ChatGPT citation priority.", icon: "Search" }
+    ],
+    main_framework: {
+      title: "The AEO Dominance Framework",
+      steps: [
+        { number: 1, label: "Entity Audit", detail: "Analyzing how LLMs currently perceive your brand and identifying knowledge gaps." },
+        { number: 2, label: "Semantic Structuring", detail: "Implementing advanced JSON-LD and definitional content schemas." },
+        { number: 3, label: "Citation Seeding", detail: "Strategic placement in second-party sources that LLMs use as training/retrieval data." }
+      ]
+    },
+    comparison_module: {
+      left_side_title: "The Legacy SEO",
+      left_side_points: ["Generic keywords", "Long-form fluff", "Backlink begging", "Rank-tracking only"],
+      right_side_title: "The Architectural AEO",
+      right_side_points: ["Entity mapping", "Factual density", "Citation engineering", "Share of Model tracking"]
+    },
+    growth_entities: [
+      { title: "High-LTV B2B", description: "Requires absolute authority for complex decision-making queries.", context: "Focus on E-E-A-T and technical whitepaper citations." },
+      { title: "Local Service Networks", description: "Need to be the top answer for 'near me' AI voice search.", context: "Focus on local entity relationships and review velocity." }
+    ],
+    faq: [
+      { question: "What is AEO?", answer: "Answer Engine Optimization (AEO) is the process of optimizing content to be the primary result in AI tools like ChatGPT or Perplexity." },
+      { question: "How is GEO different?", answer: "Generative Engine Optimization (GEO) specifically targets the generative summaries within search engines like Google SGE." }
+    ]
+  },
+  {
+    page_config: {
+      layout_pattern: "CONNECTOR",
+      theme: "LIGHT",
+      url_slug: "rpo-talent-acquisition-engineering"
+    },
+    seo: {
+      title: "RPO & Talent Acquisition Engineering | Unified Platforms",
+      meta_description: "Building high-performance talent pipelines through algorithmic sourcing and culture-fit engineering.",
+      schema_type: "Service"
+    },
+    hero: {
+      h1: "Engineering the Perfect Team.",
+      intro_text: "Scaling requires more than just resumes. Our Connector framework builds algorithmic sourcing pipelines that find the top 1% of talent, ensuring cultural alignment and technical mastery at every level."
+    },
+    value_grid: [
+      { title: "Algorithmic Sourcing", description: "Using AI to scrape and rank candidates across 50+ professional networks.", icon: "Search" },
+      { title: "Culture-Fit Matrix", description: "Proprietary testing modules to ensure alignment with high-performance cultures.", icon: "Users" },
+      { title: "Pipeline Velocity", description: "Reducing time-to-hire by 60% through pre-vetted talent pools.", icon: "Activity" }
+    ],
+    main_framework: {
+      title: "The Talent Connector Process",
+      steps: [
+        { number: 1, label: "Persona Definition", detail: "Mapping the technical and behavioral requirements for each core role." },
+        { number: 2, label: "Sourcing Sprint", detail: "Activating automated outreach and multi-channel candidate attraction." },
+        { number: 3, label: "Selection Matrix", detail: "Deep-dive interviewing and technical assessment based on engineering benchmarks." }
+      ]
+    },
+    comparison_module: {
+      left_side_title: "The 'Traditional' Recruiter",
+      left_side_points: ["Manual keyword-matching on LinkedIn", "Spray-and-pray outreach", "Focus on quantity over quality", "No technical vet-capability"],
+      right_side_title: "The Talent Connector",
+      right_side_points: ["AI-enhanced talent discovery", "Deep assessment of soft-skills", "Rigorous technical vetting", "Strategic advisor on team scaling"]
+    },
+    growth_entities: [
+      { title: "Series A/B Startups", description: "Need to build core engineering teams rapidly.", context: "Focus on speed and culture-defining hires." },
+      { title: "Tech Consulting Firms", description: "Need specialized SME talent on-demand.", context: "Focus on technical depth and project agility." }
+    ],
+    faq: [
+      { question: "Do you offer RPO models?", answer: "Yes, we can act as your internal talent acquisition department." },
+      { question: "What is your time-to-hire?", answer: "Our average time-to-hire for technical roles is 21 days." }
+    ]
   }
 ];

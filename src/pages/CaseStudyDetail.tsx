@@ -40,7 +40,7 @@ export default function CaseStudyDetail() {
           }
         }
       } catch (error) {
-        console.error("Error fetching case study:", error);
+        console.warn("Error fetching case study:", error);
         // Fallback to local data on error
         const foundStudy = CASE_STUDIES.find(s => s.slug === slug);
         if (foundStudy) {

@@ -4,7 +4,7 @@ import { auth, db } from '../../lib/firebase';
 import { Menu, X, LogOut, ChevronDown, ArrowRight, User as UserIcon, LayoutDashboard, ShieldCheck, Search } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { collection, onSnapshot, query, orderBy, doc, getDoc } from 'firebase/firestore';
+import { collection, onSnapshot, query, doc, getDoc } from 'firebase/firestore';
 import { cn } from '../../lib/utils';
 import { useSettings } from '../SettingsProvider';
 import { isAdmin } from '../../constants';
@@ -97,25 +97,27 @@ export default function Navbar({ user }: NavbarProps) {
 
   // Fetch navigation from CMS
   useEffect(() => {
-    const q = query(collection(db, 'navigation'), orderBy('order', 'asc'));
+    // No orderBy — avoids requiring a Firestore composite index.
+    // Sort client-side after receiving docs instead.
+    const q = query(collection(db, 'navigation'));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       if (!snapshot.empty) {
-        const items = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as NavItem));
-        // Deduplicate by label to prevent duplicate keys and UI duplication
-        const uniqueItems = items.reduce((acc: NavItem[], current) => {
-          const label = current.label.trim();
-          const exists = acc.find(item => item.label.trim().toLowerCase() === label.toLowerCase());
-          if (!exists) {
-            return [...acc, { ...current, label }];
-          }
-          return acc;
-        }, []);
+        const items = snapshot.docs.map(d => ({ id: d.id, ...d.data() } as NavItem));
+        // Deduplicate by label
+        const seen = new Set<string>();
+        const uniqueItems = items.filter(item => {
+          const key = item.label.trim().toLowerCase();
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
+        // Sort by order field, fallback to 99 for items missing it
+        uniqueItems.sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
         setNavItems(uniqueItems);
       }
-    }, (error) => {
-      // Use warning for expected local fallback when connectivity is limited
-      console.warn("Firestore navigation unavailable, using local structure.");
-      // We already initialized with INITIAL_NAV_STRUCTURE, so no action needed here
+      // If empty, INITIAL_NAV_STRUCTURE stays (set as useState default)
+    }, (_error) => {
+      console.warn('Firestore navigation unavailable, using local structure.');
     });
     return () => unsubscribe();
   }, []);

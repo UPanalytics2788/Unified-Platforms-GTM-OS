@@ -3,10 +3,11 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { doc, getDoc, setDoc, addDoc, collection } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { db, storage, handleFirestoreError, OperationType } from '../../lib/firebase';
-import { Save, ArrowLeft, Loader2, Upload, Image as ImageIcon } from 'lucide-react';
+import { Save, ArrowLeft, Loader2, Upload, Trash2, Plus, Zap, Image as ImageIcon } from 'lucide-react';
 import RichTextEditor from '../../components/admin/RichTextEditor';
 import MediaModal from '../../components/admin/MediaModal';
 import { findInboundLinkOpportunities } from '../../lib/linkDiscovery';
+import { runCmsAgent } from '../../lib/agents/cmsAgent';
 
 export default function ContentEditor() {
   const { id } = useParams();
@@ -22,6 +23,7 @@ export default function ContentEditor() {
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [generatingJson, setGeneratingJson] = useState(false);
   const [formData, setFormData] = useState<any>({
     status: 'draft' // Initialize new items as drafts
   });
@@ -36,7 +38,10 @@ export default function ContentEditor() {
           const docRef = doc(db, collectionName, id);
           const docSnap = await getDoc(docRef);
           if (docSnap.exists()) {
-            setFormData(docSnap.data());
+            const docData = docSnap.data();
+            // Auto-repair: if doc is missing slug in its data body, add it
+            const repairedData = docData.slug ? docData : { ...docData, slug: id };
+            setFormData(repairedData);
           }
         } catch (err) {
           handleFirestoreError(err, OperationType.GET, `${collectionName}/${id}`);
@@ -70,20 +75,34 @@ export default function ContentEditor() {
 
     setSaving(true);
     try {
+      // Always preserve slug in document body (critical for where('slug','==') queries)
+      const docSlug = formData.slug || id || '';
+      // Keep hero in both flat and nested format for backwards compatibility
+      const heroH1 = formData.hero?.h1 || formData.hero_title || formData.title || formData.name || '';
+      const heroIntro = formData.hero?.intro_text || formData.hero_subtitle || formData.description || '';
+      const dataToSave = {
+        ...formData,
+        slug: docSlug,
+        hero_title: heroH1,
+        hero_subtitle: heroIntro,
+        hero: { h1: heroH1, intro_text: heroIntro },
+        updatedAt: new Date().toISOString(),
+      };
+
       if (id) {
-        await setDoc(doc(db, collectionName, id), formData, { merge: true });
-        if (formData.status === 'published') {
-          const title = formData.title || formData.name || '';
-          findInboundLinkOpportunities(id, collectionName, title, formData.primary_keyword || title).catch(console.error);
+        await setDoc(doc(db, collectionName, id), dataToSave, { merge: true });
+        if (dataToSave.status === 'published') {
+          const title = dataToSave.title || dataToSave.name || '';
+          findInboundLinkOpportunities(id, collectionName, title, dataToSave.primary_keyword || title).catch(console.error);
         }
       } else {
         const docRef = await addDoc(collection(db, collectionName), {
-          ...formData,
+          ...dataToSave,
           createdAt: new Date().toISOString()
         });
-        if (formData.status === 'published') {
-          const title = formData.title || formData.name || '';
-          findInboundLinkOpportunities(docRef.id, collectionName, title, formData.primary_keyword || title).catch(console.error);
+        if (dataToSave.status === 'published') {
+          const title = dataToSave.title || dataToSave.name || '';
+          findInboundLinkOpportunities(docRef.id, collectionName, title, dataToSave.primary_keyword || title).catch(console.error);
         }
       }
       navigate(`/admin/${collectionName}`);
@@ -96,6 +115,33 @@ export default function ContentEditor() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev: any) => ({ ...prev, [name]: value }));
+  };
+
+  const handleGenerateJson = async () => {
+    if (!formData.name && !formData.title) {
+        alert("Please enter a Title or Name first.");
+        return;
+    }
+    setGeneratingJson(true);
+    try {
+        const title = formData.title || formData.name;
+        const description = getEditorContent() || formData.description || '';
+        const response = await runCmsAgent(title, description);
+        if (response.success && response.data) {
+            setFormData((prev: any) => ({
+                ...prev,
+                ...response.data,
+                json_source: JSON.stringify(response.data, null, 2)
+            }));
+        } else {
+            alert('Failed to generate CMS schema');
+        }
+    } catch (e) {
+        console.error("Error generating JSON:", e);
+        alert('Error generating JSON');
+    } finally {
+        setGeneratingJson(false);
+    }
   };
 
   const getEditorContent = () => {
@@ -341,7 +387,218 @@ export default function ContentEditor() {
 
               {collectionName !== 'leads' && collectionName !== 'pages' && collectionName !== 'authors' && (
                 <>
-                  <div>
+                  <div className="pt-8 border-t border-brand-dark/10">
+                    <h3 className="text-lg font-bold text-brand-dark mb-4">Unified Page Layout (Optional)</h3>
+                    <p className="text-sm text-brand-gray mb-6">Fill these out to use the new architectural layout. If left blank, the standard layout will be used.</p>
+                    
+                    <div className="space-y-6">
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-xs font-bold text-brand-gray uppercase mb-1">Layout Pattern</label>
+                          <select
+                            name="layout_pattern"
+                            value={formData.page_config?.layout_pattern || ''}
+                            onChange={(e) => setFormData({...formData, page_config: {...(formData.page_config || {}), layout_pattern: e.target.value}})}
+                            className="w-full px-4 py-2 border border-brand-dark/10 rounded-lg outline-none bg-brand-white text-brand-dark"
+                          >
+                            <option value="">Select Pattern</option>
+                            <option value="ARCHITECT">Architect (SEO/Strategy)</option>
+                            <option value="ACCELERATOR">Accelerator (Performance/Media)</option>
+                            <option value="ENGINEER">Engineer (Dev/Tech)</option>
+                            <option value="CONNECTOR">Connector (Talent/HR)</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold text-brand-gray uppercase mb-1">Theme</label>
+                          <select
+                            name="theme"
+                            value={formData.page_config?.theme || 'LIGHT'}
+                            onChange={(e) => setFormData({...formData, page_config: {...(formData.page_config || {}), theme: e.target.value}})}
+                            className="w-full px-4 py-2 border border-brand-dark/10 rounded-lg outline-none bg-brand-white text-brand-dark"
+                          >
+                            <option value="LIGHT">Light</option>
+                            <option value="DARK">Dark</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold text-brand-gray uppercase mb-1">Hero H1 Override</label>
+                        <input
+                          type="text"
+                          value={formData.hero?.h1 || ''}
+                          onChange={(e) => setFormData({...formData, hero: {...(formData.hero || {}), h1: e.target.value}})}
+                          className="w-full px-4 py-2 border border-brand-dark/10 rounded-lg outline-none bg-brand-white text-brand-dark"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold text-brand-gray uppercase mb-1">Hero Intro Text Override</label>
+                        <textarea
+                          value={formData.hero?.intro_text || ''}
+                          onChange={(e) => setFormData({...formData, hero: {...(formData.hero || {}), intro_text: e.target.value}})}
+                          className="w-full px-4 py-2 border border-brand-dark/10 rounded-lg outline-none h-20 bg-brand-white text-brand-dark"
+                        />
+                      </div>
+
+                      <div className="pt-4 space-y-4">
+                        <label className="block text-xs font-bold text-brand-gray uppercase mb-2">Value Grid Items</label>
+                        {(formData.value_grid || []).map((item: any, idx: number) => (
+                           <div key={idx} className="flex gap-2 mb-2 p-3 bg-white rounded-lg border border-brand-dark/5 shadow-sm">
+                              <input 
+                                placeholder="Icon" 
+                                value={item.icon} 
+                                onChange={(e) => {
+                                  const newGrid = [...formData.value_grid];
+                                  newGrid[idx].icon = e.target.value;
+                                  setFormData({...formData, value_grid: newGrid});
+                                }}
+                                className="w-20 p-2 text-xs border rounded"
+                              />
+                              <input 
+                                placeholder="Title" 
+                                value={item.title} 
+                                onChange={(e) => {
+                                  const newGrid = [...formData.value_grid];
+                                  newGrid[idx].title = e.target.value;
+                                  setFormData({...formData, value_grid: newGrid});
+                                }}
+                                className="flex-1 p-2 text-xs border rounded font-bold"
+                              />
+                              <input 
+                                placeholder="Description" 
+                                value={item.description} 
+                                onChange={(e) => {
+                                  const newGrid = [...formData.value_grid];
+                                  newGrid[idx].description = e.target.value;
+                                  setFormData({...formData, value_grid: newGrid});
+                                }}
+                                className="flex-[2] p-2 text-xs border rounded"
+                              />
+                              <button 
+                                type="button"
+                                onClick={() => {
+                                  const newGrid = formData.value_grid.filter((_: any, i: number) => i !== idx);
+                                  setFormData({...formData, value_grid: newGrid});
+                                }}
+                                className="text-red-500 hover:bg-red-50 p-2 rounded"
+                              >
+                                <Trash2 size={14} />
+                              </button>
+                           </div>
+                        ))}
+                        <button 
+                          type="button" 
+                          onClick={() => setFormData({...formData, value_grid: [...(formData.value_grid || []), { title: '', description: '', icon: 'Check' }]})}
+                          className="text-xs text-brand-primary flex items-center gap-1 font-bold"
+                        >
+                          <Plus size={12} /> Add Value Item
+                        </button>
+                      </div>
+
+                      <div className="pt-4 space-y-4">
+                        <label className="block text-xs font-bold text-brand-gray uppercase mb-2">Process Steps (Framework)</label>
+                        {(formData.main_framework?.steps || []).map((step: any, idx: number) => (
+                           <div key={idx} className="flex gap-2 mb-2 p-3 bg-white rounded-lg border border-brand-dark/5 shadow-sm">
+                              <div className="w-8 h-8 rounded-full bg-brand-primary/10 flex items-center justify-center text-xs font-bold text-brand-primary">
+                                {idx + 1}
+                              </div>
+                              <input 
+                                placeholder="Label" 
+                                value={step.label} 
+                                onChange={(e) => {
+                                  const newSteps = [...formData.main_framework.steps];
+                                  newSteps[idx].label = e.target.value;
+                                  setFormData({...formData, main_framework: {...formData.main_framework, steps: newSteps}});
+                                }}
+                                className="flex-1 p-2 text-xs border rounded font-bold"
+                              />
+                              <input 
+                                placeholder="Detail" 
+                                value={step.detail} 
+                                onChange={(e) => {
+                                  const newSteps = [...formData.main_framework.steps];
+                                  newSteps[idx].detail = e.target.value;
+                                  setFormData({...formData, main_framework: {...formData.main_framework, steps: newSteps}});
+                                }}
+                                className="flex-[2] p-2 text-xs border rounded"
+                              />
+                              <button 
+                                type="button"
+                                onClick={() => {
+                                  const newSteps = formData.main_framework.steps.filter((_: any, i: number) => i !== idx);
+                                  setFormData({...formData, main_framework: {...formData.main_framework, steps: newSteps}});
+                                }}
+                                className="text-red-500 hover:bg-red-50 p-2 rounded"
+                              >
+                                <Trash2 size={14} />
+                              </button>
+                           </div>
+                        ))}
+                        <button 
+                          type="button" 
+                          onClick={() => {
+                            const currentFramework = formData.main_framework || { title: `Our Process`, steps: [] };
+                            setFormData({...formData, main_framework: {
+                              ...currentFramework,
+                              steps: [...(currentFramework.steps || []), { number: (currentFramework.steps?.length || 0) + 1, label: '', detail: '' }]
+                            }});
+                          }}
+                          className="text-xs text-brand-primary flex items-center gap-1 font-bold"
+                        >
+                          <Plus size={12} /> Add Process Step
+                        </button>
+                      </div>
+
+                      <div className="pt-4">
+                        <label className="block text-xs font-bold text-brand-gray uppercase mb-2">Comparison Module</label>
+                         <div className="grid grid-cols-2 gap-4">
+                            <div className="p-4 bg-red-50 rounded-xl border border-red-100">
+                               <input
+                                  type="text"
+                                  placeholder="Left Title (e.g. Weak Strategy)"
+                                  value={formData.comparison_module?.left_side_title || ''}
+                                  onChange={(e) => setFormData({...formData, comparison_module: {...(formData.comparison_module || {}), left_side_title: e.target.value}})}
+                                  className="w-full mb-2 p-1 border-b border-red-200 bg-transparent text-sm font-bold"
+                               />
+                               <textarea
+                                  placeholder="Points (one per line)"
+                                  value={(formData.comparison_module?.left_side_points || []).join('\n')}
+                                  onChange={(e) => setFormData({...formData, comparison_module: {...(formData.comparison_module || {}), left_side_points: e.target.value.split('\n')}})}
+                                  className="w-full h-32 bg-transparent text-xs outline-none"
+                               />
+                            </div>
+                            <div className="p-4 bg-brand-primary/5 rounded-xl border border-brand-primary/10">
+                               <input
+                                  type="text"
+                                  placeholder="Right Title (e.g. Architectural Strategy)"
+                                  value={formData.comparison_module?.right_side_title || ''}
+                                  onChange={(e) => setFormData({...formData, comparison_module: {...(formData.comparison_module || {}), right_side_title: e.target.value}})}
+                                  className="w-full mb-2 p-1 border-b border-brand-primary/20 bg-transparent text-sm font-bold"
+                               />
+                               <textarea
+                                  placeholder="Points (one per line)"
+                                  value={(formData.comparison_module?.right_side_points || []).join('\n')}
+                                  onChange={(e) => setFormData({...formData, comparison_module: {...(formData.comparison_module || {}), right_side_points: e.target.value.split('\n')}})}
+                                  className="w-full h-32 bg-transparent text-xs outline-none"
+                               />
+                            </div>
+                         </div>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={handleGenerateJson}
+                        disabled={generatingJson}
+                        className="flex items-center gap-2 px-4 py-2 bg-brand-primary text-white rounded-xl font-bold hover:bg-brand-primary/90 disabled:opacity-50 transition-all text-sm"
+                      >
+                        {generatingJson ? <Loader2 className="animate-spin" size={16} /> : <Zap size={16} />}
+                        AI-Generate Unified Content
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="pt-8 mt-8 border-t border-brand-dark/10">
                     <label className="block text-sm font-medium text-brand-dark mb-1">Hero Image</label>
                     <div className="flex items-center gap-4">
                       {formData.imageUrl && <img src={formData.imageUrl} alt="Preview" className="h-20 w-20 object-cover rounded-lg border border-brand-dark/10" />}
@@ -1236,12 +1493,23 @@ export default function ContentEditor() {
                 <div className="pt-6 border-t border-brand-dark/10">
                   <div className="flex justify-between items-center mb-4">
                     <h3 className="text-lg font-bold text-brand-dark">Programmatic Page Configuration (JSON)</h3>
-                    <div className="px-3 py-1 bg-brand-primary/10 text-brand-primary text-xs font-bold rounded-full uppercase">
-                      AI Generated
+                    <div className="flex gap-2">
+                        <button
+                          type="button"
+                          onClick={handleGenerateJson}
+                          disabled={generatingJson}
+                          className="px-3 py-1 bg-brand-primary text-white text-xs font-bold rounded-lg uppercase flex items-center gap-2 hover:bg-brand-primary/90 transition-colors disabled:opacity-50"
+                        >
+                          {generatingJson ? <Loader2 size={14} className="animate-spin" /> : null}
+                          Generate with Agent
+                        </button>
+                        <div className="px-3 py-1 bg-brand-primary/10 text-brand-primary text-xs font-bold rounded-full uppercase flex items-center">
+                          AI Schema
+                        </div>
                     </div>
                   </div>
                   <p className="text-sm text-brand-gray mb-4">
-                    Paste the JSON schema generated from the Agents here. This will automatically populate the page's Hero, Value Grid, Framework, and FAQ sections.
+                    Click the button above to automatically generate the architecture utilizing your unified instructions, or paste a custom JSON schema below.
                   </p>
                   <div>
                     <textarea
@@ -1450,18 +1718,13 @@ export default function ContentEditor() {
           <button
             type="button"
             onClick={() => {
-              const previewWindow = window.open('', '_blank');
-              if (previewWindow) {
-                previewWindow.document.write(`
-                  <html>
-                    <head><title>Preview</title></head>
-                    <body>
-                      <h1>${formData.title || formData.name || 'Preview'}</h1>
-                      <div>${formData.long_content || formData.content || formData.results || ''}</div>
-                    </body>
-                  </html>
-                `);
-              }
+              const slug = formData.slug || id;
+              if (!slug) { alert('Save the document first to preview.'); return; }
+              const path = collectionName === 'solutions' ? `/solutions/${slug}`
+                         : collectionName === 'unified_pages' ? `/unified/${slug}`
+                         : collectionName === 'insights' ? `/insights/${slug}`
+                         : `/services/${slug}`;
+              window.open(path, '_blank');
             }}
             className="inline-flex items-center px-6 py-3 bg-brand-dark text-brand-white font-semibold rounded-xl hover:bg-brand-dark/90 transition-all gap-2"
           >
