@@ -42,12 +42,14 @@ export default function ContentList({ collection: collectionProp }: ContentListP
           <h1 className="text-2xl font-bold text-brand-dark capitalize">{collectionName.replace('_', ' ')}</h1>
           <p className="text-brand-gray text-sm">Manage your {collectionName} content.</p>
         </div>
-        <Link
-          to={`/admin/${collectionName}/new`}
-          className="inline-flex items-center px-4 py-2 bg-brand-primary text-brand-white text-sm font-semibold rounded-lg hover:bg-brand-primary/90 transition-colors gap-2"
-        >
-          <Plus size={18} /> New Entry
-        </Link>
+        {collectionName !== 'leads' && (
+          <Link
+            to={`/admin/${collectionName}/new`}
+            className="inline-flex items-center px-4 py-2 bg-brand-primary text-brand-white text-sm font-semibold rounded-lg hover:bg-brand-primary/90 transition-colors gap-2"
+          >
+            <Plus size={18} /> New Entry
+          </Link>
+        )}
       </div>
 
       <div className="bg-brand-white rounded-2xl border border-brand-dark/10 shadow-sm overflow-hidden">
@@ -66,8 +68,8 @@ export default function ContentList({ collection: collectionProp }: ContentListP
           <table className="w-full text-left text-sm">
             <thead className="bg-brand-dark/5 text-brand-gray font-medium uppercase text-xs">
               <tr>
-                <th className="px-6 py-4">Title / Name</th>
-                <th className="px-6 py-4">Slug</th>
+                <th className="px-6 py-4">{collectionName === 'leads' ? 'Name' : 'Title / Name'}</th>
+                <th className="px-6 py-4">{collectionName === 'leads' ? 'Email' : 'Slug'}</th>
                 <th className="px-6 py-4">Status</th>
                 <th className="px-6 py-4 text-right">Actions</th>
               </tr>

@@ -146,6 +146,8 @@ export default function AdminDashboard({ user, role }: AdminDashboardProps) {
     { icon: LayoutDashboard, label: 'Overview', path: '/admin' },
     { icon: Briefcase, label: 'Services', path: '/admin/services' },
     { icon: Layers, label: 'Solutions', path: '/admin/solutions' },
+    { icon: FileText, label: 'Unified Pages', path: '/admin/unified_pages' },
+    { icon: Users, label: 'Leads', path: '/admin/leads' },
     { icon: FileText, label: 'Insights / Blog', path: '/admin/insights' },
     { icon: BookOpen, label: 'Case Studies', path: '/admin/case-studies' },
     { icon: FileText, label: 'Pages', path: '/admin/pages' },
@@ -285,6 +287,12 @@ export default function AdminDashboard({ user, role }: AdminDashboardProps) {
             <Route path="/solutions" element={<ContentList collection="solutions" />} />
             <Route path="/solutions/new" element={<ContentEditor />} />
             <Route path="/solutions/edit/:id" element={<ContentEditor />} />
+            <Route path="/unified_pages" element={<ContentList collection="unified_pages" />} />
+            <Route path="/unified_pages/new" element={<ContentEditor />} />
+            <Route path="/unified_pages/edit/:id" element={<ContentEditor />} />
+            <Route path="/leads" element={<ContentList collection="leads" />} />
+            <Route path="/leads/new" element={<ContentEditor />} />
+            <Route path="/leads/edit/:id" element={<ContentEditor />} />
             <Route path="/insights" element={<ContentList collection="insights" />} />
             <Route path="/insights/new" element={<ContentEditor />} />
             <Route path="/insights/edit/:id" element={<ContentEditor />} />
