@@ -2,7 +2,8 @@ name: Deploy to Hostinger VPS
 
 on:
   push:
-    branches: [ main ] # Or your primary branch name
+    branches: [ main ]
+  workflow_dispatch: {} # allow manual "Run workflow" from the Actions tab
 
 jobs:
   deploy:
@@ -17,32 +18,66 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          port: 22
+          port: ${{ secrets.SSH_PORT || 22 }}
           debug: true
           command_timeout: 30m
           script: |
-            set -e
-            # Ensure folder exists
-            mkdir -p /var/www/unified-platforms
-            cd /var/www/unified-platforms
-            
-            echo "Pulling latest code..."
+            set -euo pipefail
+
+            # --- Make node/npm/pm2 available on non-interactive SSH shells ---
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" || true
+            export PATH="$PATH:/usr/local/bin:/usr/bin:$HOME/.npm-global/bin"
+
+            APP_DIR=/var/www/unified-platforms
+            REPO_URL="https://github.com/${{ github.repository }}.git"
+
+            echo "==> Node: $(command -v node || echo MISSING) $(node -v 2>/dev/null || true)"
+            echo "==> npm:  $(command -v npm  || echo MISSING) $(npm -v 2>/dev/null || true)"
+
+            mkdir -p "$APP_DIR"
+            cd "$APP_DIR"
+
+            echo "==> Syncing code from origin/main (hard reset, no merge conflicts)..."
             if [ -d .git ]; then
-              # Re-initialize remote if needed to ensure correct URL
-              git remote set-url origin https://github.com/${{ github.repository }} || true
-              git pull origin main
+              git remote set-url origin "$REPO_URL" || true
+              git fetch origin main
+              git reset --hard origin/main
             else
-              git clone https://github.com/${{ github.repository }} .
+              git clone "$REPO_URL" .
             fi
 
-            echo "Installing dependencies..."
-            npm install
-            
-            echo "Building application..."
+            echo "==> Writing runtime/build environment (.env is git-ignored on the server)..."
+            cat > .env <<EOF
+            GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
+            VITE_GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
+            VITE_CHATBOT_MODEL=${{ secrets.VITE_CHATBOT_MODEL || 'gemini-flash-latest' }}
+            APP_URL=${{ secrets.APP_URL }}
+            GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
+            GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}
+            NODE_ENV=production
+            EOF
+
+            # IMPORTANT: install devDependencies too. The build (vite / tailwind /
+            # typescript) and the runtime interpreter (tsx) live in devDependencies.
+            # A plain `npm install` under NODE_ENV=production skips them, so the build
+            # or the pm2 start would fail. --include=dev forces them in.
+            echo "==> Installing dependencies (incl. dev tooling)..."
+            npm install --include=dev --no-audit --no-fund
+
+            echo "==> Building production bundle..."
             npm run build
-            
-            echo "Starting/Restarting application..."
-            # Using tsx to run server.ts directly in production mode
-            # Ensure pm2 is installed globally or use local if possible
+
+            echo "==> Ensuring pm2 is available..."
+            command -v pm2 >/dev/null 2>&1 || npm install -g pm2
+
+            echo "==> (Re)starting app under pm2 on port 3000..."
             pm2 delete unified-platforms || true
-            NODE_ENV=production pm2 start server.ts --name "unified-platforms" --interpreter ./node_modules/.bin/tsx -- --port 3000
+            NODE_ENV=production pm2 start server.ts \
+              --name unified-platforms \
+              --interpreter ./node_modules/.bin/tsx \
+              --update-env
+            pm2 save
+
+            echo "==> Deploy complete. App listening on http://127.0.0.1:3000"
+            echo "    (Ensure nginx reverse-proxies your domain -> 127.0.0.1:3000. See DEPLOY.md)"
