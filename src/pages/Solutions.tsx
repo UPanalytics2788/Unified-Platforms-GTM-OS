@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Layers } from 'lucide-react';
 import SEO from '../components/SEO';
 import { SOLUTIONS_CONTENT } from '../data/seedContent';
+import { useSitePage } from '../hooks/useSitePage';
+import { SOLUTIONS_PAGE } from '../data/sitePages';
 
 export default function Solutions() {
   const { data: firestoreSolutions, loading } = useCMSCollection('solutions', true);
+  const { data: page } = useSitePage('solutions', SOLUTIONS_PAGE);
 
   // Fallback to local seed content if Firestore is empty
   const solutions = firestoreSolutions.length > 0 ? firestoreSolutions : SOLUTIONS_CONTENT;
@@ -21,15 +24,15 @@ export default function Solutions() {
 
   return (
     <div className="py-20 bg-brand-white min-h-screen">
-      <SEO 
-        title="Strategic Growth Solutions"
-        description="Tailored growth strategies and end-to-end technology stacks for every stage of your business. From early-stage growth to enterprise-level market expansion."
+      <SEO
+        title={page.seo?.title || 'Strategic Growth Solutions'}
+        description={page.seo?.description || ''}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
-          <h1 className="text-4xl font-bold text-brand-dark mb-4">Our Solutions</h1>
+          <h1 className="text-4xl font-bold text-brand-dark mb-4">{page.header?.heading}</h1>
           <p className="text-brand-gray max-w-2xl">
-            Tailored growth strategies and technology stacks for every stage of your business.
+            {page.header?.intro}
           </p>
         </div>
 

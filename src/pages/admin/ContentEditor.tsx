@@ -117,10 +117,13 @@ export default function ContentEditor() {
     }
     setGeneratingJson(true);
     try {
-       const draft = { ...formData, [collectionName === 'services' || collectionName === 'solutions' ? 'name' : 'title']: formData.title || formData.name || formData.slug };
-       const category = draft.category || 'Service';
-       const jsonStr = await runCmsAgent(draft, category);
-       const parsed = JSON.parse(jsonStr);
+       const serviceName = formData.title || formData.name || formData.slug || '';
+       const serviceDescription = formData.description || formData.category || 'Service';
+       const res = await runCmsAgent(serviceName, serviceDescription);
+       if (!res.success || res.data === undefined) {
+         throw new Error(res.error || 'Agent returned no data');
+       }
+       const parsed = typeof res.data === 'string' ? JSON.parse(res.data) : res.data;
        setFormData((prev: any) => ({ ...prev, ...parsed }));
        alert("Structure generated! Review the changes and click Save to store them.");
     } catch (err: any) {
@@ -269,6 +272,7 @@ export default function ContentEditor() {
 
       {mediaModalOpen && (
         <MediaModal
+          isOpen={mediaModalOpen}
           onSelect={(url) => {
             if (activeMediaField) {
               setFormData((prev: any) => ({ ...prev, [activeMediaField]: url }));

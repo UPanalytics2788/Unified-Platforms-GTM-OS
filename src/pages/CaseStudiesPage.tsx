@@ -5,10 +5,16 @@ import { ArrowRight, FileText, TrendingUp, BarChart3, Users, Loader2 } from 'luc
 import SEO from '../components/SEO';
 import { CASE_STUDIES as SEED_CASE_STUDIES } from '../data/caseStudies';
 import { useCMSCollection } from '../hooks/useCMS';
+import { useSitePage } from '../hooks/useSitePage';
+import { CASE_STUDIES_PAGE } from '../data/sitePages';
 
 // Proven Results Across Industries
 export default function CaseStudies() {
-  const { data: firestoreData, loading } = useCMSCollection('case_studies', true);
+  // NOTE: collection is 'case-studies' (hyphen) — same as the Admin CMS and
+  // seeder write to. It was previously 'case_studies', so CMS edits never
+  // reached this page.
+  const { data: firestoreData, loading } = useCMSCollection('case-studies', true);
+  const { data: page } = useSitePage('case-studies', CASE_STUDIES_PAGE);
   const [selectedIndustry, setSelectedIndustry] = useState<string>('All');
 
   const studies = useMemo(() => {
@@ -44,15 +50,15 @@ export default function CaseStudies() {
 
   return (
     <div className="py-20 bg-brand-white min-h-screen">
-      <SEO 
-        title="Predictable ROI: Case Studies & Success Stories | Unified Platforms"
-        description="Explore how Unified Platforms engineers organic growth and high-performance paid media campaigns. Real results and case studies from market leaders across industries."
+      <SEO
+        title={page.seo?.title || 'Predictable ROI: Case Studies & Success Stories'}
+        description={page.seo?.description || ''}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16 text-center max-w-3xl mx-auto">
-          <h1 className="text-4xl lg:text-5xl font-bold text-brand-dark mb-6">Proven Results Across Industries</h1>
+          <h1 className="text-4xl lg:text-5xl font-bold text-brand-dark mb-6">{page.header?.heading}</h1>
           <p className="text-xl text-brand-gray">
-            We don't just promise growth; we engineer it. Explore how we've solved complex challenges and delivered measurable ROI for our clients.
+            {page.header?.intro}
           </p>
         </div>
 

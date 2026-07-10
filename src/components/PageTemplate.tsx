@@ -38,9 +38,11 @@ export default function PageTemplate({ data }: PageTemplateProps) {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="text-center max-w-4xl mx-auto"
                   >
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-primary/20 text-brand-primary text-xs font-bold uppercase tracking-[0.2em] rounded-full mb-8 border border-brand-primary/30">
-                      Growth Partner
-                    </div>
+                    {(section.badge ?? 'Growth Partner') && (
+                      <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-primary/20 text-brand-primary text-xs font-bold uppercase tracking-[0.2em] rounded-full mb-8 border border-brand-primary/30">
+                        {section.badge ?? 'Growth Partner'}
+                      </div>
+                    )}
                     <h1 className="text-5xl lg:text-8xl font-bold tracking-tighter text-white mb-8 leading-[0.9] uppercase">
                       {section.title}
                     </h1>

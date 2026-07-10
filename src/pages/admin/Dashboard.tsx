@@ -46,6 +46,9 @@ import LinkGraph from './LinkGraph';
 import MediaManager from './MediaManager';
 import UserManagement from './UserManagement';
 import SEOSettings from './SEOSettings';
+import SitePageEditor, { SitePagesList } from './SitePages';
+import FooterSettings from './FooterSettings';
+import BannerSettings from './BannerSettings';
 
 interface AdminDashboardProps {
   user: User | null;
@@ -144,6 +147,7 @@ export default function AdminDashboard({ user, role }: AdminDashboardProps) {
 
   const menuItems = [
     { icon: LayoutDashboard, label: 'Overview', path: '/admin' },
+    { icon: Globe, label: 'Site Pages', path: '/admin/site-pages' },
     { icon: Briefcase, label: 'Services', path: '/admin/services' },
     { icon: Layers, label: 'Solutions', path: '/admin/solutions' },
     { icon: FileText, label: 'Unified Pages', path: '/admin/unified_pages' },
@@ -161,6 +165,8 @@ export default function AdminDashboard({ user, role }: AdminDashboardProps) {
     { icon: Globe, label: 'PSEO Dashboard', path: '/admin/pseo' },
     { icon: Shield, label: 'Trust Signals', path: '/admin/trust' },
     { icon: LinkIcon, label: 'Link Graph', path: '/admin/links' },
+    { icon: Navigation, label: 'Footer', path: '/admin/footer' },
+    { icon: AlertCircle, label: 'Announcement Banner', path: '/admin/banner' },
     { icon: Settings, label: 'Brand Settings', path: '/admin/settings' },
     { icon: Plus, label: 'Migrate Content', path: '/admin/migrate' },
   ];
@@ -311,6 +317,10 @@ export default function AdminDashboard({ user, role }: AdminDashboardProps) {
             <Route path="/media" element={<MediaManager />} />
             <Route path="/users" element={<UserManagement />} />
             <Route path="/seo-settings" element={<SEOSettings />} />
+            <Route path="/site-pages" element={<SitePagesList />} />
+            <Route path="/site-pages/:slug" element={<SitePageEditor />} />
+            <Route path="/footer" element={<FooterSettings />} />
+            <Route path="/banner" element={<BannerSettings />} />
 
             <Route path="/content" element={<ContentList />} />
             <Route path="/content/edit/:id" element={<ContentEditor />} />

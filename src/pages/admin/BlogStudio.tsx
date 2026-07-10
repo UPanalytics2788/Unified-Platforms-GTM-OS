@@ -199,10 +199,8 @@ export default function BlogStudio() {
         title: metaInfo.title,
         content: eeatDraft,
         slug,
-        status: 'published',
         type: 'blog',
         author_id: 'team',
-        createdAt: new Date().toISOString(),
         publish_date: new Date().toISOString(),
         seoContext: {
           title: metaInfo.title,
