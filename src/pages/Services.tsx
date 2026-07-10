@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Briefcase } from 'lucide-react';
 import SEO from '../components/SEO';
 import { SERVICES_CONTENT } from '../data/seedContent';
+import { useSitePage } from '../hooks/useSitePage';
+import { SERVICES_PAGE } from '../data/sitePages';
 
 export default function Services() {
   const { data: firestoreServices, loading } = useCMSCollection('services', true);
+  const { data: page } = useSitePage('services', SERVICES_PAGE);
 
   // Fallback to local seed content if Firestore is empty
   const services = firestoreServices.length > 0 ? firestoreServices : SERVICES_CONTENT;
@@ -21,15 +24,15 @@ export default function Services() {
 
   return (
     <div className="py-20 bg-brand-white min-h-screen">
-      <SEO 
-        title="Specialized Growth Services"
-        description="Comprehensive services to execute your growth strategy with precision. SEO, performance marketing, web development, and talent acquisition all under one roof."
+      <SEO
+        title={page.seo?.title || 'Specialized Growth Services'}
+        description={page.seo?.description || ''}
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
-          <h1 className="text-4xl font-bold text-brand-dark mb-4">Our Services</h1>
+          <h1 className="text-4xl font-bold text-brand-dark mb-4">{page.header?.heading}</h1>
           <p className="text-brand-gray max-w-2xl">
-            Specialized services to execute your growth strategy with precision and scale.
+            {page.header?.intro}
           </p>
         </div>
 
@@ -41,7 +44,7 @@ export default function Services() {
           </div>
         ) : (
           <div>
-            {['Search & Organic', 'Performance Marketing', 'Content & Media', 'Development', 'Talent & HR'].map(cat => {
+            {(page.categories || ['Search & Organic', 'Performance Marketing', 'Content & Media', 'Development', 'Talent & HR']).map((cat: string) => {
               const catServices = services.filter((s: any) => s.category === cat);
               if (catServices.length === 0) return null;
               return (

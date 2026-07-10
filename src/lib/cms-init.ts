@@ -2,6 +2,7 @@ import { doc, getDoc, setDoc, collection, getDocs, query, where, addDoc, writeBa
 import { db } from './firebase';
 import { SOLUTIONS_CONTENT, SERVICES_CONTENT, UNIFIED_PAGES } from '../data/seedContent';
 import { CASE_STUDIES } from '../data/caseStudies';
+import { SITE_PAGES, FOOTER_DEFAULTS, BANNER_DEFAULTS } from '../data/sitePages';
 
 export const SEED_NAV = [
   {
@@ -257,39 +258,8 @@ export const SEED_INSIGHTS = [
   }
 ];
 
-export const PAGES_DATA = [
-  {
-    slug: 'home',
-    title: 'Home',
-    sections: [
-      {
-        type: 'hero',
-        title: 'Revenue-Focused Marketing & Growth Partner',
-        subtitle: 'We help brands scale through SEO, performance marketing, content, web development, and hiring.',
-        cta_primary: { label: 'Book Consultation', link: '/contact?type=consultation' },
-        cta_secondary: { label: 'View Case Studies', link: '/case-studies' }
-      },
-      {
-        type: 'advantage',
-        badge: 'The Unified Platforms Advantage',
-        title: 'Data-Driven Growth with Proprietary Insights',
-        description: "We don't just execute campaigns; we engineer growth. Our unique approach combines cross-channel expertise with advanced AI analytics to uncover hidden opportunities and maximize your ROI.",
-        items: [
-          "AI-Powered Competitor Intelligence",
-          "Cross-Channel Attribution Modeling",
-          "Proprietary SEO & Content Frameworks",
-          "Dedicated Growth Strategists"
-        ],
-        image_url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200',
-        stats: { value: '300%', label: 'Avg. ROI Increase' }
-      }
-    ],
-    seo: {
-      title: 'Revenue-Focused Marketing & Growth Partner | Unified Platforms',
-      description: 'We help brands scale through SEO, performance marketing, content, web development, and hiring.'
-    }
-  }
-];
+// Site page defaults now live in src/data/sitePages.ts — the single source of
+// truth shared with the public pages' fallbacks and the Admin Site Pages editor.
 
 export async function runCMSInitialization(force: boolean = false) {
   try {
@@ -354,17 +324,39 @@ export async function runCMSInitialization(force: boolean = false) {
       }
     }
 
-    // Step 4: Seed Pages
-    for (const page of PAGES_DATA) {
+    // Step 4: Seed Site Pages (home, contact, listing headers).
+    // NON-DESTRUCTIVE: never overwrite an existing page doc — admin edits
+    // made in the Site Pages editor must survive a System Sync.
+    for (const page of SITE_PAGES) {
       try {
-        await setDoc(doc(db, 'pages', page.slug), {
-          ...page,
-          status: 'published',
-          updatedAt: new Date().toISOString()
-        });
+        const existing = await getDoc(doc(db, 'pages', page.slug));
+        if (!existing.exists()) {
+          await setDoc(doc(db, 'pages', page.slug), {
+            ...page,
+            status: 'published',
+            updatedAt: new Date().toISOString()
+          });
+          console.log(`[CMS Init] Page OK: ${page.slug}`);
+        }
       } catch (e) {
         console.error(`[CMS Init] Page FAILED: ${page.slug}`, e);
       }
+    }
+
+    // Step 4b: Seed Footer + Announcement Banner settings (only if missing)
+    try {
+      const footerSnap = await getDoc(doc(db, 'settings', 'footer'));
+      if (!footerSnap.exists()) {
+        await setDoc(doc(db, 'settings', 'footer'), FOOTER_DEFAULTS);
+        console.log('[CMS Init] Footer settings OK');
+      }
+      const bannerSnap = await getDoc(doc(db, 'settings', 'campaigns'));
+      if (!bannerSnap.exists()) {
+        await setDoc(doc(db, 'settings', 'campaigns'), BANNER_DEFAULTS);
+        console.log('[CMS Init] Banner settings OK');
+      }
+    } catch (e) {
+      console.error('[CMS Init] Footer/Banner settings FAILED:', e);
     }
 
     // Step 5: Seed Navigation (batch)
@@ -490,26 +482,30 @@ export async function runCMSInitialization(force: boolean = false) {
       }
     }
 
-    // Step 12: Seed Brand Settings (always overwrite)
+    // Step 12: Seed Brand Settings — only if missing, so a System Sync never
+    // wipes the logo/colors the admin set in Brand Settings.
     try {
-      await setDoc(doc(db, 'settings', 'brand'), {
-        siteName: 'Unified Platforms',
-        description: 'Revenue-focused marketing and growth partner.',
-        logoUrl: '/logo.png',
-        faviconUrl: '/favicon.ico',
-        primaryColor: '#5dcaeb',
-        secondaryColor: '#eb735d',
-        contactEmail: 'hello@unifiedplatforms.com',
-        contactPhone: '+91 98765 43210',
-        address: 'Bangalore, India',
-        socialLinks: {
-          linkedin: 'https://linkedin.com/company/unifiedplatforms',
-          twitter: 'https://twitter.com/unifiedplatforms',
-          facebook: '',
-          instagram: ''
-        }
-      });
-      console.log('[CMS Init] Brand settings OK');
+      const brandSnap = await getDoc(doc(db, 'settings', 'brand'));
+      if (!brandSnap.exists()) {
+        await setDoc(doc(db, 'settings', 'brand'), {
+          siteName: 'Unified Platforms',
+          description: 'Revenue-focused marketing and growth partner.',
+          logoUrl: '/logo.png',
+          faviconUrl: '/favicon.ico',
+          primaryColor: '#5dcaeb',
+          secondaryColor: '#eb735d',
+          contactEmail: 'hello@unifiedplatforms.com',
+          contactPhone: '+91 98765 43210',
+          address: 'Bangalore, India',
+          socialLinks: {
+            linkedin: 'https://linkedin.com/company/unifiedplatforms',
+            twitter: 'https://twitter.com/unifiedplatforms',
+            facebook: '',
+            instagram: ''
+          }
+        });
+        console.log('[CMS Init] Brand settings OK');
+      }
     } catch (e) {
       console.error('[CMS Init] Brand settings FAILED:', e);
     }

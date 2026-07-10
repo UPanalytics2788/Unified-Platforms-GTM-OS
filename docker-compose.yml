@@ -1,13 +1,22 @@
-version: '3.8'
-
 services:
   unified-platforms:
     build: .
+    image: unified-platforms-gtm-os-unified-platforms:latest
     container_name: unified-platforms-app
     restart: always
-    ports:
-      - "80:3000"
+    env_file:
+      - .env
     environment:
       - NODE_ENV=production
-      # - GEMINI_API_KEY=${GEMINI_API_KEY}
-      # Add other environment variables as needed
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.my-unifiedplatforms.rule=Host(`my.unifiedplatforms.com`)
+      - traefik.http.routers.my-unifiedplatforms.entrypoints=websecure
+      - traefik.http.routers.my-unifiedplatforms.tls.certresolver=letsencrypt
+      - traefik.http.services.my-unifiedplatforms.loadbalancer.server.port=3000
+    networks:
+      - traefik-lytx_default
+
+networks:
+  traefik-lytx_default:
+    external: true

@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy via SSH
+      - name: Deploy via SSH (Docker + Traefik)
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
@@ -24,16 +24,14 @@ jobs:
           script: |
             set -euo pipefail
 
-            # --- Make node/npm/pm2 available on non-interactive SSH shells ---
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" || true
-            export PATH="$PATH:/usr/local/bin:/usr/bin:$HOME/.npm-global/bin"
-
-            APP_DIR=/var/www/unified-platforms
+            APP_DIR=/root/Unified-Platforms-GTM-OS
             REPO_URL="https://github.com/${{ github.repository }}.git"
 
-            echo "==> Node: $(command -v node || echo MISSING) $(node -v 2>/dev/null || true)"
-            echo "==> npm:  $(command -v npm  || echo MISSING) $(npm -v 2>/dev/null || true)"
+            # The site runs as a Docker container behind the existing Traefik
+            # reverse proxy (my.unifiedplatforms.com -> container port 3000).
+            COMPOSE="docker compose"
+            $COMPOSE version >/dev/null 2>&1 || COMPOSE="docker-compose"
+            echo "==> Using: $COMPOSE ($(docker --version))"
 
             mkdir -p "$APP_DIR"
             cd "$APP_DIR"
@@ -47,10 +45,9 @@ jobs:
               git clone "$REPO_URL" .
             fi
 
-            echo "==> Writing runtime/build environment (.env is git-ignored on the server)..."
+            echo "==> Writing runtime environment (.env is git- and docker-ignored)..."
             cat > .env <<EOF
             GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
-            VITE_GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
             VITE_CHATBOT_MODEL=${{ secrets.VITE_CHATBOT_MODEL || 'gemini-flash-latest' }}
             APP_URL=${{ secrets.APP_URL }}
             GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
@@ -58,26 +55,22 @@ jobs:
             NODE_ENV=production
             EOF
 
-            # IMPORTANT: install devDependencies too. The build (vite / tailwind /
-            # typescript) and the runtime interpreter (tsx) live in devDependencies.
-            # A plain `npm install` under NODE_ENV=production skips them, so the build
-            # or the pm2 start would fail. --include=dev forces them in.
-            echo "==> Installing dependencies (incl. dev tooling)..."
-            npm install --include=dev --no-audit --no-fund
+            echo "==> Building image (npm ci + vite build happen inside Docker)..."
+            $COMPOSE build --pull unified-platforms
 
-            echo "==> Building production bundle..."
-            npm run build
+            echo "==> Restarting container..."
+            $COMPOSE up -d unified-platforms
 
-            echo "==> Ensuring pm2 is available..."
-            command -v pm2 >/dev/null 2>&1 || npm install -g pm2
+            echo "==> Pruning dangling images..."
+            docker image prune -f >/dev/null
 
-            echo "==> (Re)starting app under pm2 on port 3000..."
-            pm2 delete unified-platforms || true
-            NODE_ENV=production pm2 start server.ts \
-              --name unified-platforms \
-              --interpreter ./node_modules/.bin/tsx \
-              --update-env
-            pm2 save
-
-            echo "==> Deploy complete. App listening on http://127.0.0.1:3000"
-            echo "    (Ensure nginx reverse-proxies your domain -> 127.0.0.1:3000. See DEPLOY.md)"
+            echo "==> Waiting for health..."
+            sleep 5
+            docker ps --filter name=unified-platforms-app --format "{{.Names}} {{.Status}}"
+            docker exec unified-platforms-app wget -qO- http://127.0.0.1:3000/api/health || {
+              echo "!! Health check failed — recent container logs:"
+              docker logs --tail 50 unified-platforms-app
+              exit 1
+            }
+            echo ""
+            echo "==> Deploy complete: https://my.unifiedplatforms.com"
