@@ -64,13 +64,20 @@ jobs:
             echo "==> Pruning dangling images..."
             docker image prune -f >/dev/null
 
-            echo "==> Waiting for health..."
-            sleep 5
+            echo "==> Waiting for health (tsx cold start can take ~30s)..."
             docker ps --filter name=unified-platforms-app --format "{{.Names}} {{.Status}}"
-            docker exec unified-platforms-app wget -qO- http://127.0.0.1:3000/api/health || {
-              echo "!! Health check failed — recent container logs:"
+            HEALTHY=""
+            for i in $(seq 1 12); do
+              if docker exec unified-platforms-app wget -qO- http://127.0.0.1:3000/api/health 2>/dev/null; then
+                HEALTHY=yes
+                break
+              fi
+              sleep 5
+            done
+            if [ -z "$HEALTHY" ]; then
+              echo "!! Health check failed after 60s — recent container logs:"
               docker logs --tail 50 unified-platforms-app
               exit 1
-            }
+            fi
             echo ""
             echo "==> Deploy complete: https://my.unifiedplatforms.com"
